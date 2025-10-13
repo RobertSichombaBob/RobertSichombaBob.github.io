@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AC-16C Coarse Aggregate Characterization – K112 Quarry | Robert Sichomba</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50 antialiased">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-atom text-white text-xl"></i>
+                        </div>
+                        <div class="hidden sm:block">
+                            <h1 class="text-xl font-bold text-gray-900">Robert Sichomba</h1>
+                            <p class="text-xs text-gray-500 -mt-1">PhD Portfolio</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200">Home</a>
+                    <a href="../index.html#about" class="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200">About</a>
+                    <a href="index.html" class="text-primary-600 font-medium transition-colors duration-200">Articles</a>
+                    <a href="../index.html#projects" class="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200">Projects</a>
+                    <a href="../index.html#cv" class="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200">CV</a>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button type="button" class="text-gray-600 hover:text-primary-600 transition-colors" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden bg-white border-t border-gray-200 py-6 shadow-lg" id="mobile-menu">
+            <div class="max-w-7xl mx-auto px-4 space-y-4">
+                <a href="../index.html" class="block text-gray-700 hover:text-primary-600 font-medium text-lg py-3 border-b border-gray-100">
+                    <i class="fas fa-home mr-4 w-6"></i>Home
+                </a>
+                <a href="../index.html#about" class="block text-gray-700 hover:text-primary-600 font-medium text-lg py-3 border-b border-gray-100">
+                    <i class="fas fa-user mr-4 w-6"></i>About
+                </a>
+                <a href="index.html" class="block text-primary-600 font-medium text-lg py-3 border-b border-gray-100">
+                    <i class="fas fa-newspaper mr-4 w-6"></i>Articles
+                </a>
+                <a href="../index.html#projects" class="block text-gray-700 hover:text-primary-600 font-medium text-lg py-3 border-b border-gray-100">
+                    <i class="fas fa-project-diagram mr-4 w-6"></i>Projects
+                </a>
+                <a href="../index.html#cv" class="block text-gray-700 hover:text-primary-600 font-medium text-lg py-3 border-b border-gray-100">
+                    <i class="fas fa-file-pdf mr-4 w-6"></i>CV
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="min-h-screen py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Download Section -->
+            <div class="download-section">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                    <i class="fas fa-file-pdf mr-2"></i>Download Technical Paper
+                </h3>
+                <p class="text-gray-600 mb-4">Get a printable PDF version of this technical characterization</p>
+                <a href="#" id="download-pdf" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </a>
+                <button id="print-article" class="ml-4 px-6 py-3 border-2 border-primary-500 text-primary-600 rounded-lg font-semibold hover:bg-primary-50 transition-all duration-200">
+                    <i class="fas fa-print mr-2"></i>Print
+                </button>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8 article-content">
+                <!-- Professional Header -->
+                <div class="professional-header">
+                    <h1>Technical Characterization of AC-16C Coarse Aggregate</h1>
+                    <div class="title">Lusaka–Ndola Dual Carriageway Project | Zambia</div>
+                    <div class="contact-info">
+                        <span><strong>Source:</strong> <span class="highlight">K112 Quarry</span></span>
+                        <span><strong>Material:</strong> <span class="highlight">AC-16C Modified Asphalt Mixture</span></span>
+                        <span><strong>Standards:</strong> <span class="standard-tag">JTG 3432-2024</span> <span class="standard-tag">CML</span></span>
+                    </div>
+                </div>
+
+                <!-- Article Metadata -->
+                <div class="text-center mb-8 text-gray-600">
+                    <div class="flex justify-center items-center space-x-6 flex-wrap">
+                        <span class="flex items-center">
+                            <i class="fas fa-calendar mr-2"></i>
+                            <time>December 2024</time>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span id="article-read-time">8 min read</span>
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fas fa-file-word mr-2"></i>
+                            <span id="article-word-count">1,800 words</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Table of Contents -->
+                <div id="table-of-contents" class="mb-8"></div>
+
+                <!-- 1. Introduction -->
+                <section class="section">
+                    <h2 class="section-header">1. Introduction</h2>
+                    <p>
+                        Coarse aggregate forms the <strong>load-bearing skeleton</strong> of asphalt concrete. For <span class="highlight">AC-16C</span>, it must provide:
+                    </p>
+                    <ul>
+                        <li><strong>High interlock</strong> via cubical shape and angular particles</li>
+                        <li><strong>Resistance to crushing and abrasion</strong> under heavy traffic loading</li>
+                        <li><strong>Strong adhesion</strong> with polymer-modified bitumen (PG76-10)</li>
+                    </ul>
+                    <p>
+                        This comprehensive evaluation of material from <span class="highlight">K112 Quarry</span> follows <span class="standard-tag">JTG 3432-2024</span> and <span class="standard-tag">CML</span> protocols, ensuring compliance with international standards for high-performance pavement construction.
+                    </p>
+                </section>
+
+                <!-- 2. Gradation Analysis -->
+                <section class="section">
+                    <h2 class="section-header">2. Gradation Analysis (JTG 3432-2024)</h2>
+                    <p>All fractions were tested via dry sieving with washing verification. Key analytical results:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fraction (mm)</th>
+                                <th>Key Sieve</th>
+                                <th>Passing (%)</th>
+                                <th>Spec Range</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>15–19</td><td>16.0</td><td>52.8</td><td>—</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>10–15</td><td>13.2</td><td>88.9</td><td>—</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>6–10</td><td>9.5</td><td>78.0</td><td>—</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>3–6</td><td>4.75</td><td>49.7</td><td>—</td><td class="status-pass">✅ Compliant</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note">
+                        <strong>Analysis:</strong> The gradation demonstrates <strong>well-graded characteristics</strong> with no excessive gaps, ensuring optimal particle packing and resistance to segregation during placement and compaction.
+                    </div>
+                </section>
+
+                <!-- 3. Mechanical Performance -->
+                <section class="section">
+                    <h2 class="section-header">3. Mechanical Performance Characterization</h2>
+
+                    <h3>3.1 Aggregate Crushing Value (ACV)</h3>
+                    <p>Measures resistance to compressive fracture under traffic loading conditions:</p>
+                    
+                    <div class="equation">
+                        $$\text{ACV} = \frac{m_{\text{fines}}}{m_{\text{total}}} \times 100\%$$
+                    </div>
+                    
+                    <p>Where $m_{\text{fines}}$ represents material passing 2.36 mm after application of 400 kN load.</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Test Condition</th>
+                                <th>Specification Limit</th>
+                                <th>Result (%)</th>
+                                <th>Engineering Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Normal Temperature</td><td>≤20%</td><td>13.6</td><td class="status-pass">✅ Excellent</td></tr>
+                            <tr><td>Elevated Temperature</td><td>≤24%</td><td>14.7</td><td class="status-pass">✅ Superior</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3>3.2 Los Angeles Abrasion (LAA)</h3>
+                    <p>Quantifies wear resistance from aggregate–aggregate and aggregate–tire interaction:</p>
+                    
+                    <div class="equation">
+                        $$\text{LAA} = \frac{m_1 - m_2}{m_1} \times 100\%$$
+                    </div>
+                    
+                    <p>Experimental parameters: $m_1 = 5003 \text{ g}$, $m_2 = 3970.5 \text{ g}$</p>
+                    
+                    <div class="equation">
+                        $$\text{LAA} = \frac{5003 - 3970.5}{5003} \times 100\% = 20.6\%$$
+                    </div>
+                    
+                    <p>Average LAA = <strong class="status-pass">20.4%</strong> → Significantly below 28% specification limit</p>
+
+                    <h3>3.3 Flakiness Index (FI)</h3>
+                    <p>Quantifies elongated/flat particles that reduce mechanical interlock:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Particle Size Range</th>
+                                <th>Specification Limit</th>
+                                <th>Measured FI (%)</th>
+                                <th>Performance Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>13.2–19 mm</td><td>≤10%</td><td>7.0</td><td class="status-pass">✅ Optimal</td></tr>
+                            <tr><td>4.75–13.2 mm</td><td>≤15%</td><td>7.7</td><td class="status-pass">✅ Optimal</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 4. Physical & Chemical Properties -->
+                <section class="section">
+                    <h2 class="section-header">4. Comprehensive Physical & Chemical Analysis</h2>
+
+                    <h3>4.1 Density and Water Absorption</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fraction (mm)</th>
+                                <th>Apparent Density (g/cm³)</th>
+                                <th>Water Absorption (%)</th>
+                                <th>Specification</th>
+                                <th>Compliance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>15–19</td><td>3.057</td><td>0.23</td><td>≤1.0%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>10–15</td><td>3.052</td><td>0.29</td><td>≤1.0%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>6–10</td><td>3.044</td><td>0.34</td><td>≤1.0%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>3–6</td><td>3.040</td><td>0.39</td><td>≤1.5%</td><td class="status-pass">✅ Compliant</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note">
+                        <strong>Engineering Significance:</strong> Low water absorption (<0.4%) indicates minimal binder demand and excellent resistance to moisture-induced damage mechanisms.
+                    </div>
+
+                    <h3>4.2 Adhesion with SBS-Modified Bitumen</h3>
+                    <p>Evaluated via <strong>boiling water method</strong> per JTG E20-2011:</p>
+                    <ul>
+                        <li><strong>Adhesion Grade:</strong> <span class="status-pass">5/5</span> (no peeling observed)</li>
+                        <li><strong>Interpretation:</strong> Siliceous aggregate demonstrating excellent compatibility with polymer-modified bitumen systems</li>
+                    </ul>
+
+                    <h3>4.3 Cleanliness and Deleterious Materials</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Measured Value (%)</th>
+                                <th>Specification Limit</th>
+                                <th>Quality Assessment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Silt Content</td><td>0.2</td><td>≤0.8%</td><td class="status-pass">✅ Excellent</td></tr>
+                            <tr><td>Clay Lumps</td><td>0.1</td><td>≤0.5%</td><td class="status-pass">✅ Superior</td></tr>
+                            <tr><td>Soft Particles</td><td>0.0</td><td>≤1.0%</td><td class="status-pass">✅ Ideal</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 5. Engineering Performance -->
+                <section class="section">
+                    <h2 class="section-header">5. Engineering Performance Predictions</h2>
+
+                    <div class="project-entry">
+                        <h3>5.1 Rutting Resistance Analysis</h3>
+                        <p>Low ACV (13.6%) and LAA (20.4%) values ensure minimal permanent deformation under ESALs exceeding 30 million.</p>
+                    </div>
+
+                    <div class="project-entry">
+                        <h3>5.2 Fatigue Performance</h3>
+                        <p>Cubical particle geometry (FI < 8%) and strong mechanical interlock significantly reduce microcrack propagation under repeated loading cycles.</p>
+                    </div>
+
+                    <div class="project-entry">
+                        <h3>5.3 Moisture Damage Resistance</h3>
+                        <p>Grade 5 adhesion characteristics combined with low absorption and clean surface morphology provide exceptional resistance to stripping phenomena.</p>
+                    </div>
+                </section>
+
+                <!-- 6. Compliance Summary -->
+                <section class="section">
+                    <h2 class="section-header">6. Comprehensive Compliance Summary</h2>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Standard</th>
+                                <th>Requirement</th>
+                                <th>Result</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Crushing Value (NT)</td><td>JTG 3432-2024</td><td>≤20%</td><td>13.6%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>Los Angeles Abrasion</td><td>JTG 3432-2024</td><td>≤28%</td><td>20.4%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>Flakiness Index</td><td>JTG 3432-2024</td><td>≤10–15%</td><td>7.0–7.7%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>Water Absorption</td><td>JTG 3432-2024</td><td>≤1.0%</td><td>0.23–0.39%</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>Adhesion Grade</td><td>JTG E20-2011</td><td>≥4</td><td>5</td><td class="status-pass">✅ Compliant</td></tr>
+                            <tr><td>Silt Content</td><td>JTG E42-2005</td><td>≤0.8%</td><td>0.2%</td><td class="status-pass">✅ Compliant</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <!-- 7. Conclusion -->
+                <section class="section">
+                    <h2 class="section-header">7. Technical Conclusion</h2>
+                    <p>
+                        The comprehensive characterization demonstrates that coarse aggregate from <span class="highlight">K112 Quarry</span> exhibits:
+                    </p>
+                    <ul>
+                        <li><strong>Mechanical robustness</strong> with exceptional resistance to crushing and abrasion</li>
+                        <li><strong>Geometric optimality</strong> through cubical particle shape and optimal gradation</li>
+                        <li><strong>Chemical compatibility</strong> with SBS-modified bitumen systems</li>
+                        <li><strong>Exceptional cleanliness</strong> and long-term durability characteristics</li>
+                    </ul>
+                    <p>
+                        This material <strong>fully satisfies all technical requirements</strong> for high-performance <span class="highlight">AC-16C modified asphalt concrete</span> in the Lusaka–Ndola Dual Carriageway project, ensuring pavement service life exceeding design specifications.
+                    </p>
+                </section>
+
+                <!-- References -->
+                <section class="section">
+                    <h2 class="section-header">References</h2>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>JTG 3432-2024. Test Methods of Aggregate for Highway Engineering</li>
+                        <li>JTG E20-2011. Standard Test Methods of Bitumen and Bituminous Mixtures for Highway Engineering</li>
+                        <li>ASTM D692/D692M. Standard Specification for Coarse Aggregate for Bituminous Paving Mixtures</li>
+                        <li>Road Development Agency (RDA). Zambia Pavement Design Manual, 2023</li>
+                    </ol>
+                </section>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-atom text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Robert Sichomba</h3>
+                            <p class="text-gray-400 text-sm">PhD Portfolio</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Data Scientist • Geophysicist • Materials Engineer<br>
+                        Bridging disciplines through innovation.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Portfolio</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="../index.html#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="index.html" class="hover:text-white transition-colors">Articles</a></li>
+                        <li><a href="../index.html#projects" class="hover:text-white transition-colors">Projects</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="../index.html#cv" class="hover:text-white transition-colors">Download CV</a></li>
+                        <li><a href="https://github.com/RobertSichombaBob" class="hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="index.html" class="hover:text-white transition-colors">Technical Articles</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com/in/robert-sichomba" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/RobertSichombaBob" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary-500 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:robert.sichomba@email.com" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary-500 transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2024 Robert Sichomba. All rights reserved. | Technical Paper: AC-16C Aggregate Characterization</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/article.js"></script>
+</body>
+</html>
