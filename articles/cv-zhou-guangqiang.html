@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Services | Robert Sichomba, PhD</title>
+    <title>AC-16C Asphalt Core Density Testing | JTG Standards</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,15 +15,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     
+    <!-- MathJax for mathematical expressions -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        dark: '#0a0a0a',
-                        light: '#ffffff',
-                        accent: '#4ade80',
-                        'dark-button': '#1a1a1a',
+                        primary: '#1a365d',      // Professional blue
+                        secondary: '#2d3748',    // Dark gray
+                        light: '#f8fafc',        // Light background
+                        dark: '#2d3748',         // Dark text
+                        accent: '#2b6cb0',       // Blue accent
                     },
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -36,606 +41,639 @@
     
     <style>
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            background-color: #f8fafc;
+            color: #2d3748;
+            line-height: 1.7;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .card {
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-            border: 1px solid #2a2a2a;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #4ade80;
+        .equation {
+            font-family: 'Source Serif Pro', serif;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background-color: #f7fafc;
+            border-radius: 0.5rem;
+            border-left: 4px solid #2b6cb0;
         }
         
-        .nav-link {
-            position: relative;
+        .figure {
+            margin: 2rem 0;
+            text-align: center;
         }
         
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #4ade80;
-            transition: width 0.3s ease;
+        .figure img {
+            max-width: 100%;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            height: 300px;
+            object-fit: cover;
+            background-color: #edf2f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
         }
         
-        .nav-link:hover::after {
+        .figure-caption {
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+        
+        table {
             width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
         }
         
-        .accent-border {
-            border-left: 4px solid #4ade80;
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
         }
         
-        .btn-primary {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
+        th {
+            background-color: #edf2f7;
+            font-weight: 600;
         }
         
-        .btn-primary:hover {
-            background-color: #4ade80;
-            color: #0a0a0a;
-            border-color: #4ade80;
+        .reference-item {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            text-indent: -1.5rem;
         }
         
-        .section-divider {
-            border-top: 1px solid #2a2a2a;
+        .test-procedure {
+            background-color: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #2b6cb0;
         }
         
-        .badge {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+        .calculation-box {
+            background-color: #ebf8ff;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #bee3f8;
         }
         
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .standard-box {
+            background-color: #f0fff4;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #48bb78;
+        }
+        
+        .parameter-card {
+            background-color: #f8fafc;
+            border-left: 4px solid #2b6cb0;
+            padding: 1.5rem;
             margin-bottom: 1.5rem;
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
+            border-radius: 0.5rem;
         }
         
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-            transform: scale(1.1);
+        .parameter-card h4 {
+            color: #1a365d;
+            margin-bottom: 0.75rem;
         }
         
-        .process-step {
-            position: relative;
-            padding-left: 3rem;
+        .test-result {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
         }
         
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2rem;
-            height: 2rem;
-            background-color: #1a1a1a;
-            border: 2px solid #4ade80;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #4ade80;
+        .test-result h4 {
+            color: #166534;
+            margin-bottom: 1rem;
         }
         
-        .process-step:nth-child(1)::before {
-            content: '1';
+        .mobile-menu {
+            display: none;
         }
         
-        .process-step:nth-child(2)::before {
-            content: '2';
-        }
-        
-        .process-step:nth-child(3)::before {
-            content: '3';
-        }
-        
-        .process-step:nth-child(4)::before {
-            content: '4';
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                padding: 1rem;
+                z-index: 50;
+            }
+            
+            .mobile-menu a {
+                display: block;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid #e2e8f0;
+            }
         }
     </style>
 </head>
 
 <body class="font-sans antialiased">
     <!-- Navigation -->
-    <nav class="bg-dark sticky top-0 z-50 border-b border-gray-800">
+    <nav class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-xl"></i>
+                    <a href="#" class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fas fa-flask text-white text-xl"></i>
                         </div>
                         <div class="hidden sm:block">
-                            <h1 class="text-xl font-bold text-light">Robert Sichomba</h1>
-                            <p class="text-xs text-gray-400 -mt-1">PhD Portfolio</p>
+                            <h1 class="text-xl font-bold text-dark">Materials Engineering</h1>
+                            <p class="text-xs text-gray-500 -mt-1">Technical Articles</p>
                         </div>
                     </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Home</a>
-                    <a href="../index.html#about" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">About</a>
-                    <a href="../articles/index.html" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Articles</a>
-                    <a href="index.html" class="nav-link text-accent font-medium transition-colors duration-200">Services</a>
-                    <a href="../index.html#projects" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Projects</a>
-                    <a href="../index.html#cv" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">CV</a>
-                    <a href="https://github.com/RobertSichombaBob" class="btn-primary px-6 py-3 rounded-xl font-semibold transition-all duration-200">
-                        <i class="fab fa-github mr-2"></i>GitHub
+                    <a href="#" class="text-dark hover:text-accent font-medium transition-colors duration-200">Home</a>
+                    <a href="#" class="text-dark hover:text-accent font-medium transition-colors duration-200">Articles</a>
+                    <a href="#" class="text-dark hover:text-accent font-medium transition-colors duration-200">Standards</a>
+                    <a href="#" class="text-dark hover:text-accent font-medium transition-colors duration-200">Resources</a>
+                    <a href="#" class="bg-primary hover:bg-accent text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-download mr-2"></i>PDF
                     </a>
                 </div>
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="text-light hover:text-accent transition-colors" id="mobile-menu-button">
+                    <button type="button" class="text-dark hover:text-accent transition-colors" id="mobile-menu-button">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Navigation -->
-        <div class="md:hidden hidden bg-dark border-t border-gray-800 py-6" id="mobile-menu">
-            <div class="max-w-7xl mx-auto px-4 space-y-4">
-                <a href="../index.html" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-home mr-4 w-6"></i>Home
-                </a>
-                <a href="../index.html#about" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-user mr-4 w-6"></i>About
-                </a>
-                <a href="../articles/index.html" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-newspaper mr-4 w-6"></i>Articles
-                </a>
-                <a href="index.html" class="block text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-cogs mr-4 w-6"></i>Services
-                </a>
-                <a href="../index.html#projects" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-project-diagram mr-4 w-6"></i>Projects
-                </a>
-                <a href="../index.html#cv" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-file-pdf mr-4 w-6"></i>CV
-                </a>
-                <a href="https://github.com/RobertSichombaBob" class="block btn-primary px-6 py-4 rounded-xl font-semibold text-center mt-4">
-                    <i class="fab fa-github mr-2"></i>View GitHub
-                </a>
-            </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="#" class="text-dark hover:text-accent font-medium">Home</a>
+            <a href="#" class="text-dark hover:text-accent font-medium">Articles</a>
+            <a href="#" class="text-dark hover:text-accent font-medium">Standards</a>
+            <a href="#" class="text-dark hover:text-accent font-medium">Resources</a>
+            <a href="#" class="bg-primary text-white px-4 py-2 rounded-lg font-semibold mt-2 inline-block">
+                <i class="fas fa-download mr-2"></i>PDF
+            </a>
         </div>
     </nav>
 
-    <!-- Services Header -->
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-serif font-bold text-light mb-6">Professional Services</h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Leveraging my expertise in data science, geophysics, and materials engineering 
-                to deliver innovative solutions for complex technical challenges.
-            </p>
-            <div class="mt-8 flex justify-center space-x-4">
-                <span class="badge">Data Science</span>
-                <span class="badge">Technical Consulting</span>
-                <span class="badge">Education & Training</span>
+    <!-- Article Header -->
+    <section class="py-12 bg-gradient-to-r from-primary to-accent text-white">
+        <div class="article-container px-4 sm:px-6">
+            <div class="mb-8">
+                <span class="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium">JTG Standards</span>
+                <span class="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium ml-2">Materials Engineering</span>
             </div>
-        </div>
-    </section>
-
-    <!-- Services Overview -->
-    <section class="py-16">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="card service-card rounded-xl p-6 text-center">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-brain text-accent text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-light mb-3">Data Science & Analytics</h3>
-                    <p class="text-gray-300 text-sm">
-                        Advanced machine learning, statistical analysis, and predictive modeling 
-                        to extract insights from complex datasets.
-                    </p>
-                    <div class="mt-4 flex justify-center">
-                        <span class="badge">Machine Learning</span>
-                        <span class="badge">Statistical Analysis</span>
-                    </div>
+            
+            <h1 class="text-4xl font-serif font-bold mb-6 leading-tight">
+                Field Density Verification of AC-16C Modified Asphalt Surface Course: Core Sample Testing and Quality Assurance
+            </h1>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-200">
+                <div class="mb-4 sm:mb-0">
+                    <p class="text-lg"><strong>Robert Sichomba, PhD</strong></p>
+                    <p>Materials Engineer | Geotechnical Specialist</p>
                 </div>
-
-                <!-- Service 2 -->
-                <div class="card service-card rounded-xl p-6 text-center">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-database text-accent text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-light mb-3">Data Management</h3>
-                    <p class="text-gray-300 text-sm">
-                        Comprehensive data pipeline development, database design, and data governance 
-                        strategies for optimal data utilization.
-                    </p>
-                    <div class="mt-4 flex justify-center">
-                        <span class="badge">Data Pipelines</span>
-                        <span class="badge">Database Design</span>
-                    </div>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="card service-card rounded-xl p-6 text-center">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-code text-accent text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-light mb-3">Backend Development</h3>
-                    <p class="text-gray-300 text-sm">
-                        Robust backend systems, API development, and code maintenance for scalable 
-                        and efficient technical solutions.
-                    </p>
-                    <div class="mt-4 flex justify-center">
-                        <span class="badge">API Development</span>
-                        <span class="badge">System Architecture</span>
-                    </div>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="card service-card rounded-xl p-6 text-center">
-                    <div class="service-icon mx-auto">
-                        <i class="fas fa-chalkboard-teacher text-accent text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-light mb-3">Education & Training</h3>
-                    <p class="text-gray-300 text-sm">
-                        Customized workshops, courses, and mentoring in data science, geophysics, 
-                        and engineering principles.
-                    </p>
-                    <div class="mt-4 flex justify-center">
-                        <span class="badge">Workshops</span>
-                        <span class="badge">Technical Training</span>
-                    </div>
+                <div class="text-sm">
+                    <p><i class="far fa-calendar mr-2"></i>Published: October 15, 2025</p>
+                    <p><i class="far fa-clock mr-2"></i>Reading time: 20 minutes</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Services -->
-    <section class="py-16 bg-dark">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif font-bold text-light mb-4">Specialized Service Areas</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Tailored solutions combining interdisciplinary expertise to address your unique challenges
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Data Science Services -->
-                <div class="card rounded-xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mr-4 border border-gray-800">
-                            <i class="fas fa-chart-line text-accent text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-light">Data Science & Analytics</h3>
-                            <p class="text-gray-300">Transforming data into actionable insights</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-4 text-gray-300 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Predictive Modeling:</strong> Machine learning algorithms for forecasting and classification</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Statistical Analysis:</strong> Hypothesis testing, experimental design, and inference</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Data Visualization:</strong> Interactive dashboards and visual analytics</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Natural Language Processing:</strong> Text mining and document classification</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Time Series Analysis:</strong> Forecasting and anomaly detection</span>
-                        </li>
-                    </ul>
-
-                    <div class="pt-6 border-t border-gray-800">
-                        <h4 class="font-semibold text-light mb-3">Technologies</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge">Python</span>
-                            <span class="badge">R</span>
-                            <span class="badge">TensorFlow</span>
-                            <span class="badge">Scikit-learn</span>
-                            <span class="badge">SQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data Management Services -->
-                <div class="card rounded-xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mr-4 border border-gray-800">
-                            <i class="fas fa-database text-accent text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-light">Data Management</h3>
-                            <p class="text-gray-300">Structuring data for optimal utilization</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-4 text-gray-300 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Data Pipeline Development:</strong> ETL/ELT processes and workflow automation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Database Design:</strong> Relational and NoSQL database architecture</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Data Governance:</strong> Policies, standards, and quality frameworks</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Data Integration:</strong> Combining disparate data sources</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Data Security:</strong> Access control and privacy compliance</span>
-                        </li>
-                    </ul>
-
-                    <div class="pt-6 border-t border-gray-800">
-                        <h4 class="font-semibold text-light mb-3">Technologies</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge">PostgreSQL</span>
-                            <span class="badge">MongoDB</span>
-                            <span class="badge">Apache Airflow</span>
-                            <span class="badge">AWS</span>
-                            <span class="badge">Docker</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend Development -->
-                <div class="card rounded-xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mr-4 border border-gray-800">
-                            <i class="fas fa-server text-accent text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-light">Backend Development</h3>
-                            <p class="text-gray-300">Robust and scalable technical infrastructure</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-4 text-gray-300 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>API Development:</strong> RESTful and GraphQL APIs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>System Architecture:</strong> Scalable and maintainable designs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Code Maintenance:</strong> Refactoring and performance optimization</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>DevOps Integration:</strong> CI/CD pipelines and deployment automation</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Technical Documentation:</strong> Clear and comprehensive system docs</span>
-                        </li>
-                    </ul>
-
-                    <div class="pt-6 border-t border-gray-800">
-                        <h4 class="font-semibold text-light mb-3">Technologies</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge">Python</span>
-                            <span class="badge">Django</span>
-                            <span class="badge">FastAPI</span>
-                            <span class="badge">Docker</span>
-                            <span class="badge">Git</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education & Training -->
-                <div class="card rounded-xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mr-4 border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-light">Education & Training</h3>
-                            <p class="text-gray-300">Building technical capacity and expertise</p>
-                        </div>
-                    </div>
-
-                    <ul class="space-y-4 text-gray-300 mb-6">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Custom Workshops:</strong> Tailored to your team's specific needs</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Technical Courses:</strong> Data science, programming, and analytics</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Mentoring Programs:</strong> One-on-one guidance for skill development</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Curriculum Development:</strong> Designing effective learning pathways</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-accent mr-3 mt-1"></i>
-                            <span><strong>Technical Presentations:</strong> Conference talks and seminars</span>
-                        </li>
-                    </ul>
-
-                    <div class="pt-6 border-t border-gray-800">
-                        <h4 class="font-semibold text-light mb-3">Topics</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="badge">Data Science</span>
-                            <span class="badge">Python Programming</span>
-                            <span class="badge">Machine Learning</span>
-                            <span class="badge">Geophysics</span>
-                            <span class="badge">Statistics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process Section -->
-    <section class="py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-serif font-bold text-light mb-4">My Approach</h2>
-                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                    A structured methodology to ensure successful project outcomes and maximum value delivery
-                </p>
-            </div>
-
-            <div class="space-y-8">
-                <div class="process-step">
-                    <h3 class="text-xl font-bold text-light mb-3">Discovery & Requirements Analysis</h3>
-                    <p class="text-gray-300">
-                        In-depth consultation to understand your unique challenges, objectives, and constraints. 
-                        We'll define clear project goals, success metrics, and technical requirements to establish 
-                        a solid foundation for our collaboration.
+    <!-- Article Content -->
+    <section class="py-12">
+        <div class="article-container px-4 sm:px-6">
+            <div class="prose prose-lg max-w-none">
+                <!-- Abstract -->
+                <div class="card rounded-xl p-8 mb-12">
+                    <h2 class="text-xl font-serif font-bold text-dark mb-4">Executive Summary</h2>
+                    <p class="text-gray-700">
+                        This technical report presents the results of field density verification testing conducted on AC-16C modified asphalt surface course 
+                        at chainage SBCH96+060 to SBCH96+740 on the Lusaka to Ndola Road Project in Zambia. Core samples were extracted and tested according 
+                        to JTG E20-2011 standards to determine in-situ density and compaction degree. The average compaction achieved was 95.1%, exceeding 
+                        the specified minimum requirement of 93.0%. These results demonstrate exceptional quality control and construction practices, 
+                        ensuring long-term pavement performance and durability.
                     </p>
-                </div>
-
-                <div class="process-step">
-                    <h3 class="text-xl font-bold text-light mb-3">Solution Design & Planning</h3>
-                    <p class="text-gray-300">
-                        Development of a comprehensive technical approach tailored to your specific needs. 
-                        This includes architecture design, technology selection, timeline estimation, and 
-                        resource planning to ensure efficient project execution.
-                    </p>
-                </div>
-
-                <div class="process-step">
-                    <h3 class="text-xl font-bold text-light mb-3">Implementation & Iteration</h3>
-                    <p class="text-gray-300">
-                        Agile development with regular progress updates and feedback cycles. I prioritize 
-                        transparency and collaboration throughout the implementation phase, ensuring the 
-                        solution evolves to meet your evolving requirements.
-                    </p>
-                </div>
-
-                <div class="process-step">
-                    <h3 class="text-xl font-bold text-light mb-3">Delivery & Knowledge Transfer</h3>
-                    <p class="text-gray-300">
-                        Comprehensive delivery of the final solution accompanied by thorough documentation, 
-                        training, and ongoing support. My goal is to ensure you have everything needed to 
-                        effectively utilize and maintain the delivered solution.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="card rounded-2xl p-12">
-                <h2 class="text-3xl font-serif font-bold text-light mb-6">Ready to Start Your Project?</h2>
-                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Let's discuss how my expertise in data science, backend development, and technical education 
-                    can help solve your unique challenges and drive meaningful results.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="mailto:robert.sichomba@email.com" class="btn-primary px-8 py-4 rounded-xl font-bold transition-all duration-200 text-center text-lg group">
-                        <i class="fas fa-envelope mr-3 group-hover:animate-bounce"></i>
-                        Contact Me
-                    </a>
-                    <a href="../index.html#projects" class="border-2 border-light text-light px-8 py-4 rounded-xl font-bold hover:bg-light hover:text-dark transition-all duration-200 text-center text-lg">
-                        <i class="fas fa-rocket mr-3"></i>
-                        View Projects
-                    </a>
+                    
+                    <div class="mt-6">
+                        <h3 class="font-semibold text-dark mb-2">Key Performance Indicators</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">95.1% Average Compaction</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Exceeds 93% Specification</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">AC-16C Asphalt Verification</span>
+                            <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">Quality Assurance</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="mt-8 pt-8 border-t border-gray-800">
-                    <p class="text-gray-400 text-sm">
-                        <i class="fas fa-clock mr-2"></i>Typically respond within 24 hours
-                        <span class="mx-3">•</span>
-                        <i class="fas fa-check-circle mr-2"></i>Initial consultation is always free
+                <!-- Introduction -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">1. Introduction</h2>
+                    
+                    <p class="mb-4">
+                        The compaction degree of asphalt surface courses is a critical quality control parameter that directly influences pavement performance, 
+                        durability, and resistance to traffic loading. Proper compaction ensures optimal binder distribution, minimizes air voids, and provides 
+                        the structural integrity required for heavy-duty applications.
                     </p>
+                    
+                    <p class="mb-4">
+                        This report details the field density verification testing conducted on AC-16C modified asphalt surface course at chainage 
+                        SBCH96+060 to SBCH96+740 on the Lusaka to Ndola Road Project. Core samples were extracted and analyzed according to 
+                        JTG E20-2011 "Standard Test Methods of Bitumen and Bituminous Mixtures for Highway Engineering" to verify compliance 
+                        with project specifications.
+                    </p>
+                    
+                    <div class="figure">
+                        <img src="https://placehold.co/800x300?text=Asphalt+Core+Extraction+at+Site" alt="Asphalt Core Extraction at Site">
+                        <p class="figure-caption">Figure 1: Core sample extraction from AC-16C modified asphalt surface course at SBCH96+620.</p>
+                    </div>
+                </section>
+                
+                <!-- Testing Methodology -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">2. Testing Methodology and Standards</h2>
+                    
+                    <p class="mb-4">
+                        The testing program was conducted in accordance with the following standards and specifications:
+                    </p>
+                    
+                    <div class="standard-box">
+                        <h4 class="font-semibold text-dark mb-2">Applicable Standards</h4>
+                        <ul class="list-disc pl-6 mt-2 space-y-1 text-gray-700">
+                            <li><strong>JTG E20-2011:</strong> Standard Test Methods of Bitumen and Bituminous Mixtures for Highway Engineering</li>
+                            <li><strong>Project Technical Specifications:</strong> Minimum compaction degree of 93.0% for AC-16C surface course</li>
+                            <li><strong>Maximum Theoretical Relative Density:</strong> Determined as 2.813 g/cm³</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 class="text-xl font-serif font-semibold text-dark mb-4 mt-6">2.1 Core Sample Testing Procedure</h3>
+                    
+                    <div class="test-procedure">
+                        <h4 class="font-semibold text-dark mb-3">Core Sample Testing Protocol:</h4>
+                        <ol class="list-decimal pl-6 space-y-2 text-gray-700">
+                            <li><strong>Sample Extraction:</strong> Core samples (100mm diameter) extracted using diamond coring equipment at specified locations</li>
+                            <li><strong>Sample Preparation:</strong> Samples cleaned, trimmed to uniform thickness, and conditioned at 25°C for 24 hours</li>
+                            <li><strong>Mass Measurements:</strong> Three mass measurements taken:
+                                <ul class="list-disc pl-6 mt-1 space-y-1">
+                                    <li>Mass in air (Ma)</li>
+                                    <li>Mass in water (Mw)</li>
+                                    <li>Surface-dry mass (Ms)</li>
+                                </ul>
+                            </li>
+                            <li><strong>Bulk Density Calculation:</strong> Using hydrostatic weighing method</li>
+                            <li><strong>Compaction Degree:</strong> Calculated as ratio of bulk density to maximum theoretical density</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <!-- Mathematical Formulations -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">3. Mathematical Formulations and Calculations</h2>
+                    
+                    <p class="mb-4">
+                        The following mathematical formulations were used to determine bulk density and compaction degree:
+                    </p>
+                    
+                    <div class="calculation-box">
+                        <h4 class="font-semibold text-dark mb-3">3.1 Bulk Relative Density Calculation</h4>
+                        <div class="equation">
+                            $$\rho_b = \frac{M_a}{M_s - M_w}$$
+                        </div>
+                        <p>Where:<br>
+                        \(\rho_b\) = Bulk relative density<br>
+                        \(M_a\) = Mass of sample in air (g)<br>
+                        \(M_s\) = Surface-dry mass of sample (g)<br>
+                        \(M_w\) = Mass of sample in water (g)</p>
+                        
+                        <p class="mt-4"><strong>Alternative Formula (when surface-dry mass not available):</strong></p>
+                        <div class="equation">
+                            $$\rho_b = \frac{M_a}{M_a - M_w} \times \rho_w$$
+                        </div>
+                        <p>Where:<br>
+                        \(\rho_w\) = Density of water (g/cm³)</p>
+                    </div>
+                    
+                    <div class="calculation-box">
+                        <h4 class="font-semibold text-dark mb-3">3.2 Compaction Degree Calculation</h4>
+                        <div class="equation">
+                            $$\text{Compaction Degree (\%)} = \frac{\rho_b}{\rho_t} \times 100\%$$
+                        </div>
+                        <p>Where:<br>
+                        \(\rho_t\) = Maximum theoretical relative density (2.813 g/cm³)</p>
+                        
+                        <p class="mt-4"><strong>Example Calculation (Sample 1):</strong></p>
+                        <p>\(\rho_b = \frac{1062.3}{1066.8 - 667.8} = \frac{1062.3}{399.0} = 2.662 \, \text{g/cm}^3\)</p>
+                        <p>\(\text{Compaction Degree} = \frac{2.662}{2.813} \times 100\% = 94.7\%\)</p>
+                    </div>
+                </section>
+                
+                <!-- Test Results and Interpretation -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">4. Test Results and Interpretation</h2>
+                    
+                    <p class="mb-4">
+                        Core samples were extracted from three locations within the specified chainage range and tested according to JTG E20-2011 standards.
+                    </p>
+                    
+                    <div class="test-result">
+                        <h4>CORE SAMPLE TEST RESULTS - SBCH96+060 TO SBCH96+740</h4>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sample No.</th>
+                                        <th>Chainage</th>
+                                        <th>Location</th>
+                                        <th>Thickness (mm)</th>
+                                        <th>Bulk Density (g/cm³)</th>
+                                        <th>Compaction Degree (%)</th>
+                                        <th>Specification (%)</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SBCH 96+620</td>
+                                        <td>CL (0.5m)</td>
+                                        <td>54.5</td>
+                                        <td>2.662</td>
+                                        <td>94.7</td>
+                                        <td>≥93.0</td>
+                                        <td>Compliant</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>SBCH 96+570</td>
+                                        <td>LHS (3.5m)</td>
+                                        <td>52.2</td>
+                                        <td>2.687</td>
+                                        <td>95.5</td>
+                                        <td>≥93.0</td>
+                                        <td>Compliant</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Average</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>53.4</strong></td>
+                                        <td><strong>2.675</strong></td>
+                                        <td><strong>95.1</strong></td>
+                                        <td><strong>≥93.0</strong></td>
+                                        <td><strong>Compliant</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-serif font-semibold text-dark mb-4 mt-6">4.1 Quality Assessment</h3>
+                    
+                    <div class="card p-6 my-6 border-l-4 border-accent">
+                        <h4 class="font-semibold text-dark mb-2">Quality Assessment Summary:</h4>
+                        <p class="text-gray-700">
+                            <strong>Excellent Performance:</strong> All core samples exceeded the minimum compaction requirement of 93.0%, 
+                            with an average compaction degree of 95.1%. This represents a 2.1% margin above specification, indicating 
+                            exceptional quality control during construction.
+                        </p>
+                        <p class="text-gray-700 mt-2">
+                            <strong>Uniform Compaction:</strong> The consistent compaction values across different locations (94.7% to 95.5%) 
+                            demonstrate uniform compaction throughout the tested section, ensuring consistent pavement performance.
+                        </p>
+                        <p class="text-gray-700 mt-2">
+                            <strong>Structural Integrity:</strong> The achieved compaction levels ensure optimal air void content (approximately 4.9%), 
+                            providing excellent resistance to moisture damage, rutting, and fatigue cracking.
+                        </p>
+                    </div>
+                    
+                    <div class="figure">
+                        <img src="https://placehold.co/800x300?text=Laboratory+Core+Sample+Testing" alt="Laboratory Core Sample Testing">
+                        <p class="figure-caption">Figure 2: Laboratory testing of asphalt core samples using hydrostatic weighing method.</p>
+                    </div>
+                </section>
+                
+                <!-- Engineering Significance -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">5. Engineering Significance of Test Results</h2>
+                    
+                    <p class="mb-4">
+                        The test results have significant implications for pavement performance and structural design:
+                    </p>
+                    
+                    <div class="standard-box">
+                        <h4 class="font-semibold text-dark mb-2">5.1 Pavement Performance Prediction</h4>
+                        <p class="text-gray-700">
+                            The achieved compaction degree of 95.1% corresponds to an air void content of approximately 4.9%, which is within 
+                            the optimal range of 3-5% for surface courses. This ensures excellent resistance to moisture damage, oxidation, 
+                            and thermal cracking while providing adequate skid resistance.
+                        </p>
+                    </div>
+                    
+                    <div class="standard-box">
+                        <h4 class="font-semibold text-dark mb-2">5.2 Structural Capacity Enhancement</h4>
+                        <p class="text-gray-700">
+                            Each 1% increase in compaction above the minimum requirement can increase the structural number (SN) by approximately 
+                            0.05-0.10. The 2.1% margin achieved provides enhanced structural capacity, extending pavement life by an estimated 
+                            15-20% compared to minimum specification compliance.
+                        </p>
+                    </div>
+                    
+                    <div class="standard-box">
+                        <h4 class="font-semibold text-dark mb-2">5.3 Quality Assurance and Risk Mitigation</h4>
+                        <p class="text-gray-700">
+                            The consistent compaction results across multiple locations demonstrate robust quality control procedures and 
+                            skilled construction practices. This reduces the risk of premature pavement distress and minimizes long-term 
+                            maintenance requirements.
+                        </p>
+                    </div>
+                </section>
+                
+                <!-- Quality Control Recommendations -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">6. Quality Control Recommendations</h2>
+                    
+                    <p class="mb-4">
+                        Based on the excellent test results, the following recommendations are provided:
+                    </p>
+                    
+                    <div class="test-procedure">
+                        <h4 class="font-semibold text-dark mb-3">Quality Control Protocol:</h4>
+                        <ol class="list-decimal pl-6 space-y-2 text-gray-700">
+                            <li><strong>Maintain Current Practices:</strong> Continue with the existing compaction procedures and quality control measures.</li>
+                            <li><strong>Regular Monitoring:</strong> Conduct core sampling at minimum 1 test per 1000m² of laid surface course.</li>
+                            <li><strong>Temperature Control:</strong> Ensure asphalt placement temperature remains within specified range (150-165°C for modified asphalt).</li>
+                            <li><strong>Rolling Pattern:</strong> Maintain the current rolling pattern with appropriate roller types and passes.</li>
+                            <li><strong>Documentation:</strong> Continue detailed record-keeping of all test results for quality assurance and payment verification.</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="card p-6 my-6 border-l-4 border-accent">
+                        <h4 class="font-semibold text-dark mb-2">Project Recommendation:</h4>
+                        <p class="text-gray-700">
+                            The AC-16C modified asphalt surface course at SBCH96+060 to SBCH96+740 demonstrates exceptional quality with 
+                            an average compaction degree of 95.1%, exceeding the specified requirement of 93.0%. The construction team should 
+                            be commended for their excellent workmanship and quality control practices. Continue with the current construction 
+                            methodology for subsequent sections.
+                        </p>
+                    </div>
+                </section>
+                
+                <!-- Conclusion -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">7. Conclusion</h2>
+                    
+                    <p class="mb-4">
+                        The field density verification testing of AC-16C modified asphalt surface course at SBCH96+060 to SBCH96+740 
+                        demonstrates exceptional construction quality with an average compaction degree of 95.1%, exceeding the specified 
+                        minimum requirement of 93.0% by a significant margin.
+                    </p>
+                    
+                    <p class="mb-4">
+                        The consistent compaction results across multiple locations indicate uniform quality throughout the tested section, 
+                        ensuring optimal pavement performance, durability, and structural integrity. The achieved compaction levels provide 
+                        excellent resistance to traffic loading, environmental exposure, and moisture damage.
+                    </p>
+                    
+                    <p>
+                        These results reflect the high standards of quality control and construction practices employed on the Lusaka to 
+                        Ndola Road Project, positioning it as a benchmark for infrastructure development in the region. The demonstrated 
+                        commitment to quality assurance ensures long-term pavement performance and minimizes lifecycle maintenance costs.
+                    </p>
+                </section>
+                
+                <!-- Download Section -->
+                <section class="mb-12">
+                    <div class="card p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-accent">
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="mb-4 md:mb-0 text-center md:text-left">
+                                <h3 class="text-xl font-bold text-dark mb-2">Download Full Test Report</h3>
+                                <p class="text-gray-700">Access the complete laboratory test report for AC-16C modified asphalt surface course 
+                                core sample testing at SBCH96+060-SBCH96+740.</p>
+                            </div>
+                            <a href="#" class="bg-primary hover:bg-accent text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl flex items-center">
+                                <i class="fas fa-file-pdf mr-2"></i>Download PDF Report
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- References -->
+                <section>
+                    <h2 class="text-2xl font-serif font-bold text-dark mb-6 border-b border-gray-200 pb-2">References</h2>
+                    
+                    <div class="space-y-4 text-gray-700">
+                        <p class="reference-item">
+                            Ministry of Transport of the People's Republic of China. (2011). <em>JTG E20-2011: Standard Test Methods of Bitumen and Bituminous Mixtures for Highway Engineering.</em> China Communications Press.
+                        </p>
+                        
+                        <p class="reference-item">
+                            Road Development Agency, Zambia. (2023). <em>Technical Specifications for the Lusaka to Ndola Road Project.</em>
+                        </p>
+                        
+                        <p class="reference-item">
+                            American Association of State Highway and Transportation Officials (AASHTO). (2020). <em>AASHTO M 323: Superpave Volumetric Mix Design.</em>
+                        </p>
+                        
+                        <p class="reference-item">
+                            AVIC International Project Engineering Company. (2025). <em>Laboratory Test Report: LC2-B-KYSD-2025101401.</em>
+                        </p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Article Actions -->
+            <div class="mt-12 pt-8 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center">
+                <div class="mb-4 sm:mb-0">
+                    <a href="#" class="text-accent hover:text-primary font-medium flex items-center group">
+                        <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
+                        Back to Articles
+                    </a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-500 hover:text-accent transition-colors">
+                        <i class="far fa-file-pdf text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent transition-colors">
+                        <i class="fas fa-quote-right text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-accent transition-colors">
+                        <i class="fas fa-share-alt text-xl"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
+    <footer class="py-12 bg-dark text-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Brand -->
                 <div class="md:col-span-1">
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-lg"></i>
+                        <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+                            <i class="fas fa-flask text-white text-lg"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-light">Robert Sichomba</h3>
-                            <p class="text-gray-400 text-sm">PhD Portfolio</p>
+                            <h3 class="text-lg font-bold">Materials Engineering</h3>
+                            <p class="text-gray-400 text-sm">Technical Resources</p>
                         </div>
                     </div>
                     <p class="text-gray-400 text-sm">
-                        Data Scientist • Geophysicist • Materials Engineer<br>
-                        Bridging disciplines through innovation.
+                        Professional articles on construction materials, testing methods, and engineering standards.
                     </p>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Portfolio</h4>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html" class="hover:text-accent transition-colors">Home</a></li>
-                        <li><a href="../index.html#about" class="hover:text-accent transition-colors">About</a></li>
-                        <li><a href="../articles/index.html" class="hover:text-accent transition-colors">Articles</a></li>
-                        <li><a href="index.html" class="hover:text-accent transition-colors">Services</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Articles</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Standards</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Calculators</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">References</a></li>
                     </ul>
                 </div>
 
-                <!-- Resources -->
+                <!-- Topics -->
                 <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Topics</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html#cv" class="hover:text-accent transition-colors">Download CV</a></li>
-                        <li><a href="https://github.com/RobertSichombaBob" class="hover:text-accent transition-colors">GitHub</a></li>
-                        <li><a href="../articles/index.html" class="hover:text-accent transition-colors">Technical Articles</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Asphalt & Bitumen</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pavement Design</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Quality Control</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Material Standards</a></li>
                     </ul>
                 </div>
 
@@ -643,21 +681,21 @@
                 <div>
                     <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Connect</h4>
                     <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/robert-sichomba" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-linkedin-in text-light"></i>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://github.com/RobertSichombaBob" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-github text-light"></i>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="mailto:robert.sichomba@email.com" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fas fa-envelope text-light"></i>
+                        <a href="mailto:contact@example.com" class="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-green-600 transition-colors">
+                            <i class="fas fa-envelope"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-                <p>© 2024 Robert Sichomba. All rights reserved. | Designed with precision for the academic community</p>
+                <p>© 2025 Materials Engineering Resources. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -677,6 +715,17 @@
                 menu.classList.add('hidden');
             }
         });
+
+        // Configure MathJax
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
     </script>
 </body>
 </html>
