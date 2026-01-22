@@ -3,730 +3,1076 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robert Sichomba | Physicist | Data Scientist & AI Developer | </title>
+    <title>Robert Sichomba | Physicist | Data Scientist & AI Developer</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#059669">
+    <meta name="description" content="Cross-disciplinary professional with BSc in Physics, specializing in AI and Machine Learning applications in software development, exploration geology, and materials characterization.">
     
-    <!-- Font Awesome -->
+    <!-- Styles & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        light: '#ffffff',
-                        accent: '#4ade80',
-                        'dark-button': '#1a1a1a',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'serif': ['Source Serif Pro', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* Modern Design System */
+        :root {
+            --primary: #3b82f6;
+            --secondary: #10b981;
+            --accent: #8b5cf6;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --card-bg: rgba(30, 41, 59, 0.8);
+            --border: rgba(255, 255, 255, 0.1);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
-        
-        .card {
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-            border: 1px solid #2a2a2a;
+
+        /* Navigation - Modern Dark */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #4ade80;
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
         .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             position: relative;
         }
-        
-        .nav-link::after {
+
+        .nav-link:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #4ade80;
-            transition: width 0.3s ease;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
         }
-        
-        .nav-link:hover::after {
-            width: 100%;
+
+        .contact-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
-        
-        .accent-border {
-            border-left: 4px solid #4ade80;
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
-        
-        .btn-primary {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border: 1px solid #2a2a2a;
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section - Enhanced */
+        .hero {
+            padding: 10rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--light);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
-        
+
+        .stat:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+        }
+
         .btn-primary:hover {
-            background-color: #4ade80;
-            color: #0a0a0a;
-            border-color: #4ade80;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
-        
-        .section-divider {
-            border-top: 1px solid #2a2a2a;
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid var(--border);
         }
-        
-        .badge {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 500;
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-lg {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            text-align: center;
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .project-card {
+            overflow: hidden;
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--primary);
             padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
+                padding: 1rem;
+                flex-direction: column;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease forwards;
         }
     </style>
 </head>
-
-<body class="font-sans antialiased">
+<body>
     <!-- Navigation -->
-    <nav class="bg-dark sticky top-0 z-50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="#home" class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-xl"></i>
-                        </div>
-                        <div class="hidden sm:block">
-                            <h1 class="text-xl font-bold text-light">Hi, Am Robert Sichomba</h1>
-                            <p class="text-xs text-gray-400 -mt-1">Welcome To My Portfolio Website</p>
-                        </div>
-                    </a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-atom"></i>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Home</a>
-                    <a href="#about" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">About</a>
-                    <a href="articles/" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">My Write Up</a>
-                    <a href="#expertise" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">My Experience</a>
-                    <a href="#projects" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">My Projects</a>
-                    <a href="#cv" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">View My CV</a>
-                    <a href="https://github.com/RobertSichombaBob" class="btn-primary px-6 py-3 rounded-xl font-semibold transition-all duration-200">
-                        <i class="fab fa-github mr-2"></i>GitHub
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button type="button" class="text-light hover:text-accent transition-colors" id="mobile-menu-button">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <div class="md:hidden hidden bg-dark border-t border-gray-800 py-6" id="mobile-menu">
-            <div class="max-w-7xl mx-auto px-4 space-y-4">
-                <a href="#home" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-home mr-4 w-6"></i>Home
-                </a>
-                <a href="#about" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-user mr-4 w-6"></i>About
-                </a>
-                <a href="articles/" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-newspaper mr-4 w-6"></i>My Write Up
-                </a>
-                <a href="#expertise" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-star mr-4 w-6"></i>My Expertise
-                </a>
-                <a href="#projects" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-project-diagram mr-4 w-6"></i>My Projects
-                </a>
-                <a href="#cv" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-file-pdf mr-4 w-6"></i>View CV
-                </a>
-                <a href="https://github.com/RobertSichombaBob" class="block btn-primary px-6 py-4 rounded-xl font-semibold text-center mt-4">
-                    <i class="fab fa-github mr-2"></i>View GitHub
+                <span class="brand-text">ROBERT SICHOMBA</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active"><i class="fas fa-home"></i> HOME</a>
+                <a href="#about" class="nav-link"><i class="fas fa-user"></i> ABOUT</a>
+                <a href="#expertise" class="nav-link"><i class="fas fa-star"></i> EXPERTISE</a>
+                <a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+                <a href="#cv" class="nav-link"><i class="fas fa-file-pdf"></i> CV</a>
+                <a href="mailto:sichombarobertbob@email.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    CONTACT
                 </a>
             </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <div class="inline-flex items-center bg-dark-button backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-gray-800">
-                        <div class="w-3 h-3 bg-accent rounded-full mr-3 animate-pulse"></div>
-                        <span class="text-sm font-medium text-light">Available for Services</span>
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge">PHYSICIST & DATA SCIENTIST</span>
+                    <span class="badge badge-primary"><i class="fas fa-bolt"></i> AVAILABLE FOR SERVICES</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Robert Sichomba</span>
+                    <span class="hero-subtitle">AI & Data Science Developer</span>
+                </h1>
+                <p class="hero-description">
+                    Cross-disciplinary professional with a BSc in Physics, specializing in AI and 
+                    Machine Learning applications in software development, exploration geology, 
+                    and materials characterization.
+                </p>
+                
+                <!-- Quick Stats -->
+                <div class="hero-stats animate-in">
+                    <div class="stat">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                    
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                        Robert<br>Sichomba, <span class="text-accent">Developer</span>
-                    </h1>
-                    
-                    <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-                         • AI and Data Science Developer •<br>
-                        <span class="text-light font-semibold">Turning complex challenges into insights through data.</span>
-                    </p>
-
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                        <a href="#MR_ROBERT_SICHOMBA_S_CV" class="btn-primary px-8 py-4 rounded-xl font-bold transition-all duration-200 text-center text-lg group">
-                            <i class="fas fa-download mr-3 group-hover:animate-bounce"></i>
-                            Download CV
-                        </a>
-                        <a href="#projects" class="border-2 border-light text-light px-8 py-4 rounded-xl font-bold hover:bg-light hover:text-dark transition-all duration-200 text-center text-lg">
-                            <i class="fas fa-rocket mr-3"></i>
-                            View Projects
-                        </a>
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Projects</div>
                     </div>
-
-                    <!-- Social Links -->
-                    <div class="flex space-x-6 mt-12">
-                        <a href="https://linkedin.com/in/robert-sichomba" class="w-12 h-12 bg-dark-button backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-accent transition-all duration-200 border border-gray-800 hover:scale-110">
-                            <i class="fab fa-linkedin-in text-xl text-light"></i>
-                        </a>
-                        <a href="https://github.com/RobertSichombaBob" class="w-12 h-12 bg-dark-button backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-accent transition-all duration-200 border border-gray-800 hover:scale-110">
-                            <i class="fab fa-github text-xl text-light"></i>
-                        </a>
-                        <a href="mailto:sichombarobertbob@email.com" class="w-12 h-12 bg-dark-button backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-accent transition-all duration-200 border border-gray-800 hover:scale-110">
-                            <i class="fas fa-envelope text-xl text-light"></i>
-                        </a>
+                    <div class="stat">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">ML Accuracy</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">BSc</div>
+                        <div class="stat-label">Physics Degree</div>
                     </div>
                 </div>
                 
-                <div>
-                    <div class="card rounded-3xl p-8">
-                        <div class="grid grid-cols-2 gap-6 text-center">
-                            <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-accent transition-all duration-200">
-                                <div class="text-3xl font-bold mb-2 text-light">3+</div>
-                                <div class="text-gray-300 font-medium">Years Experience</div>
-                            </div>
-                            <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-accent transition-all duration-200">
-                                <div class="text-3xl font-bold mb-2 text-light">5+</div>
-                                <div class="text-gray-300 font-medium">Projects</div>
-                            </div>
-                            <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-accent transition-all duration-200">
-                                <div class="text-3xl font-bold mb-2 text-light">90%</div>
-                                <div class="text-gray-300 font-medium">Data Science & ML Accuracy</div>
-                            </div>
-                            <div class="bg-dark rounded-2xl p-6 border border-gray-800 hover:border-accent transition-all duration-200">
-                                <div class="text-3xl font-bold mb-2 text-light">BSc</div>
-                                <div class="text-gray-300 font-medium">Physics</div>
-                            </div>
+                <div class="hero-buttons">
+                    <a href="#cv" class="btn btn-primary btn-lg">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    <a href="#projects" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-rocket"></i> View Projects
+                    </a>
+                    <a href="https://github.com/RobertSichombaBob" target="_blank" class="btn btn-secondary btn-lg">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="card animate-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Core Expertise</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4>Data Science & ML</h4>
+                            <p>Python, TensorFlow, Scikit-learn, Django</p>
                         </div>
-                        
-                        <!-- Quick Stats -->
-                        <div class="mt-8 pt-8 border-t border-gray-800">
-                            <div class="space-y-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-300">Data Science & ML</span>
-                                    <span class="text-light font-semibold">Expert</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-300">Physics Laboratory/Tutoring</span>
-                                    <span class="text-light font-semibold">Expert</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-gray-300">Construction Materials Testing</span>
-                                    <span class="text-light font-semibold">Advanced</span>
-                                </div>
-                            </div>
+                        <div class="timeline-item">
+                            <h4>Physics & Materials</h4>
+                            <p>Laboratory Management, Materials Testing</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>Project Leadership</h4>
+                            <p>Team Leadership, Technical Direction</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-light hover:text-accent transition-colors">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-light mb-4">My Profile</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                   Am a Cross-disciplinary professional with a BSc in Physics, specializing in AI and 
-                   Machine Learning applications in software development, exploration geology, and 
-                   materials characterization. Proven experience in leading data-driven and technical projects, 
-                   integrating scientific and computational approaches to solve complex engineering challenges. 
-                   Currently serving as Assistant Laboratory and Materials Project Manager on the 327 km Lusaka-Ndola Dual Carriageway upgrade, 
-                   including the rehabilitation of 45 km of the Luanshya-Fisenge-Masangano Road across Lusaka, Central, and Copperbelt Provinces, Zambia.
-                </p>
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Cross-disciplinary professional integrating scientific and computational approaches to solve complex challenges</p>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h3 class="text-2xl font-bold text-light mb-6">My Journey</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        With over 3 years of experience spanning data analysis, academia (Assistant lecturer), and materials engineering, 
-                        I've developed a unique ability to bridge technical domains and deliver innovative solutions 
-                        to complex challenges.
-                    </p>
-                    <p class="text-gray-300 mb-8 leading-relaxed">
-                        My BSc research focused on machine learning applications in mineral exploration, and I've 
-                        since applied these techniques to real-world problems in both exploration and materials science.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center mr-4 border border-gray-800">
-                                <i class="fas fa-graduation-cap text-accent text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-light">BSc Physics</div>
-                                <div class="text-gray-300">The Copperbelt University</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center mr-4 border border-gray-800">
-                                <i class="fas fa-briefcase text-accent text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-light">Laboratory Assistant Manager</div>
-                                <div class="text-gray-300">MOIC</div>
-                            </div>
-                        </div>
+            <div class="card-grid animate-in">
+                <div class="card">
+                    <div class="skill-icon">
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
+                    <h3>Education</h3>
+                    <p><strong>BSc Physics</strong><br>
+                    The Copperbelt University<br>
+                    Specialized in AI and ML applications in exploration geology</p>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="card rounded-2xl p-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mb-4 border border-gray-800">
-                            <i class="fas fa-chart-line text-accent text-2xl"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-light mb-2">Data Science</h4>
-                        <p class="text-gray-300 text-sm">Automaton, Machine learning, statistical analysis, and predictive modeling</p>
+
+                <div class="card">
+                    <div class="skill-icon">
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <div class="card rounded-2xl p-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mb-4 border border-gray-800">
-                            <i class="fas fa-mountain text-accent text-2xl"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-light mb-2">Exploration Geology</h4>
-                        <p class="text-gray-300 text-sm">Geochemical, Spatial, Hydrogeology, Seismic, Remote Sensing Data Analysis and interpretation, potential fields, mineral exploration</p>
+                    <h3>Current Role</h3>
+                    <p><strong>Assistant Laboratory & Materials Project Manager</strong><br>
+                    327 km Lusaka-Ndola Dual Carriageway upgrade project<br>
+                    Including 45 km Luanshya-Fisenge-Masangano Road rehabilitation</p>
+                </div>
+
+                <div class="card">
+                    <div class="skill-icon">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <div class="card rounded-2xl p-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mb-4 border border-gray-800">
-                            <i class="fas fa-flask text-accent text-2xl"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-light mb-2">Materials Engineering</h4>
-                        <p class="text-gray-300 text-sm">Soils, Crushed Stones, Cement, Asphalt, Bitumen, Materials characterization, quality control, testing</p>
-                    </div>
-                    <div class="card rounded-2xl p-6">
-                        <div class="w-14 h-14 bg-dark-button rounded-2xl flex items-center justify-center mb-4 border border-gray-800">
-                            <i class="fas fa-project-diagram text-accent text-2xl"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-light mb-2">Project Leadership</h4>
-                        <p class="text-gray-300 text-sm">Team leadership, project management, technical direction</p>
-                    </div>
+                    <h3>Mission</h3>
+                    <p>Bridge technical domains to deliver innovative solutions<br>
+                    Apply ML techniques to real-world exploration and materials science problems<br>
+                    Transform complex challenges into actionable insights through data</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Expertise Section -->
-    <section id="expertise" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-light mb-4">Technical Expertise</h2>
-                <p class="text-xl text-gray-300">Technical Leadership, Data-Driven Decision Making, Cross-Functional Collaboration, Reporting & Documentation</p>
+    <section id="expertise" class="section" style="background: rgba(15, 23, 42, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Expertise</h2>
+                <p>Technical Leadership, Data-Driven Decision Making, Cross-Functional Collaboration</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Data Science -->
-                <div class="card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-dark-button rounded-2xl flex items-center justify-center mb-6 border border-gray-800">
-                        <i class="fas fa-brain text-accent text-2xl"></i>
+            <div class="card-grid animate-in">
+                <div class="card skill-card">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--secondary), var(--success));">
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-light mb-4">Data Science & ML</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Python, TensorFlow, Scikit-learn, Django
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Statistical Analysis & Modeling
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Data Visualization
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Deep Learning and AI research
-                        </li>
-                    </ul>
+                    <h3>Data Science & ML</h3>
+                    <p>Python, TensorFlow, Scikit-learn<br>
+                    Statistical Analysis & Modeling<br>
+                    Data Visualization<br>
+                    Deep Learning & AI Research</p>
                 </div>
 
-                <!-- Geophysics -->
-                <div class="card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-dark-button rounded-2xl flex items-center justify-center mb-6 border border-gray-800">
-                        <i class="fas fa-satellite text-accent text-2xl"></i>
+                <div class="card skill-card">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--primary), #3b82f6);">
+                        <i class="fas fa-mountain"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-light mb-4">Geology</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Seismic Interpretation
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Potential Fields Analysis
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            EM Methods & Well Logs
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Mineral Exploration
-                        </li>
-                    </ul>
+                    <h3>Exploration Geology</h3>
+                    <p>Geochemical Data Analysis<br>
+                    Seismic Interpretation<br>
+                    Mineral Exploration<br>
+                    Remote Sensing</p>
                 </div>
 
-                <!-- Engineering -->
-                <div class="card rounded-2xl p-8">
-                    <div class="w-16 h-16 bg-dark-button rounded-2xl flex items-center justify-center mb-6 border border-gray-800">
-                        <i class="fas fa-cogs text-accent text-2xl"></i>
+                <div class="card skill-card">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--accent), #8b5cf6);">
+                        <i class="fas fa-flask"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-light mb-4">Engineering</h3>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Site investigations
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Quality Control Systems
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            Construction Laboratory Management
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-accent mr-3"></i>
-                            SANS, JTJ, JTG, ASTM Standards
-                        </li>
-                    </ul>
+                    <h3>Materials Engineering</h3>
+                    <p>Construction Materials Testing<br>
+                    Quality Control Systems<br>
+                    Laboratory Management<br>
+                    ASTM & SANS Standards</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-light mb-4">My Projects</h2>
-                <p class="text-xl text-gray-300">Check out my real-world applications of my technical expertise</p>
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <p>Real-world applications of technical expertise and innovative problem-solving</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Seismic ML -->
-                <div class="card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-gray-900 to-dark relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-wave-square text-gray-700 text-8xl opacity-20 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">Active</span>
-                        </div>
+            <div class="card-grid animate-in">
+                <div class="card project-card">
+                    <div class="project-image">
+                        <i class="fas fa-wave-square"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-light mb-3">Geochemical ML</h3>
-                        <p class="text-gray-300 mb-4">
-                            CODA.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="badge">Python</span>
-                            <span class="badge">TensorFlow</span>
-                            <span class="badge">Scikit-learn</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <a href="https://github.com/RobertSichombaBob/seismic-ml" class="text-accent hover:text-light font-semibold flex items-center group">
-                                View Project <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            <a href="https://github.com/RobertSichombaBob/seismic-ml" class="text-gray-400 hover:text-light transition-colors">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
+                    <h3>Geochemical ML</h3>
+                    <p>CODA - Compositional Data Analysis for exploration geology using machine learning techniques</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Scikit-learn</span>
+                    </div>
+                    <div class="hero-buttons" style="margin-top: 1.5rem;">
+                        <a href="https://github.com/RobertSichombaBob/seismic-ml" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
                     </div>
                 </div>
 
-                <!-- Materials AI -->
-                <div class="card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-gray-900 to-dark relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-flask text-gray-700 text-8xl opacity-20 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">Active</span>
-                        </div>
+                <div class="card project-card">
+                    <div class="project-image">
+                        <i class="fas fa-flask"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-light mb-3">Materials AI</h3>
-                        <p class="text-gray-300 mb-4">
-                            Predictive modeling for material properties and failure analysis using ensemble methods.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="badge">Python</span>
-                            <span class="badge">Scikit-learn</span>
-                            <span class="badge">Streamlit</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <a href="https://github.com/RobertSichombaBob/materials-ai" class="text-accent hover:text-light font-semibold flex items-center group">
-                                View Project <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            <a href="https://github.com/RobertSichombaBob/materials-ai" class="text-gray-400 hover:text-light transition-colors">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
+                    <h3>Materials AI</h3>
+                    <p>Predictive modeling for material properties and failure analysis using ensemble methods</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                    <div class="hero-buttons" style="margin-top: 1.5rem;">
+                        <a href="https://github.com/RobertSichombaBob/materials-ai" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
                     </div>
                 </div>
 
-                <!-- Geo Integration -->
-                <div class="card rounded-2xl overflow-hidden group">
-                    <div class="h-48 bg-gradient-to-br from-gray-900 to-dark relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-satellite text-gray-700 text-8xl opacity-20 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="badge">Development</span>
-                        </div>
+                <div class="card project-card">
+                    <div class="project-image">
+                        <i class="fas fa-satellite"></i>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-light mb-3">Geo Data Integration</h3>
-                        <p class="text-gray-300 mb-4">
-                            Unified pipeline for multi-source geophysical data processing and automated quality control.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="badge">Python</span>
-                            <span class="badge">Django</span>
-                            <span class="badge">PostgreSQL</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <a href="https://github.com/RobertSichombaBob/geo-integration" class="text-accent hover:text-light font-semibold flex items-center group">
-                                View Project <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </a>
-                            <a href="https://github.com/RobertSichombaBob/geo-integration" class="text-gray-400 hover:text-light transition-colors">
-                                <i class="fab fa-github text-xl"></i>
-                            </a>
-                        </div>
+                    <h3>Geo Data Integration</h3>
+                    <p>Unified pipeline for multi-source geophysical data processing and automated quality control</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    <div class="hero-buttons" style="margin-top: 1.5rem;">
+                        <a href="https://github.com/RobertSichombaBob/geo-integration" target="_blank" class="btn btn-primary">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="https://github.com/RobertSichombaBob" class="btn-primary px-8 py-4 rounded-xl font-bold transition-all duration-200 group">
-                    <i class="fab fa-github mr-3 text-xl group-hover:scale-110 transition-transform"></i>
-                    Explore All Projects on GitHub
+            <div class="text-center mt-6 animate-in">
+                <a href="https://github.com/RobertSichombaBob" target="_blank" class="btn btn-primary btn-lg">
+                    <i class="fab fa-github"></i> Explore All Projects on GitHub
                 </a>
             </div>
         </div>
     </section>
 
     <!-- CV Section -->
-    <section id="cv" class="py-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold text-light mb-6">Download My CV</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Get the complete overview of my experience, education, and technical skills. 
-                Perfect for recruiters and potential collaborators.
-            </p>
-            
-            <div class="card rounded-2xl p-8 max-w-md mx-auto">
-                <div class="w-20 h-20 bg-dark-button rounded-2xl flex items-center justify-center mx-auto mb-6 border border-gray-800">
-                    <i class="fas fa-file-pdf text-accent text-3xl"></i>
+    <section id="cv" class="section" style="background: rgba(15, 23, 42, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Download My CV</h2>
+                <p>Complete overview of experience, education, and technical skills</p>
+            </div>
+
+            <div class="card" style="max-width: 500px; margin: 0 auto;">
+                <div class="skill-icon" style="margin: 0 auto 2rem;">
+                    <i class="fas fa-file-pdf"></i>
                 </div>
-                <h3 class="text-2xl font-bold text-light mb-4">Check Out My CV</h3>
-                <p class="text-gray-300 mb-6">
+                <h3 style="text-align: center; margin-bottom: 1rem;">Professional CV</h3>
+                <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem;">
                     Updated: December 2024<br>
                     Format: PDF (2 pages)
                 </p>
-                <a href="cv/MR_ROBERT_SICHOMBA_S_CV.pdf" download class="btn-primary px-8 py-4 rounded-xl font-bold transition-all duration-200 w-full justify-center group">
-                    <i class="fas fa-download mr-3 group-hover:animate-bounce"></i>
-                    Download CV (PDF)
+                <a href="cv/MR_ROBERT_SICHOMBA_S_CV.pdf" download class="btn btn-primary btn-block btn-lg">
+                    <i class="fas fa-download"></i> Download CV (PDF)
                 </a>
             </div>
-            
-            <!-- Additional Links -->
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-                <a href="https://linkedin.com/in/robert-sichomba" class="card rounded-xl p-6 group">
-                    <i class="fab fa-linkedin text-accent text-2xl mb-3"></i>
-                    <div class="font-semibold text-light">LinkedIn</div>
-                    <div class="text-gray-300 text-sm">Professional Profile</div>
+
+            <!-- Contact Cards -->
+            <div class="card-grid mt-6" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="card skill-card" style="text-decoration: none; text-align: center;">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #0077b5, #0077b5);">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional Profile</p>
                 </a>
-                <a href="https://github.com/RobertSichombaBob" class="card rounded-xl p-6 group">
-                    <i class="fab fa-github text-accent text-2xl mb-3"></i>
-                    <div class="font-semibold text-light">GitHub</div>
-                    <div class="text-gray-300 text-sm">Code & Projects</div>
+
+                <a href="https://github.com/RobertSichombaBob" target="_blank" class="card skill-card" style="text-decoration: none; text-align: center;">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #333, #333);">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Code & Projects</p>
                 </a>
-                <a href="mailto:sichombarobertbob@email.com" class="card rounded-xl p-6 group">
-                    <i class="fas fa-envelope text-accent text-2xl mb-3"></i>
-                    <div class="font-semibold text-light">Email</div>
-                    <div class="text-gray-300 text-sm">Contact Directly</div>
+
+                <a href="mailto:sichombarobertbob@email.com" class="card skill-card" style="text-decoration: none; text-align: center;">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #ea4335, #ea4335);">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Contact Directly</p>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Brand -->
-                <div class="md:col-span-1">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-light">Robert Sichomba</h3>
-                            <p class="text-gray-400 text-sm">My Portfolio</p>
-                        </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Robert Sichomba</h3>
+                    <p>Physicist • Data Scientist • AI Developer</p>
+                    <p>Turning complex challenges into insights through data.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/RobertSichombaBob" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:sichombarobertbob@email.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        • Physicist• Data Scientist • Materials Engineer<br>
-                       Innovation.
-                    </p>
                 </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Portfolio</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#home" class="hover:text-accent transition-colors">Home</a></li>
-                        <li><a href="#about" class="hover:text-accent transition-colors">About</a></li>
-                        <li><a href="articles/" class="hover:text-accent transition-colors">Articles</a></li>
-                        <li><a href="#projects" class="hover:text-accent transition-colors">Projects</a></li>
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="articles/">Articles</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#cv">Download CV</a></li>
                     </ul>
                 </div>
 
-                <!-- Resources -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#cv" class="hover:text-accent transition-colors">Download CV</a></li>
-                        <li><a href="https://github.com/RobertSichombaBob" class="hover:text-accent transition-colors">GitHub</a></li>
-                        <li><a href="articles/" class="hover:text-accent transition-colors">Technical Articles</a></li>
-                        <li><a href="#projects" class="hover:text-accent transition-colors">All Projects</a></li>
+                <div class="footer-section">
+                    <h3>Expertise</h3>
+                    <ul>
+                        <li><a href="#expertise">Data Science & ML</a></li>
+                        <li><a href="#expertise">Exploration Geology</a></li>
+                        <li><a href="#expertise">Materials Engineering</a></li>
+                        <li><a href="#expertise">Project Leadership</a></li>
                     </ul>
                 </div>
 
-                <!-- Connect -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/robert-sichomba" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-linkedin-in text-light"></i>
-                        </a>
-                        <a href="https://github.com/RobertSichombaBob" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-github text-light"></i>
-                        </a>
-                        <a href="mailto:sichombarobertbob@email.com" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fas fa-envelope text-light"></i>
-                        </a>
-                    </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> sichombarobertbob@email.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</p>
+                    <p><i class="fas fa-briefcase"></i> Available for Services</p>
                 </div>
             </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-                <p>© 2024 Robert Sichomba. All rights reserved. | Innovate, it's free!</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Robert Sichomba. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Innovate, it's free!
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Back to Top Button -->
+    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <script>
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobile-menu');
-            const button = document.getElementById('mobile-menu-button');
-            if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
-                menu.classList.add('hidden');
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
             }
         });
-
-        // Smooth scrolling for anchor links
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+                backToTop.style.alignItems = 'center';
+                backToTop.style.justifyContent = 'center';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
+                if (this.getAttribute('href') === '#') return;
+                
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                        }
+                        
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
-                    
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
                 }
             });
         });
-
-        // Add animation on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.card');
-            elements.forEach(element => {
-                const rect = element.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+        
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
                 }
             });
-        }
-
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        document.querySelectorAll('.animate-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
         // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial state for animated elements
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'all 0.6s ease-out';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add animation delay to cards
+            document.querySelectorAll('.card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
             });
-
-            // Trigger initial animation
-            setTimeout(animateOnScroll, 100);
         });
-
-        // Animate on scroll
-        window.addEventListener('scroll', animateOnScroll);
     </script>
 </body>
 </html>
