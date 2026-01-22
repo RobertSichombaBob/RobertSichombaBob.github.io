@@ -6,27 +6,43 @@
     <title>Robert Sichomba | Physicist | Data Scientist & AI Developer</title>
     
     <!-- PWA Meta -->
-    <meta name="theme-color" content="#059669">
+    <meta name="theme-color" content="#10b981">
     <meta name="description" content="Cross-disciplinary professional with BSc in Physics, specializing in AI and Machine Learning applications in software development, exploration geology, and materials characterization.">
     
     <!-- Styles & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Your CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
     <style>
-        /* Modern Design System */
+        /* Modern Design System - Green Theme */
         :root {
-            --primary: #3b82f6;
-            --secondary: #10b981;
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary: #3b82f6;
             --accent: #8b5cf6;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f8fafc;
-            --card-bg: rgba(30, 41, 59, 0.8);
-            --border: rgba(255, 255, 255, 0.1);
+            --dark: #0a0a0a;
+            --darker: #000000;
+            --light: #ffffff;
+            --card-bg: #1a1a1a;
+            --border: #2a2a2a;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
         }
 
         * {
@@ -37,20 +53,20 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* Navigation - Modern Dark */
+        /* Navigation - Green Theme */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -76,7 +92,7 @@
         .logo {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -88,7 +104,7 @@
         .brand-text {
             font-size: 1.4rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -110,12 +126,12 @@
         }
 
         .nav-link:hover {
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             color: var(--primary);
         }
 
         .nav-link.active {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(16, 185, 129, 0.2);
             color: var(--primary);
         }
 
@@ -132,7 +148,7 @@
         }
 
         .contact-btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
             padding: 0.75rem 1.5rem;
@@ -148,7 +164,7 @@
 
         .contact-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
 
         .menu-toggle {
@@ -160,11 +176,12 @@
             cursor: pointer;
         }
 
-        /* Hero Section - Enhanced */
+        /* Hero Section - Enhanced with Profile Picture */
         .hero {
             padding: 10rem 0 5rem;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
         }
 
         .hero-container {
@@ -199,7 +216,7 @@
         }
 
         .badge-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
         }
 
@@ -211,7 +228,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
@@ -255,7 +272,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
@@ -283,13 +300,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
@@ -306,6 +323,29 @@
         .btn-lg {
             padding: 1.25rem 2.5rem;
             font-size: 1.1rem;
+        }
+
+        /* Profile Picture */
+        .profile-picture {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            overflow: hidden;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-picture:hover img {
+            transform: scale(1.05);
         }
 
         /* Container */
@@ -329,7 +369,7 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -369,7 +409,7 @@
         .skill-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -385,7 +425,7 @@
 
         .project-image {
             height: 200px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));
             border-radius: 15px;
             margin-bottom: 1.5rem;
             display: flex;
@@ -403,7 +443,7 @@
         }
 
         .tag {
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(16, 185, 129, 0.2);
             color: var(--primary);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
@@ -424,7 +464,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
 
         .timeline-item {
@@ -446,7 +486,7 @@
 
         /* Footer */
         .footer {
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             padding: 4rem 0 2rem;
             margin-top: 6rem;
             border-top: 1px solid var(--border);
@@ -504,7 +544,7 @@
         }
 
         .social-link:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             transform: translateY(-3px);
         }
 
@@ -578,20 +618,135 @@
             }
         }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        /* Mobile Navigation */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            padding: 6rem 2rem 2rem;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-mobile.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu a.active {
+            background: rgba(16, 185, 129, 0.3);
+            color: var(--primary);
+        }
+
+        /* Enhanced Animations */
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .animate-pop {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .animate-in {
-            animation: fadeInUp 0.6s ease forwards;
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Skill Bars */
+        .skill-bar-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skill-bar-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
         }
     </style>
 </head>
@@ -608,9 +763,10 @@
             <div class="nav-menu" id="navMenu">
                 <a href="#home" class="nav-link active"><i class="fas fa-home"></i> HOME</a>
                 <a href="#about" class="nav-link"><i class="fas fa-user"></i> ABOUT</a>
-                <a href="#expertise" class="nav-link"><i class="fas fa-star"></i> EXPERTISE</a>
-                <a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> PROJECTS</a>
-                <a href="#cv" class="nav-link"><i class="fas fa-file-pdf"></i> CV</a>
+                <a href="articles/index.html" class="nav-link"><i class="fas fa-newspaper"></i> MY WRITE UP</a>
+                <a href="#expertise" class="nav-link"><i class="fas fa-star"></i> MY EXPERIENCE</a>
+                <a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> MY PROJECTS</a>
+                <a href="#cv" class="nav-link"><i class="fas fa-file-pdf"></i> VIEW MY CV</a>
                 <a href="mailto:sichombarobertbob@email.com" class="contact-btn">
                     <i class="fas fa-envelope"></i>
                     CONTACT
@@ -622,10 +778,24 @@
         </div>
     </nav>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-mobile" id="navMobile">
+        <div class="mobile-menu">
+            <a href="#home" class="active"><i class="fas fa-home"></i> HOME</a>
+            <a href="#about"><i class="fas fa-user"></i> ABOUT</a>
+            <a href="articles/index.html"><i class="fas fa-newspaper"></i> MY WRITE UP</a>
+            <a href="#expertise"><i class="fas fa-star"></i> MY EXPERIENCE</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i> MY PROJECTS</a>
+            <a href="#cv"><i class="fas fa-file-pdf"></i> VIEW MY CV</a>
+            <a href="https://github.com/RobertSichombaBob" target="_blank"><i class="fab fa-github"></i> GITHUB</a>
+            <a href="mailto:sichombarobertbob@email.com"><i class="fas fa-envelope"></i> CONTACT</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <div class="hero-content">
+            <div class="hero-content animate-slide-left">
                 <div class="hero-badge">
                     <span class="badge">PHYSICIST & DATA SCIENTIST</span>
                     <span class="badge badge-primary"><i class="fas fa-bolt"></i> AVAILABLE FOR SERVICES</span>
@@ -641,20 +811,20 @@
                 </p>
                 
                 <!-- Quick Stats -->
-                <div class="hero-stats animate-in">
-                    <div class="stat">
+                <div class="hero-stats">
+                    <div class="stat animate-pop" style="animation-delay: 0.1s">
                         <div class="stat-number">3+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
-                    <div class="stat">
+                    <div class="stat animate-pop" style="animation-delay: 0.2s">
                         <div class="stat-number">5+</div>
                         <div class="stat-label">Projects</div>
                     </div>
-                    <div class="stat">
+                    <div class="stat animate-pop" style="animation-delay: 0.3s">
                         <div class="stat-number">90%</div>
                         <div class="stat-label">ML Accuracy</div>
                     </div>
-                    <div class="stat">
+                    <div class="stat animate-pop" style="animation-delay: 0.4s">
                         <div class="stat-number">BSc</div>
                         <div class="stat-label">Physics Degree</div>
                     </div>
@@ -672,26 +842,16 @@
                     </a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="card animate-in">
-                    <div class="skill-icon">
-                        <i class="fas fa-brain"></i>
+            <div class="hero-visual animate-slide-right">
+                <!-- Profile Picture Container -->
+                <div class="profile-picture">
+                    <!-- Replace with your actual profile picture -->
+                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; color: white;">
+                        <i class="fas fa-user-graduate" style="font-size: 6rem;"></i>
                     </div>
-                    <h3>Core Expertise</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h4>Data Science & ML</h4>
-                            <p>Python, TensorFlow, Scikit-learn, Django</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4>Physics & Materials</h4>
-                            <p>Laboratory Management, Materials Testing</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h4>Project Leadership</h4>
-                            <p>Team Leadership, Technical Direction</p>
-                        </div>
-                    </div>
+                    <!-- Uncomment and replace the div above with your actual image:
+                    <img src="assets/images/profile.jpg" alt="Robert Sichomba">
+                    -->
                 </div>
             </div>
         </div>
@@ -705,8 +865,8 @@
                 <p>Cross-disciplinary professional integrating scientific and computational approaches to solve complex challenges</p>
             </div>
 
-            <div class="card-grid animate-in">
-                <div class="card">
+            <div class="card-grid">
+                <div class="card animate-fade-in" style="animation-delay: 0.1s">
                     <div class="skill-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
@@ -716,7 +876,7 @@
                     Specialized in AI and ML applications in exploration geology</p>
                 </div>
 
-                <div class="card">
+                <div class="card animate-fade-in" style="animation-delay: 0.2s">
                     <div class="skill-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
@@ -726,7 +886,7 @@
                     Including 45 km Luanshya-Fisenge-Masangano Road rehabilitation</p>
                 </div>
 
-                <div class="card">
+                <div class="card animate-fade-in" style="animation-delay: 0.3s">
                     <div class="skill-icon">
                         <i class="fas fa-bullseye"></i>
                     </div>
@@ -740,16 +900,16 @@
     </section>
 
     <!-- Expertise Section -->
-    <section id="expertise" class="section" style="background: rgba(15, 23, 42, 0.5);">
+    <section id="expertise" class="section" style="background: rgba(26, 26, 26, 0.95);">
         <div class="container">
             <div class="section-header">
                 <h2>Technical Expertise</h2>
                 <p>Technical Leadership, Data-Driven Decision Making, Cross-Functional Collaboration</p>
             </div>
 
-            <div class="card-grid animate-in">
-                <div class="card skill-card">
-                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--secondary), var(--success));">
+            <div class="card-grid">
+                <div class="card skill-card animate-slide-left" style="animation-delay: 0.1s">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Data Science & ML</h3>
@@ -759,8 +919,8 @@
                     Deep Learning & AI Research</p>
                 </div>
 
-                <div class="card skill-card">
-                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--primary), #3b82f6);">
+                <div class="card skill-card animate-slide-left" style="animation-delay: 0.2s">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
                         <i class="fas fa-mountain"></i>
                     </div>
                     <h3>Exploration Geology</h3>
@@ -770,8 +930,8 @@
                     Remote Sensing</p>
                 </div>
 
-                <div class="card skill-card">
-                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--accent), #8b5cf6);">
+                <div class="card skill-card animate-slide-left" style="animation-delay: 0.3s">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
                         <i class="fas fa-flask"></i>
                     </div>
                     <h3>Materials Engineering</h3>
@@ -792,8 +952,8 @@
                 <p>Real-world applications of technical expertise and innovative problem-solving</p>
             </div>
 
-            <div class="card-grid animate-in">
-                <div class="card project-card">
+            <div class="card-grid">
+                <div class="card project-card animate-pop" style="animation-delay: 0.1s">
                     <div class="project-image">
                         <i class="fas fa-wave-square"></i>
                     </div>
@@ -811,7 +971,7 @@
                     </div>
                 </div>
 
-                <div class="card project-card">
+                <div class="card project-card animate-pop" style="animation-delay: 0.2s">
                     <div class="project-image">
                         <i class="fas fa-flask"></i>
                     </div>
@@ -829,7 +989,7 @@
                     </div>
                 </div>
 
-                <div class="card project-card">
+                <div class="card project-card animate-pop" style="animation-delay: 0.3s">
                     <div class="project-image">
                         <i class="fas fa-satellite"></i>
                     </div>
@@ -848,7 +1008,7 @@
                 </div>
             </div>
 
-            <div class="text-center mt-6 animate-in">
+            <div class="text-center mt-6 animate-fade-in">
                 <a href="https://github.com/RobertSichombaBob" target="_blank" class="btn btn-primary btn-lg">
                     <i class="fab fa-github"></i> Explore All Projects on GitHub
                 </a>
@@ -857,15 +1017,15 @@
     </section>
 
     <!-- CV Section -->
-    <section id="cv" class="section" style="background: rgba(15, 23, 42, 0.5);">
+    <section id="cv" class="section" style="background: rgba(26, 26, 26, 0.95);">
         <div class="container">
             <div class="section-header">
                 <h2>Download My CV</h2>
                 <p>Complete overview of experience, education, and technical skills</p>
             </div>
 
-            <div class="card" style="max-width: 500px; margin: 0 auto;">
-                <div class="skill-icon" style="margin: 0 auto 2rem;">
+            <div class="card animate-pop" style="max-width: 500px; margin: 0 auto;">
+                <div class="skill-icon" style="margin: 0 auto 2rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
                     <i class="fas fa-file-pdf"></i>
                 </div>
                 <h3 style="text-align: center; margin-bottom: 1rem;">Professional CV</h3>
@@ -880,7 +1040,7 @@
 
             <!-- Contact Cards -->
             <div class="card-grid mt-6" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="card skill-card" style="text-decoration: none; text-align: center;">
+                <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="card skill-card animate-slide-left" style="text-decoration: none; text-align: center;">
                     <div class="skill-icon" style="background: linear-gradient(135deg, #0077b5, #0077b5);">
                         <i class="fab fa-linkedin"></i>
                     </div>
@@ -888,7 +1048,7 @@
                     <p>Professional Profile</p>
                 </a>
 
-                <a href="https://github.com/RobertSichombaBob" target="_blank" class="card skill-card" style="text-decoration: none; text-align: center;">
+                <a href="https://github.com/RobertSichombaBob" target="_blank" class="card skill-card animate-slide-right" style="text-decoration: none; text-align: center;">
                     <div class="skill-icon" style="background: linear-gradient(135deg, #333, #333);">
                         <i class="fab fa-github"></i>
                     </div>
@@ -896,7 +1056,7 @@
                     <p>Code & Projects</p>
                 </a>
 
-                <a href="mailto:sichombarobertbob@email.com" class="card skill-card" style="text-decoration: none; text-align: center;">
+                <a href="mailto:sichombarobertbob@email.com" class="card skill-card animate-slide-left" style="text-decoration: none; text-align: center;">
                     <div class="skill-icon" style="background: linear-gradient(135deg, #ea4335, #ea4335);">
                         <i class="fas fa-envelope"></i>
                     </div>
@@ -933,7 +1093,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
-                        <li><a href="articles/">Articles</a></li>
+                        <li><a href="articles/index.html">My Write Up</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#cv">Download CV</a></li>
                     </ul>
@@ -966,24 +1126,39 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
+    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
         <i class="fas fa-chevron-up"></i>
     </button>
+
+    <!-- Your JavaScript Files -->
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <script>
         // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
+        const navMobile = document.getElementById('navMobile');
         const navMenu = document.getElementById('navMenu');
         
         menuToggle.addEventListener('click', () => {
+            navMobile.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
         
-        // Close menu when clicking outside
+        // Close mobile menu when clicking outside
         document.addEventListener('click', (event) => {
-            if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            if (!navMobile.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMobile.classList.remove('active');
                 navMenu.classList.remove('active');
             }
+        });
+        
+        // Close mobile menu when clicking on a link
+        navMobile.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMobile.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
         });
         
         // Back to top button
@@ -1014,7 +1189,8 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         // Close mobile menu if open
-                        if (navMenu.classList.contains('active')) {
+                        if (navMobile.classList.contains('active')) {
+                            navMobile.classList.remove('active');
                             navMenu.classList.remove('active');
                         }
                         
@@ -1031,7 +1207,7 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
+                    entry.target.classList.add('animate-fade-in');
                 }
             });
         }, {
@@ -1039,13 +1215,14 @@
             rootMargin: '0px 0px -50px 0px'
         });
         
-        document.querySelectorAll('.animate-in').forEach(el => {
+        document.querySelectorAll('.card, .section-header').forEach(el => {
             observer.observe(el);
         });
         
         // Active navigation highlighting
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
+        const mobileLinks = document.querySelectorAll('.mobile-menu a');
         
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1064,6 +1241,13 @@
                     link.classList.add('active');
                 }
             });
+            
+            mobileLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
         
         // Initialize animations
@@ -1072,6 +1256,41 @@
             document.querySelectorAll('.card').forEach((card, index) => {
                 card.style.animationDelay = `${index * 0.1}s`;
             });
+            
+            // Add hover effect to cards
+            document.querySelectorAll('.card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                    card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+            
+            // Initialize skill bars animation
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach((bar, index) => {
+                setTimeout(() => {
+                    const width = bar.getAttribute('data-width') || '90%';
+                    bar.style.width = width;
+                }, index * 200 + 500);
+            });
+        });
+        
+        // Enhanced scroll effects for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.backdropFilter = 'blur(10px)';
+                nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
