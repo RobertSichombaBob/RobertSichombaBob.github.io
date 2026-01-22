@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compositional Data Analysis in Geochemical Applications | Robert Sichomba, PhD</title>
+    <title>Compositional Data Analysis in Geochemical Applications | Robert Sichomba</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#10b981">
+    <meta name="description" content="Practical framework for Compositional Data Analysis in geochemical applications using log-ratio transformations.">
     
-    <!-- Font Awesome -->
+    <!-- Styles & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
@@ -20,400 +19,907 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        light: '#ffffff',
-                        accent: '#4ade80',
-                        'dark-button': '#1a1a1a',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'serif': ['Source Serif Pro', 'Georgia', 'serif'],
-                        'mono': ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Your CSS Files -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
     
     <style>
+        /* Article Design System - Green Theme */
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary: #3b82f6;
+            --accent: #8b5cf6;
+            --dark: #0a0a0a;
+            --darker: #000000;
+            --light: #ffffff;
+            --card-bg: #1a1a1a;
+            --border: #2a2a2a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
             line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
-        
-        .article-container {
-            max-width: 800px;
+
+        /* Navigation - Green Theme */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .card {
-            background-color: #1a1a1a;
-            border: 1px solid #2a2a2a;
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
         }
-        
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
         .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             position: relative;
         }
-        
-        .nav-link::after {
+
+        .nav-link:hover {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #4ade80;
-            transition: width 0.3s ease;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
         }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .btn-primary {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border: 1px solid #2a2a2a;
+
+        .contact-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
-        
-        .btn-primary:hover {
-            background-color: #4ade80;
-            color: #0a0a0a;
-            border-color: #4ade80;
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
-        
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Article Container */
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 8rem 2rem 3rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .article-badges {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
         .badge {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
         }
-        
-        .section-divider {
-            border-top: 1px solid #2a2a2a;
+
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
         }
-        
-        .citation {
+
+        .article-title {
+            font-size: 3.2rem;
             font-family: 'Source Serif Pro', serif;
-            font-style: italic;
-            color: #9ca3af;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            color: var(--gray-400);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Abstract Card */
+        .abstract-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--primary-light);
+        }
+
+        /* Cards for Math Formulas */
+        .formula-card {
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* Equation Styling */
         .equation {
             font-family: 'Source Serif Pro', serif;
             text-align: center;
             margin: 2rem 0;
-            padding: 1rem;
-            background-color: #1a1a1a;
-            border-radius: 0.5rem;
-            border-left: 4px solid #4ade80;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            overflow-x: auto;
         }
-        
-        .figure {
-            margin: 2rem 0;
-            text-align: center;
-        }
-        
-        .figure img {
-            max-width: 100%;
-            border-radius: 0.5rem;
-            border: 1px solid #2a2a2a;
-        }
-        
-        .figure-caption {
+
+        .equation-title {
+            font-size: 0.9rem;
+            color: var(--gray-400);
             margin-top: 0.5rem;
-            font-size: 0.875rem;
-            color: #9ca3af;
             font-style: italic;
         }
-        
+
+        /* Figure Styling */
+        .figure {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .figure img {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .figure-caption {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--gray-400);
+            font-style: italic;
+        }
+
+        /* Table Styling */
         .table-container {
             overflow-x: auto;
             margin: 2rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--border);
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #1a1a1a;
+            background: var(--card-bg);
         }
-        
-        th, td {
-            padding: 0.75rem;
-            text-align: left;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        
+
         th {
-            background-color: #2a2a2a;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
             font-weight: 600;
+            padding: 1rem;
+            text-align: left;
         }
-        
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Code Blocks */
         code {
             font-family: 'JetBrains Mono', monospace;
-            background-color: #1a1a1a;
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-size: 0.875rem;
-            border: 1px solid #2a2a2a;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-light);
+            border: 1px solid rgba(16, 185, 129, 0.2);
         }
-        
+
         .code-block {
-            background-color: #1a1a1a;
-            padding: 1rem;
-            border-radius: 0.5rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
             margin: 1.5rem 0;
-            border-left: 4px solid #4ade80;
+            border-left: 4px solid var(--primary);
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-block pre {
+            margin: 0;
+            padding: 0;
             overflow-x: auto;
         }
-        
-        .reference-item {
+
+        .code-block code {
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .language-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0 10px 0 10px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Lists */
+        .content-list {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .content-list li {
+            position: relative;
+            padding-left: 1.5rem;
             margin-bottom: 0.75rem;
+        }
+
+        .content-list li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Blockquote */
+        .blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--gray-400);
+        }
+
+        /* Citation */
+        .citation {
+            font-family: 'Source Serif Pro', serif;
+            font-style: italic;
+            color: var(--gray-400);
+            margin: 0.5rem 0;
+        }
+
+        /* References */
+        .reference-item {
+            margin-bottom: 1rem;
             padding-left: 1.5rem;
             text-indent: -1.5rem;
+            color: var(--gray-400);
+            font-size: 0.95rem;
+        }
+
+        /* Article Actions */
+        .article-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Navigation */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            padding: 6rem 2rem 2rem;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-mobile.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .mobile-menu a.active {
+            background: rgba(16, 185, 129, 0.3);
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .article-container {
+                padding: 6rem 1rem 2rem;
+            }
+            
+            .article-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .subsection-title {
+                font-size: 1.3rem;
+            }
+            
+            .code-block {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .article-actions {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .navbar, .footer, .article-actions {
+                display: none !important;
+            }
+            
+            .article-container {
+                padding: 2rem 0;
+            }
+            
+            body {
+                color: black;
+                background: white;
+            }
+            
+            .code-block, .figure, table {
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
 
 <body class="font-sans antialiased">
     <!-- Navigation -->
-    <nav class="bg-dark sticky top-0 z-50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-xl"></i>
-                        </div>
-                        <div class="hidden sm:block">
-                            <h1 class="text-xl font-bold text-light">Robert Sichomba</h1>
-                            <p class="text-xs text-gray-400 -mt-1">PhD Portfolio</p>
-                        </div>
-                    </a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Home</a>
-                    <a href="../index.html#about" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">About</a>
-                    <a href="../articles/index.html" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Articles</a>
-                    <a href="../index.html#projects" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Projects</a>
-                    <a href="../index.html#cv" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">CV</a>
-                    <a href="https://github.com/RobertSichombaBob" class="btn-primary px-6 py-3 rounded-xl font-semibold transition-all duration-200">
-                        <i class="fab fa-github mr-2"></i>GitHub
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button type="button" class="text-light hover:text-accent transition-colors" id="mobile-menu-button">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <div class="md:hidden hidden bg-dark border-t border-gray-800 py-6" id="mobile-menu">
-            <div class="max-w-7xl mx-auto px-4 space-y-4">
-                <a href="../index.html" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-home mr-4 w-6"></i>Home
-                </a>
-                <a href="../index.html#about" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-user mr-4 w-6"></i>About
-                </a>
-                <a href="../articles/index.html" class="block text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-newspaper mr-4 w-6"></i>Articles
-                </a>
-                <a href="../index.html#projects" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-project-diagram mr-4 w-6"></i>Projects
-                </a>
-                <a href="../index.html#cv" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-file-pdf mr-4 w-6"></i>CV
-                </a>
-                <a href="https://github.com/RobertSichombaBob" class="block btn-primary px-6 py-4 rounded-xl font-semibold text-center mt-4">
-                    <i class="fab fa-github mr-2"></i>View GitHub
+                <span class="brand-text">ROBERT SICHOMBA</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> HOME</a>
+                <a href="../index.html#about" class="nav-link"><i class="fas fa-user"></i> ABOUT</a>
+                <a href="../articles/index.html" class="nav-link active"><i class="fas fa-newspaper"></i> ARTICLES</a>
+                <a href="../index.html#projects" class="nav-link"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+                <a href="../index.html#cv" class="nav-link"><i class="fas fa-file-pdf"></i> CV</a>
+                <a href="mailto:sichombarobertbob@email.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    CONTACT
                 </a>
             </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-mobile" id="navMobile">
+        <div class="mobile-menu">
+            <a href="../index.html"><i class="fas fa-home"></i> HOME</a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> ABOUT</a>
+            <a href="../articles/index.html" class="active"><i class="fas fa-newspaper"></i> ARTICLES</a>
+            <a href="../index.html#projects"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+            <a href="../index.html#cv"><i class="fas fa-file-pdf"></i> CV</a>
+            <a href="https://github.com/RobertSichombaBob" target="_blank"><i class="fab fa-github"></i> GITHUB</a>
+            <a href="mailto:sichombarobertbob@email.com"><i class="fas fa-envelope"></i> CONTACT</a>
+        </div>
+    </div>
+
     <!-- Article Header -->
-    <section class="py-12">
-        <div class="article-container px-4 sm:px-6">
-            <div class="mb-8">
-                <span class="badge">Statistics</span>
-                <span class="badge">Geochemistry</span>
-                <span class="badge">Data Science</span>
+    <div class="article-container">
+        <header class="article-header animate-fade-in">
+            <div class="article-badges">
+                <span class="badge badge-primary">STATISTICS</span>
+                <span class="badge">GEOCHEMISTRY</span>
+                <span class="badge">DATA SCIENCE</span>
+                <span class="badge">RESEARCH ARTICLE</span>
             </div>
             
-            <h1 class="text-4xl font-serif font-bold text-light mb-6 leading-tight">
+            <h1 class="article-title">
                 Compositional Data Analysis in Geochemical Applications: A Practical Framework
             </h1>
             
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-300 mb-8">
-                <div class="mb-4 sm:mb-0">
-                    <p class="text-lg"><strong>Robert Sichomba, PhD</strong></p>
-                    <p>Data Scientist | Geophysicist | Materials Engineer</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span><strong>Robert Sichomba, PhD</strong></span>
                 </div>
-                <div class="text-sm">
-                    <p><i class="far fa-calendar mr-2"></i>Published: December 15, 2024</p>
-                    <p><i class="far fa-clock mr-2"></i>Reading time: 25 minutes</p>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Published: December 15, 2024</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Reading time: 25 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tags"></i>
+                    <span>CoDA, Log-ratio, Geochemistry</span>
                 </div>
             </div>
+        </header>
+
+        <!-- Abstract -->
+        <div class="abstract-card animate-slide-left">
+            <h2 class="text-xl font-bold text-light mb-4">Abstract</h2>
+            <p class="text-gray-300">
+                Compositional data, characterized by parts of a whole that sum to a constant, 
+                are ubiquitous in geochemical studies. Traditional statistical methods often 
+                fail to account for the inherent constraints of compositional data, leading to 
+                spurious correlations and incorrect interpretations. This paper presents a 
+                comprehensive framework for compositional data analysis (CoDA) in geochemical 
+                applications, focusing on the log-ratio approach. We demonstrate the application 
+                of isometric log-ratio (ilr) transformations, principal component analysis on 
+                compositions, and appropriate distance measures. Case studies from mineral 
+                exploration and environmental geochemistry illustrate the practical implementation 
+                of CoDA methods and their advantages over conventional approaches.
+            </p>
             
-            <div class="card rounded-xl p-6 mb-8">
-                <h2 class="text-xl font-serif font-bold text-light mb-4">Abstract</h2>
-                <p class="text-gray-300">
-                    Compositional data, characterized by parts of a whole that sum to a constant, 
-                    are ubiquitous in geochemical studies. Traditional statistical methods often 
-                    fail to account for the inherent constraints of compositional data, leading to 
-                    spurious correlations and incorrect interpretations. This paper presents a 
-                    comprehensive framework for compositional data analysis (CoDA) in geochemical 
-                    applications, focusing on the log-ratio approach. We demonstrate the application 
-                    of isometric log-ratio (ilr) transformations, principal component analysis on 
-                    compositions, and appropriate distance measures. Case studies from mineral 
-                    exploration and environmental geochemistry illustrate the practical implementation 
-                    of CoDA methods and their advantages over conventional approaches.
-                </p>
-                
-                <div class="mt-4">
-                    <h3 class="font-semibold text-light mb-2">Keywords</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="badge">Compositional Data</span>
-                        <span class="badge">Log-ratio Transformations</span>
-                        <span class="badge">Geochemistry</span>
-                        <span class="badge">Multivariate Statistics</span>
-                        <span class="badge">Aitchison Geometry</span>
-                    </div>
+            <div class="mt-4">
+                <h3 class="font-semibold text-light mb-2">Keywords</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="badge">Compositional Data</span>
+                    <span class="badge">Log-ratio Transformations</span>
+                    <span class="badge">Geochemistry</span>
+                    <span class="badge">Multivariate Statistics</span>
+                    <span class="badge">Aitchison Geometry</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Article Content -->
-    <section class="pb-20">
-        <div class="article-container px-4 sm:px-6">
-            <div class="prose prose-invert max-w-none">
-                <!-- Introduction -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">1. Introduction</h2>
-                    
-                    <p class="mb-4">
-                        Compositional data are vectors of positive components that carry relative information, 
-                        where the relevant information is contained in the ratios between components rather 
-                        than their absolute values. In geochemistry, such data are pervasive, including 
-                        major oxide compositions, trace element concentrations normalized to a constant sum, 
-                        and mineral assemblages.
-                    </p>
-                    
-                    <p class="mb-4">
-                        The constant-sum constraint (typically 100% or 1,000,000 ppm) induces a dependency 
-                        structure among variables that violates the assumptions of conventional statistical 
-                        methods. Pearson (1897) first recognized the problems with correlation analysis of 
-                        compositional data, but it was Aitchison (1986) who developed the comprehensive 
-                        log-ratio methodology that forms the foundation of modern compositional data analysis.
-                    </p>
-                    
-                    <p>
-                        This paper aims to provide geoscientists with a practical guide to CoDA, emphasizing 
-                        the implementation of log-ratio transformations and their application to common 
-                        geochemical problems. We focus on the isometric log-ratio (ilr) transformation, 
-                        which provides orthonormal coordinates suitable for standard multivariate techniques.
-                    </p>
-                </section>
+        <!-- Article Content -->
+        <div class="article-content">
+            <!-- Introduction -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">1. Introduction</h2>
                 
-                <!-- Mathematical Foundation -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">2. Mathematical Foundation</h2>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4">2.1 The Simplex Sample Space</h3>
-                    
-                    <p class="mb-4">
-                        Compositional data reside in the D-part simplex defined as:
-                    </p>
-                    
-                    <div class="equation">
-                        $$S^D = \left\{ \mathbf{x} = [x_1, x_2, ..., x_D] : x_i > 0, \sum_{i=1}^D x_i = \kappa \right\}$$
-                    </div>
-                    
-                    <p class="mb-4">
-                        where \(\kappa\) is a positive constant (typically 1 or 100). The closure operation 
-                        \(\mathcal{C}\) projects any positive vector onto the simplex:
-                    </p>
-                    
-                    <div class="equation">
-                        $$\mathcal{C}(\mathbf{x}) = \left[ \frac{\kappa x_1}{\sum x_i}, \frac{\kappa x_2}{\sum x_i}, ..., \frac{\kappa x_D}{\sum x_i} \right]$$
-                    </div>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4 mt-8">2.2 Log-Ratio Transformations</h3>
-                    
-                    <p class="mb-4">
-                        The fundamental principle of CoDA is to transform compositions from the simplex to 
-                        real space, where standard statistical methods can be applied. The three main 
-                        log-ratio transformations are:
-                    </p>
-                    
-                    <div class="card p-6 mb-6">
-                        <h4 class="font-semibold text-light mb-3">Additive Log-Ratio (alr)</h4>
-                        <div class="equation mb-4">
-                            $$\text{alr}(\mathbf{x}) = \left[ \ln\frac{x_1}{x_D}, \ln\frac{x_2}{x_D}, ..., \ln\frac{x_{D-1}}{x_D} \right]$$
-                        </div>
-                        <p class="text-gray-300 text-sm">
-                            Simple but not isometric; the choice of denominator affects results.
-                        </p>
-                    </div>
-                    
-                    <div class="card p-6 mb-6">
-                        <h4 class="font-semibold text-light mb-3">Centered Log-Ratio (clr)</h4>
-                        <div class="equation mb-4">
-                            $$\text{clr}(\mathbf{x}) = \left[ \ln\frac{x_1}{g(\mathbf{x})}, \ln\frac{x_2}{g(\mathbf{x})}, ..., \ln\frac{x_D}{g(\mathbf{x})} \right]$$
-                        </div>
-                        <p class="text-gray-300 text-sm">
-                            Where \(g(\mathbf{x})\) is the geometric mean of all components. Symmetric but creates singular covariance matrix.
-                        </p>
-                    </div>
-                    
-                    <div class="card p-6">
-                        <h4 class="font-semibold text-light mb-3">Isometric Log-Ratio (ilr)</h4>
-                        <div class="equation mb-4">
-                            $$\text{ilr}(\mathbf{x}) = \mathbf{z} = [z_1, z_2, ..., z_{D-1}]$$
-                        </div>
-                        <p class="text-gray-300 text-sm">
-                            Orthonormal coordinates that preserve all metric properties. The preferred transformation for most applications.
-                        </p>
-                    </div>
-                </section>
+                <p class="mb-4">
+                    Compositional data are vectors of positive components that carry relative information, 
+                    where the relevant information is contained in the ratios between components rather 
+                    than their absolute values. In geochemistry, such data are pervasive, including 
+                    major oxide compositions, trace element concentrations normalized to a constant sum, 
+                    and mineral assemblages.
+                </p>
                 
-                <!-- Methodology -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">3. Methodology</h2>
-                    
-                    <p class="mb-4">
-                        Our CoDA workflow consists of four main steps: data preprocessing, log-ratio transformation, 
-                        statistical analysis, and back-transformation of results.
+                <p class="mb-4">
+                    The constant-sum constraint (typically 100% or 1,000,000 ppm) induces a dependency 
+                    structure among variables that violates the assumptions of conventional statistical 
+                    methods. Pearson (1897) first recognized the problems with correlation analysis of 
+                    compositional data, but it was Aitchison (1986) who developed the comprehensive 
+                    log-ratio methodology that forms the foundation of modern compositional data analysis.
+                </p>
+                
+                <p>
+                    This paper aims to provide geoscientists with a practical guide to CoDA, emphasizing 
+                    the implementation of log-ratio transformations and their application to common 
+                    geochemical problems. We focus on the isometric log-ratio (ilr) transformation, 
+                    which provides orthonormal coordinates suitable for standard multivariate techniques.
+                </p>
+            </section>
+            
+            <!-- Mathematical Foundation -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">2. Mathematical Foundation</h2>
+                
+                <h3 class="subsection-title">2.1 The Simplex Sample Space</h3>
+                
+                <p class="mb-4">
+                    Compositional data reside in the D-part simplex defined as:
+                </p>
+                
+                <div class="equation">
+                    $$S^D = \left\{ \mathbf{x} = [x_1, x_2, ..., x_D] : x_i > 0, \sum_{i=1}^D x_i = \kappa \right\}$$
+                </div>
+                <p class="equation-title">Equation 1: The simplex sample space for compositional data</p>
+                
+                <p class="mb-4">
+                    where \(\kappa\) is a positive constant (typically 1 or 100). The closure operation 
+                    \(\mathcal{C}\) projects any positive vector onto the simplex:
+                </p>
+                
+                <div class="equation">
+                    $$\mathcal{C}(\mathbf{x}) = \left[ \frac{\kappa x_1}{\sum x_i}, \frac{\kappa x_2}{\sum x_i}, ..., \frac{\kappa x_D}{\sum x_i} \right]$$
+                </div>
+                <p class="equation-title">Equation 2: Closure operation</p>
+                
+                <h3 class="subsection-title">2.2 Log-Ratio Transformations</h3>
+                
+                <p class="mb-4">
+                    The fundamental principle of CoDA is to transform compositions from the simplex to 
+                    real space, where standard statistical methods can be applied. The three main 
+                    log-ratio transformations are:
+                </p>
+                
+                <div class="formula-card">
+                    <h4 class="font-semibold text-light mb-3">Additive Log-Ratio (alr)</h4>
+                    <div class="equation mb-4">
+                        $$\text{alr}(\mathbf{x}) = \left[ \ln\frac{x_1}{x_D}, \ln\frac{x_2}{x_D}, ..., \ln\frac{x_{D-1}}{x_D} \right]$$
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Simple but not isometric; the choice of denominator affects results.
                     </p>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4">3.1 Data Preprocessing</h3>
-                    
-                    <p class="mb-4">
-                        Geochemical data often contain zeros (below detection limit) that must be handled before 
-                        log-ratio transformations. We employ the multiplicative replacement strategy (Martín-Fernández et al., 2003):
+                </div>
+                
+                <div class="formula-card">
+                    <h4 class="font-semibold text-light mb-3">Centered Log-Ratio (clr)</h4>
+                    <div class="equation mb-4">
+                        $$\text{clr}(\mathbf{x}) = \left[ \ln\frac{x_1}{g(\mathbf{x})}, \ln\frac{x_2}{g(\mathbf{x})}, ..., \ln\frac{x_D}{g(\mathbf{x})} \right]$$
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Where \(g(\mathbf{x})\) is the geometric mean of all components. Symmetric but creates singular covariance matrix.
                     </p>
-                    
-                    <div class="code-block">
-                        <code class="text-accent">
-# Python implementation of multiplicative replacement
+                </div>
+                
+                <div class="formula-card">
+                    <h4 class="font-semibold text-light mb-3">Isometric Log-Ratio (ilr)</h4>
+                    <div class="equation mb-4">
+                        $$\text{ilr}(\mathbf{x}) = \mathbf{z} = [z_1, z_2, ..., z_{D-1}]$$
+                    </div>
+                    <p class="text-gray-300 text-sm">
+                        Orthonormal coordinates that preserve all metric properties. The preferred transformation for most applications.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Methodology -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">3. Methodology</h2>
+                
+                <p class="mb-4">
+                    Our CoDA workflow consists of four main steps: data preprocessing, log-ratio transformation, 
+                    statistical analysis, and back-transformation of results.
+                </p>
+                
+                <h3 class="subsection-title">3.1 Data Preprocessing</h3>
+                
+                <p class="mb-4">
+                    Geochemical data often contain zeros (below detection limit) that must be handled before 
+                    log-ratio transformations. We employ the multiplicative replacement strategy (Martín-Fernández et al., 2003):
+                </p>
+                
+                <div class="code-block">
+                    <div class="language-tag">Python</div>
+                    <pre><code># Python implementation of multiplicative replacement
 import numpy as np
 
 def multiplicative_replacement(composition, delta=0.65):
@@ -443,20 +949,19 @@ def multiplicative_replacement(composition, delta=0.65):
             imputed[i][zeros] = replacement
             imputed[i][~zeros] = imputed[i][~zeros] * (1 - (n_zeros * replacement) / non_zero_sum)
     
-    return imputed
-                        </code>
-                    </div>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4 mt-8">3.2 ilr Transformation Implementation</h3>
-                    
-                    <p class="mb-4">
-                        The ilr transformation requires an orthonormal basis for the simplex. We use the 
-                        sequential binary partition approach to construct balances:
-                    </p>
-                    
-                    <div class="code-block">
-                        <code class="text-accent">
-import numpy as np
+    return imputed</code></pre>
+                </div>
+                
+                <h3 class="subsection-title">3.2 ilr Transformation Implementation</h3>
+                
+                <p class="mb-4">
+                    The ilr transformation requires an orthonormal basis for the simplex. We use the 
+                    sequential binary partition approach to construct balances:
+                </p>
+                
+                <div class="code-block">
+                    <div class="language-tag">Python</div>
+                    <pre><code>import numpy as np
 from scipy.linalg import sqrtm
 
 def ilr_transform(composition, partition):
@@ -485,307 +990,474 @@ def ilr_transform(composition, partition):
         # ilr coordinate
         ilr_coordinates[:, i] = np.sqrt((r * s) / (r + s)) * np.log(g_plus / g_minus)
     
-    return ilr_coordinates
-                        </code>
-                    </div>
-                </section>
+    return ilr_coordinates</code></pre>
+                </div>
+            </section>
+            
+            <!-- Case Study -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">4. Case Study: Geochemical Exploration</h2>
                 
-                <!-- Case Study -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">4. Case Study: Geochemical Exploration</h2>
-                    
-                    <p class="mb-4">
-                        We applied CoDA to a geochemical dataset from a porphyry copper exploration project 
-                        in Chile. The dataset consists of 347 stream sediment samples analyzed for 12 elements.
-                    </p>
-                    
-                    <div class="figure">
-                        <div class="bg-gray-900 h-64 flex items-center justify-center rounded-lg border border-gray-800">
+                <p class="mb-4">
+                    We applied CoDA to a geochemical dataset from a porphyry copper exploration project 
+                    in Chile. The dataset consists of 347 stream sediment samples analyzed for 12 elements.
+                </p>
+                
+                <div class="figure">
+                    <div style="height: 300px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.2)); border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-map-marked-alt text-primary" style="font-size: 3rem; margin-bottom: 1rem;"></i>
                             <p class="text-gray-400">Figure 1: Location map of the study area showing sample locations</p>
                         </div>
-                        <p class="figure-caption">Figure 1: Sampling locations in the Central Chilean Andes.</p>
                     </div>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4">4.1 Compositional PCA</h3>
-                    
-                    <p class="mb-4">
-                        Traditional PCA applied to raw concentrations showed strong closure effects, with 
-                        the first component dominated by the dilution effect. After ilr transformation, 
-                        the principal components revealed meaningful geochemical patterns:
-                    </p>
-                    
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>PC</th>
-                                    <th>Variance Explained (%)</th>
-                                    <th>Cumulative Variance (%)</th>
-                                    <th>Key Elements</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>38.2</td>
-                                    <td>38.2</td>
-                                    <td>Cu, Mo, Au (mineralization signature)</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>22.7</td>
-                                    <td>60.9</td>
-                                    <td>K, Na, Al (alteration signature)</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>15.3</td>
-                                    <td>76.2</td>
-                                    <td>Fe, Mn (hydrothermal signature)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="figure-caption text-center mt-2">Table 1: Principal component analysis results after ilr transformation.</p>
-                    </div>
-                    
-                    <div class="figure">
-                        <div class="bg-gray-900 h-64 flex items-center justify-center rounded-lg border border-gray-800">
+                    <p class="figure-caption">Figure 1: Sampling locations in the Central Chilean Andes.</p>
+                </div>
+                
+                <h3 class="subsection-title">4.1 Compositional PCA</h3>
+                
+                <p class="mb-4">
+                    Traditional PCA applied to raw concentrations showed strong closure effects, with 
+                    the first component dominated by the dilution effect. After ilr transformation, 
+                    the principal components revealed meaningful geochemical patterns:
+                </p>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>PC</th>
+                                <th>Variance Explained (%)</th>
+                                <th>Cumulative Variance (%)</th>
+                                <th>Key Elements</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>38.2</td>
+                                <td>38.2</td>
+                                <td>Cu, Mo, Au (mineralization signature)</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>22.7</td>
+                                <td>60.9</td>
+                                <td>K, Na, Al (alteration signature)</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>15.3</td>
+                                <td>76.2</td>
+                                <td>Fe, Mn (hydrothermal signature)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="figure-caption text-center mt-2">Table 1: Principal component analysis results after ilr transformation.</p>
+                </div>
+                
+                <div class="figure">
+                    <div style="height: 300px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.2)); border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center; padding: 2rem;">
+                            <i class="fas fa-chart-scatter text-primary" style="font-size: 3rem; margin-bottom: 1rem;"></i>
                             <p class="text-gray-400">Figure 2: PCA biplot showing ilr-transformed geochemical data</p>
                         </div>
-                        <p class="figure-caption">Figure 2: Compositional PCA biplot showing relationships between elements and samples.</p>
                     </div>
-                    
-                    <h3 class="text-xl font-serif font-semibold text-light mb-4 mt-8">4.2 Compositional K-means Clustering</h3>
-                    
-                    <p class="mb-4">
-                        We applied K-means clustering to the ilr coordinates to identify geochemical domains. 
-                        Using the Aitchison distance as the similarity measure:
-                    </p>
-                    
-                    <div class="equation">
-                        $$d_a(\mathbf{x}, \mathbf{y}) = \sqrt{ \sum_{i=1}^{D-1} \left( \text{ilr}_i(\mathbf{x}) - \text{ilr}_i(\mathbf{y}) \right)^2 }$$
-                    </div>
-                    
-                    <p class="mb-4">
-                        The clustering revealed four distinct geochemical domains that corresponded to 
-                        different geological units and mineralization styles.
-                    </p>
-                </section>
+                    <p class="figure-caption">Figure 2: Compositional PCA biplot showing relationships between elements and samples.</p>
+                </div>
                 
-                <!-- Results and Discussion -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">5. Results and Discussion</h2>
-                    
-                    <p class="mb-4">
-                        The application of CoDA methods to the geochemical exploration dataset yielded 
-                        several key insights:
-                    </p>
-                    
-                    <ul class="list-disc pl-6 mb-4 text-gray-300 space-y-2">
-                        <li>The ilr transformation successfully removed the closure effect, allowing for proper interpretation of covariance structures</li>
-                        <li>Compositional PCA revealed mineralization-related patterns that were obscured in the raw data analysis</li>
-                        <li>The Aitchison distance provided a more geologically meaningful measure of similarity between samples</li>
-                        <li>The balance approach facilitated interpretation of element associations in terms of geochemical processes</li>
-                    </ul>
-                    
-                    <p class="mb-4">
-                        Our results demonstrate that CoDA provides a more robust framework for geochemical 
-                        data analysis compared to conventional methods. The log-ratio approach properly 
-                        accounts for the relative nature of compositional data and avoids the pitfalls 
-                        of spurious correlation.
-                    </p>
-                    
-                    <div class="card p-6 my-6 border-l-4 border-accent">
-                        <h4 class="font-semibold text-light mb-2">Practical Recommendation</h4>
-                        <p class="text-gray-300">
-                            For routine geochemical data analysis, we recommend the following workflow: 
-                            (1) handle zeros using multiplicative replacement, (2) apply ilr transformation 
-                            with geologically informed balances, (3) perform multivariate analysis on ilr coordinates, 
-                            and (4) back-transform results to the simplex for interpretation.
-                        </p>
-                    </div>
-                </section>
+                <h3 class="subsection-title">4.2 Compositional K-means Clustering</h3>
                 
-                <!-- Conclusion -->
-                <section class="mb-12">
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">6. Conclusion</h2>
-                    
-                    <p class="mb-4">
-                        Compositional Data Analysis provides a mathematically sound framework for 
-                        analyzing geochemical data that respects their inherent properties. The log-ratio 
-                        approach, particularly the isometric log-ratio transformation, enables the 
-                        application of standard multivariate techniques while maintaining the compositional 
-                        nature of the data.
-                    </p>
-                    
-                    <p class="mb-4">
-                        Our case study demonstrates the practical advantages of CoDA in geochemical 
-                        exploration, revealing meaningful patterns that were obscured by conventional 
-                        methods. The balance concept provides an intuitive way to interpret element 
-                        associations in terms of geological processes.
-                    </p>
-                    
-                    <p>
-                        As geochemical datasets continue to grow in size and complexity, CoDA methods 
-                        will become increasingly important for extracting meaningful information and 
-                        avoiding statistical artifacts. We encourage wider adoption of these methods 
-                        in geochemical practice.
-                    </p>
-                </section>
+                <p class="mb-4">
+                    We applied K-means clustering to the ilr coordinates to identify geochemical domains. 
+                    Using the Aitchison distance as the similarity measure:
+                </p>
                 
-                <!-- References -->
-                <section>
-                    <h2 class="text-2xl font-serif font-bold text-light mb-6 border-b border-gray-800 pb-2">References</h2>
+                <div class="equation">
+                    $$d_a(\mathbf{x}, \mathbf{y}) = \sqrt{ \sum_{i=1}^{D-1} \left( \text{ilr}_i(\mathbf{x}) - \text{ilr}_i(\mathbf{y}) \right)^2 }$$
+                </div>
+                <p class="equation-title">Equation 3: Aitchison distance formula</p>
+                
+                <p class="mb-4">
+                    The clustering revealed four distinct geochemical domains that corresponded to 
+                    different geological units and mineralization styles.
+                </p>
+            </section>
+            
+            <!-- Results and Discussion -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">5. Results and Discussion</h2>
+                
+                <p class="mb-4">
+                    The application of CoDA methods to the geochemical exploration dataset yielded 
+                    several key insights:
+                </p>
+                
+                <ul class="content-list">
+                    <li>The ilr transformation successfully removed the closure effect, allowing for proper interpretation of covariance structures</li>
+                    <li>Compositional PCA revealed mineralization-related patterns that were obscured in the raw data analysis</li>
+                    <li>The Aitchison distance provided a more geologically meaningful measure of similarity between samples</li>
+                    <li>The balance approach facilitated interpretation of element associations in terms of geochemical processes</li>
+                </ul>
+                
+                <p class="mb-4">
+                    Our results demonstrate that CoDA provides a more robust framework for geochemical 
+                    data analysis compared to conventional methods. The log-ratio approach properly 
+                    accounts for the relative nature of compositional data and avoids the pitfalls 
+                    of spurious correlation.
+                </p>
+                
+                <div class="blockquote">
+                    <h4 class="font-semibold text-light mb-2">Practical Recommendation</h4>
+                    <p class="text-gray-300">
+                        For routine geochemical data analysis, we recommend the following workflow: 
+                        (1) handle zeros using multiplicative replacement, (2) apply ilr transformation 
+                        with geologically informed balances, (3) perform multivariate analysis on ilr coordinates, 
+                        and (4) back-transform results to the simplex for interpretation.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Conclusion -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">6. Conclusion</h2>
+                
+                <p class="mb-4">
+                    Compositional Data Analysis provides a mathematically sound framework for 
+                    analyzing geochemical data that respects their inherent properties. The log-ratio 
+                    approach, particularly the isometric log-ratio transformation, enables the 
+                    application of standard multivariate techniques while maintaining the compositional 
+                    nature of the data.
+                </p>
+                
+                <p class="mb-4">
+                    Our case study demonstrates the practical advantages of CoDA in geochemical 
+                    exploration, revealing meaningful patterns that were obscured by conventional 
+                    methods. The balance concept provides an intuitive way to interpret element 
+                    associations in terms of geological processes.
+                </p>
+                
+                <p>
+                    As geochemical datasets continue to grow in size and complexity, CoDA methods 
+                    will become increasingly important for extracting meaningful information and 
+                    avoiding statistical artifacts. We encourage wider adoption of these methods 
+                    in geochemical practice.
+                </p>
+            </section>
+            
+            <!-- References -->
+            <section class="section animate-fade-in">
+                <h2 class="section-title">References</h2>
+                
+                <div class="space-y-3">
+                    <p class="reference-item">
+                        Aitchison, J. (1986). <em>The Statistical Analysis of Compositional Data</em>. Chapman and Hall.
+                    </p>
                     
-                    <div class="space-y-4 text-gray-300">
-                        <p class="reference-item">
-                            Aitchison, J. (1986). The Statistical Analysis of Compositional Data. Chapman and Hall.
-                        </p>
-                        
-                        <p class="reference-item">
-                            Egozcue, J. J., Pawlowsky-Glahn, V., Mateu-Figueras, G., & Barceló-Vidal, C. (2003). 
-                            Isometric logratio transformations for compositional data analysis. Mathematical Geology, 35(3), 279-300.
-                        </p>
-                        
-                        <p class="reference-item">
-                            Filzmoser, P., Hron, K., & Reimann, C. (2009). Principal component analysis for 
-                            compositional data with outliers. Environmetrics, 20(6), 621-632.
-                        </p>
-                        
-                        <p class="reference-item">
-                            Martín-Fernández, J. A., Barceló-Vidal, C., & Pawlowsky-Glahn, V. (2003). 
-                            Dealing with zeros and missing values in compositional data sets using 
-                            nonparametric imputation. Mathematical Geology, 35(3), 253-278.
-                        </p>
-                        
-                        <p class="reference-item">
-                            Pawlowsky-Glahn, V., & Egozcue, J. J. (2006). Compositional data and their 
-                            analysis: an introduction. Geological Society, London, Special Publications, 264(1), 1-10.
-                        </p>
-                        
-                        <p class="reference-item">
-                            Pearson, K. (1897). Mathematical contributions to the theory of evolution. 
-                            On a form of spurious correlation which may arise when indices are used in 
-                            the measurement of organs. Proceedings of the Royal Society of London, 60, 489-498.
-                        </p>
-                    </div>
-                </section>
-            </div>
+                    <p class="reference-item">
+                        Egozcue, J. J., Pawlowsky-Glahn, V., Mateu-Figueras, G., & Barceló-Vidal, C. (2003). 
+                        Isometric logratio transformations for compositional data analysis. <em>Mathematical Geology</em>, 35(3), 279-300.
+                    </p>
+                    
+                    <p class="reference-item">
+                        Filzmoser, P., Hron, K., & Reimann, C. (2009). Principal component analysis for 
+                        compositional data with outliers. <em>Environmetrics</em>, 20(6), 621-632.
+                    </p>
+                    
+                    <p class="reference-item">
+                        Martín-Fernández, J. A., Barceló-Vidal, C., & Pawlowsky-Glahn, V. (2003). 
+                        Dealing with zeros and missing values in compositional data sets using 
+                        nonparametric imputation. <em>Mathematical Geology</em>, 35(3), 253-278.
+                    </p>
+                    
+                    <p class="reference-item">
+                        Pawlowsky-Glahn, V., & Egozcue, J. J. (2006). Compositional data and their 
+                        analysis: an introduction. <em>Geological Society, London, Special Publications</em>, 264(1), 1-10.
+                    </p>
+                    
+                    <p class="reference-item">
+                        Pearson, K. (1897). Mathematical contributions to the theory of evolution. 
+                        On a form of spurious correlation which may arise when indices are used in 
+                        the measurement of organs. <em>Proceedings of the Royal Society of London</em>, 60, 489-498.
+                    </p>
+                </div>
+            </section>
             
             <!-- Article Actions -->
-            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
-                <div class="mb-4 sm:mb-0">
-                    <a href="../articles/index.html" class="text-accent hover:text-light font-medium flex items-center group">
+            <div class="article-actions animate-fade-in">
+                <div>
+                    <a href="../articles/index.html" class="text-primary hover:text-primary-light font-medium flex items-center group">
                         <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i>
                         Back to Articles
                     </a>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
                         <i class="far fa-file-pdf text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
                         <i class="fas fa-quote-right text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors">
                         <i class="fas fa-share-alt text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Brand -->
-                <div class="md:col-span-1">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-lg"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-light">Robert Sichomba</h3>
-                            <p class="text-gray-400 text-sm">PhD Portfolio</p>
-                        </div>
+    <footer class="footer">
+        <div class="container max-w-6xl mx-auto px-4">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Robert Sichomba</h3>
+                    <p>Data Scientist • Geophysicist • Materials Engineer</p>
+                    <p>Bridging disciplines through innovation.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/RobertSichombaBob" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:sichombarobertbob@email.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Data Scientist • Geophysicist • Materials Engineer<br>
-                        Bridging disciplines through innovation.
-                    </p>
                 </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Portfolio</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html" class="hover:text-accent transition-colors">Home</a></li>
-                        <li><a href="../index.html#about" class="hover:text-accent transition-colors">About</a></li>
-                        <li><a href="../articles/index.html" class="hover:text-accent transition-colors">Articles</a></li>
-                        <li><a href="../index.html#projects" class="hover:text-accent transition-colors">Projects</a></li>
+                <div class="footer-section">
+                    <h3>Portfolio</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../articles/index.html">Articles</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li><a href="../index.html#cv">Download CV</a></li>
                     </ul>
                 </div>
 
-                <!-- Resources -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html#cv" class="hover:text-accent transition-colors">Download CV</a></li>
-                        <li><a href="https://github.com/RobertSichombaBob" class="hover:text-accent transition-colors">GitHub</a></li>
-                        <li><a href="../articles/index.html" class="hover:text-accent transition-colors">Technical Articles</a></li>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="../index.html#cv">Download CV</a></li>
+                        <li><a href="https://github.com/RobertSichombaBob" target="_blank">GitHub</a></li>
+                        <li><a href="../articles/index.html">Technical Articles</a></li>
+                        <li><a href="#references">Research References</a></li>
                     </ul>
                 </div>
 
-                <!-- Connect -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/robert-sichomba" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-linkedin-in text-light"></i>
-                        </a>
-                        <a href="https://github.com/RobertSichombaBob" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-github text-light"></i>
-                        </a>
-                        <a href="mailto:robert.sichomba@email.com" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fas fa-envelope text-light"></i>
-                        </a>
-                    </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p><i class="fas fa-envelope"></i> sichombarobertbob@email.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</p>
+                    <p><i class="fas fa-briefcase"></i> Available for Research Collaboration</p>
                 </div>
             </div>
-
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+            <div class="footer-bottom">
                 <p>© 2024 Robert Sichomba. All rights reserved. | Designed with precision for the academic community</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    This work is licensed under a Creative Commons Attribution 4.0 International License
+                </p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu functionality
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+    <!-- Back to Top -->
+    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
+    <!-- Your JavaScript Files -->
+    <script src="../assets/js/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMobile = document.getElementById('navMobile');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            navMobile.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobile-menu');
-            const button = document.getElementById('mobile-menu-button');
-            if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
-                menu.classList.add('hidden');
+        document.addEventListener('click', (event) => {
+            if (!navMobile.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMobile.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
-
+        
+        // Close mobile menu when clicking on a link
+        navMobile.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMobile.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+                backToTop.style.alignItems = 'center';
+                backToTop.style.justifyContent = 'center';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navMobile.classList.contains('active')) {
+                            navMobile.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                        
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
         // Configure MathJax
         window.MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                tags: 'ams'
             },
             svg: {
                 fontCache: 'global'
+            },
+            startup: {
+                pageReady: () => {
+                    return MathJax.startup.defaultPageReady().then(() => {
+                        // Add fade-in animation to equations after they're rendered
+                        document.querySelectorAll('.mjx-chtml').forEach((eq, index) => {
+                            eq.style.opacity = '0';
+                            eq.style.animation = 'fadeInUp 0.6s ease forwards';
+                            eq.style.animationDelay = `${index * 0.1}s`;
+                        });
+                    });
+                }
             }
         };
+        
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        document.querySelectorAll('.section, .abstract-card, .figure, .table-container, .code-block').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Copy code blocks functionality
+        document.querySelectorAll('.code-block').forEach(block => {
+            const copyButton = document.createElement('button');
+            copyButton.innerHTML = '<i class="far fa-copy"></i>';
+            copyButton.className = 'absolute top-2 right-10 text-gray-400 hover:text-primary transition-colors';
+            copyButton.title = 'Copy code';
+            
+            copyButton.addEventListener('click', () => {
+                const code = block.querySelector('code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalHTML = copyButton.innerHTML;
+                    copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                    copyButton.style.color = '#10b981';
+                    
+                    setTimeout(() => {
+                        copyButton.innerHTML = originalHTML;
+                        copyButton.style.color = '';
+                    }, 2000);
+                });
+            });
+            
+            block.appendChild(copyButton);
+        });
+        
+        // Enhanced scroll effects for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.backdropFilter = 'blur(10px)';
+                nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+        
+        // Initialize animations with delays
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add animation delay to sections
+            document.querySelectorAll('.section').forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Add hover effect to interactive elements
+            document.querySelectorAll('.code-block, .formula-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.3)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+            
+            // Add reading progress indicator
+            const readingProgress = document.createElement('div');
+            readingProgress.style.position = 'fixed';
+            readingProgress.style.top = '0';
+            readingProgress.style.left = '0';
+            readingProgress.style.height = '3px';
+            readingProgress.style.background = 'linear-gradient(90deg, var(--primary), var(--primary-dark))';
+            readingProgress.style.zIndex = '9998';
+            readingProgress.style.width = '0%';
+            readingProgress.style.transition = 'width 0.3s ease';
+            document.body.appendChild(readingProgress);
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                readingProgress.style.width = scrolled + '%';
+            });
+        });
     </script>
 </body>
 </html>
