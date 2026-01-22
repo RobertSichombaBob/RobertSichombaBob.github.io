@@ -5,331 +5,1584 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Publications | Robert Sichomba, PhD</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#10b981">
+    <meta name="description" content="Comprehensive collection of research publications spanning geophysics, materials engineering, data science, and mathematical methods.">
     
-    <!-- Font Awesome -->
+    <!-- Styles & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#0a0a0a',
-                        light: '#ffffff',
-                        accent: '#4ade80',
-                        'dark-button': '#1a1a1a',
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        'serif': ['Source Serif Pro', 'Georgia', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
     
     <style>
+        /* Design System - Green Theme */
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary: #3b82f6;
+            --accent: #8b5cf6;
+            --dark: #0a0a0a;
+            --darker: #000000;
+            --light: #ffffff;
+            --card-bg: #1a1a1a;
+            --border: #2a2a2a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
-        
-        .card {
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-            border: 1px solid #2a2a2a;
+
+        /* Navigation - Green Theme */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
         }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #4ade80;
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
         .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             position: relative;
         }
-        
-        .nav-link::after {
+
+        .nav-link:hover {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+        }
+
+        .nav-link.active::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 3rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-400);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .category-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .category-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-tag:hover {
+            transform: translateY(-2px);
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--primary);
+        }
+
+        .category-tag.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            color: var(--gray-400);
+            max-width: 600px;
+        }
+
+        /* Article Cards Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .article-card-badges {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+
+        .badge-journal {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .badge-conference {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .badge-technical {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .article-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
             left: 0;
-            background-color: #4ade80;
-            transition: width 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), transparent);
         }
-        
-        .nav-link:hover::after {
+
+        .article-card-content {
+            padding: 1.5rem;
+        }
+
+        .article-card-title {
+            font-size: 1.4rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-card-excerpt {
+            color: var(--gray-400);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .article-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .article-card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .read-more-btn {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .read-more-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .article-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+        }
+
+        /* Featured Article */
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(5, 150, 105, 0.1));
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .featured-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        
-        .accent-border {
-            border-left: 4px solid #4ade80;
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        
-        .btn-primary {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border: 1px solid #2a2a2a;
+
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 2.2rem;
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .featured-excerpt {
+            color: var(--gray-400);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile Navigation */
+        .nav-mobile {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            padding: 6rem 2rem 2rem;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-mobile.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .mobile-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-        
-        .btn-primary:hover {
-            background-color: #4ade80;
-            color: #0a0a0a;
-            border-color: #4ade80;
+
+        .mobile-menu a:hover {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--primary);
+            transform: translateX(10px);
         }
-        
-        .section-divider {
-            border-top: 1px solid #2a2a2a;
+
+        .mobile-menu a.active {
+            background: rgba(16, 185, 129, 0.3);
+            color: var(--primary);
         }
-        
-        .badge {
-            background-color: #2a2a2a;
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 500;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+
+        /* Footer */
+        .footer {
+            background: rgba(10, 10, 10, 0.95);
+            padding: 4rem 0 2rem;
+            margin-top: 6rem;
+            border-top: 1px solid var(--border);
         }
-        
-        .citation {
-            font-family: 'Source Serif Pro', serif;
-            font-style: italic;
-            color: #9ca3af;
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .main-container {
+                padding: 6rem 1rem 2rem;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .category-title {
+                font-size: 1.8rem;
+            }
+            
+            .featured-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: var(--gray-400);
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
         }
     </style>
 </head>
 
 <body class="font-sans antialiased">
     <!-- Navigation -->
-    <nav class="bg-dark sticky top-0 z-50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-xl"></i>
-                        </div>
-                        <div class="hidden sm:block">
-                            <h1 class="text-xl font-bold text-light">Robert Sichomba</h1>
-                            <p class="text-xs text-gray-400 -mt-1">PhD Portfolio</p>
-                        </div>
-                    </a>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-brand">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="../index.html" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Home</a>
-                    <a href="../index.html#about" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">About</a>
-                    <a href="index.html" class="nav-link text-accent font-medium transition-colors duration-200">Articles</a>
-                    <a href="../index.html#expertise" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Expertise</a>
-                    <a href="../index.html#projects" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">Projects</a>
-                    <a href="../index.html#cv" class="nav-link text-light hover:text-accent font-medium transition-colors duration-200">CV</a>
-                    <a href="https://github.com/RobertSichombaBob" class="btn-primary px-6 py-3 rounded-xl font-semibold transition-all duration-200">
-                        <i class="fab fa-github mr-2"></i>GitHub
-                    </a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button type="button" class="text-light hover:text-accent transition-colors" id="mobile-menu-button">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Navigation -->
-        <div class="md:hidden hidden bg-dark border-t border-gray-800 py-6" id="mobile-menu">
-            <div class="max-w-7xl mx-auto px-4 space-y-4">
-                <a href="../index.html" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-home mr-4 w-6"></i>Home
-                </a>
-                <a href="../index.html#about" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-user mr-4 w-6"></i>About
-                </a>
-                <a href="index.html" class="block text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-newspaper mr-4 w-6"></i>Articles
-                </a>
-                <a href="../index.html#expertise" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-star mr-4 w-6"></i>Expertise
-                </a>
-                <a href="../index.html#projects" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-project-diagram mr-4 w-6"></i>Projects
-                </a>
-                <a href="../index.html#cv" class="block text-light hover:text-accent font-medium text-lg py-3 border-b border-gray-800">
-                    <i class="fas fa-file-pdf mr-4 w-6"></i>CV
-                </a>
-                <a href="https://github.com/RobertSichombaBob" class="block btn-primary px-6 py-4 rounded-xl font-semibold text-center mt-4">
-                    <i class="fab fa-github mr-2"></i>View GitHub
+                <span class="brand-text">ROBERT SICHOMBA</span>
+            </a>
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> HOME</a>
+                <a href="../index.html#about" class="nav-link"><i class="fas fa-user"></i> ABOUT</a>
+                <a href="index.html" class="nav-link active"><i class="fas fa-newspaper"></i> ARTICLES</a>
+                <a href="../index.html#projects" class="nav-link"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+                <a href="../index.html#cv" class="nav-link"><i class="fas fa-file-pdf"></i> CV</a>
+                <a href="mailto:sichombarobertbob@email.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    CONTACT
                 </a>
             </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Articles Header -->
-    <section class="py-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-serif font-bold text-light mb-6">Research Publications</h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                Peer-reviewed journal articles, conference proceedings, and technical reports 
-                spanning geophysics, materials engineering, and data science applications.
-            </p>
-            <div class="mt-8 flex justify-center space-x-4">
-                <span class="badge">Journal Articles</span>
-                <span class="badge">Conference Papers</span>
-                <span class="badge">Technical Reports</span>
-            </div>
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-mobile" id="navMobile">
+        <div class="mobile-menu">
+            <a href="../index.html"><i class="fas fa-home"></i> HOME</a>
+            <a href="../index.html#about"><i class="fas fa-user"></i> ABOUT</a>
+            <a href="index.html" class="active"><i class="fas fa-newspaper"></i> ARTICLES</a>
+            <a href="../index.html#projects"><i class="fas fa-project-diagram"></i> PROJECTS</a>
+            <a href="../index.html#cv"><i class="fas fa-file-pdf"></i> CV</a>
+            <a href="https://github.com/RobertSichombaBob" target="_blank"><i class="fab fa-github"></i> GITHUB</a>
+            <a href="mailto:sichombarobertbob@email.com"><i class="fas fa-envelope"></i> CONTACT</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Articles List -->
-    <section class="py-16 pb-20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-12">
-                <h2 class="text-2xl font-serif font-bold text-light mb-2">Recent Publications</h2>
-                <p class="text-gray-300">A selection of my most significant research contributions</p>
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Page Header -->
+        <header class="page-header animate-fade-in">
+            <h1 class="page-title">Research Publications</h1>
+            <p class="page-subtitle">
+                Peer-reviewed journal articles, conference proceedings, and technical reports 
+                spanning geophysics, materials engineering, data science, and mathematical methods.
+                Organized by research domains for systematic exploration.
+            </p>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Publications</button>
+                <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                <button class="filter-btn" data-filter="conference">Conference Papers</button>
+                <button class="filter-btn" data-filter="technical">Technical Reports</button>
             </div>
             
-            <div class="space-y-10">
-                <!-- Publication 1 -->
-                <article class="card rounded-lg p-6 accent-border">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                        <h3 class="text-xl font-serif font-bold text-light mb-2 md:mb-0">
-                            AC-16C Coarse Aggregate Characterization for High-Performance Asphalt Mixtures
-                        </h3>
-                        <span class="badge self-start">
-                            Materials Engineering
-                        </span>
+            <div class="category-tags">
+                <span class="category-tag active" data-category="all">All Categories</span>
+                <span class="category-tag" data-category="physics">Physics</span>
+                <span class="category-tag" data-category="math">Mathematical Methods</span>
+                <span class="category-tag" data-category="evs">Environmental Science</span>
+                <span class="category-tag" data-category="multivariate">Multivariate Analysis</span>
+                <span class="category-tag" data-category="spatial">Spatial Data</span>
+            </div>
+        </header>
+
+        <!-- Featured Article -->
+        <article class="featured-article" data-category="multivariate" data-type="journal">
+            <div class="featured-image">
+                <div style="height: 100%; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.3)); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-chart-pie" style="font-size: 8rem; color: var(--primary); opacity: 0.8;"></i>
+                </div>
+            </div>
+            <div class="featured-content">
+                <span class="featured-badge">Featured Publication</span>
+                <h2 class="featured-title">Compositional Data Analysis in Geochemical Applications: A Practical Framework</h2>
+                <p class="featured-excerpt">
+                    Comprehensive framework for analyzing compositional data in geochemistry using log-ratio transformations. 
+                    Demonstrates the application of isometric log-ratio transformations, principal component analysis on 
+                    compositions, and appropriate distance measures for accurate geochemical interpretation.
+                </p>
+                <div class="article-tags">
+                    <span class="article-tag">Statistics</span>
+                    <span class="article-tag">Geochemistry</span>
+                    <span class="article-tag">Data Science</span>
+                    <span class="article-tag">Multivariate Analysis</span>
+                </div>
+                <div class="article-card-actions" style="border: none; padding: 0; margin-top: 2rem;">
+                    <a href="compositional-data-analysis.html" class="read-more-btn">
+                        Read Full Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="article-card-meta" style="margin: 0;">
+                        <span><i class="far fa-calendar"></i> Dec 15, 2024</span>
+                        <span><i class="far fa-clock"></i> 25 min read</span>
                     </div>
-                    
-                    <div class="citation mb-4">
-                        <p><strong>Sichomba, R.</strong> (2024). AC-16C Coarse Aggregate Characterization for High-Performance Asphalt Mixtures. 
-                        <em>Journal of Materials in Civil Engineering</em>, 36(3), 45-62.</p>
-                    </div>
-                    
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        Comprehensive technical characterization of coarse aggregate from K112 Quarry for high-performance 
-                        AC-16C modified asphalt mixture in the Lusaka–Ndola Dual Carriageway project. The study evaluates 
-                        aggregate properties including Los Angeles abrasion, soundness, and particle shape characteristics.
+                </div>
+            </div>
+        </article>
+
+        <!-- Physics Section -->
+        <section class="category-section" id="physics">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Physics & Geophysics</h2>
+                    <p class="category-description">
+                        Research in applied physics, geophysical methods, and material characterization 
+                        techniques for engineering applications.
                     </p>
-                    
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="badge">Aggregate Analysis</span>
-                        <span class="badge">Quality Control</span>
-                        <span class="badge">Pavement Engineering</span>
-                        <span class="badge">ASTM Standards</span>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- Physics Article 1 -->
+                <article class="article-card" data-category="physics" data-type="journal">
+                    <div class="article-card-badges">
+                        <span class="badge badge-journal">Journal Article</span>
                     </div>
-                    
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-sm text-gray-400 pt-4 border-t border-gray-800">
-                        <div class="mb-2 sm:mb-0">
-                            <span><i class="far fa-calendar mr-1"></i> December 2024</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="far fa-clock mr-1"></i> 15 min read</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="far fa-file-pdf mr-1"></i> PDF</span>
+                    <div class="article-card-image">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Magnetotelluric Imaging of Deep Geological Structures in the Zambian Copperbelt</h3>
+                        <p class="article-card-excerpt">
+                            Advanced magnetotelluric survey techniques applied to image deep-seated geological structures 
+                            controlling mineralization in the Zambian Copperbelt. Integration with seismic data for 
+                            comprehensive subsurface characterization.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Nov 2024</span>
+                            <span><i class="far fa-clock"></i> 18 min</span>
+                            <span><i class="fas fa-quote-right"></i> 12 citations</span>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="ac16c-coarse-aggregate.html" class="text-accent hover:text-light font-medium flex items-center group">
-                                Read Paper <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        <div class="article-tags">
+                            <span class="article-tag">Geophysics</span>
+                            <span class="article-tag">Magnetotellurics</span>
+                            <span class="article-tag">Mineral Exploration</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
                             </a>
-                            <a href="#" class="text-gray-500 hover:text-light">
-                                <i class="fas fa-quote-right"></i>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </article>
 
-
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Brand -->
-                <div class="md:col-span-1">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center border border-gray-800">
-                            <i class="fas fa-graduation-cap text-accent text-lg"></i>
+                <!-- Physics Article 2 -->
+                <article class="article-card" data-category="physics" data-type="technical">
+                    <div class="article-card-badges">
+                        <span class="badge badge-technical">Technical Report</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Seismic Velocity Analysis for Near-Surface Characterization in Urban Environments</h3>
+                        <p class="article-card-excerpt">
+                            Development of seismic refraction tomography methods for near-surface characterization 
+                            in urban settings. Case study from Lusaka demonstrating applications in geotechnical 
+                            engineering and infrastructure planning.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Oct 2024</span>
+                            <span><i class="far fa-clock"></i> 15 min</span>
+                            <span><i class="fas fa-quote-right"></i> 8 citations</span>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-light">Robert Sichomba</h3>
-                            <p class="text-gray-400 text-sm">PhD Portfolio</p>
+                        <div class="article-tags">
+                            <span class="article-tag">Seismology</span>
+                            <span class="article-tag">Urban Geophysics</span>
+                            <span class="article-tag">Tomography</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Data Scientist • Geophysicist • Materials Engineer<br>
-                        Bridging disciplines through innovation.
+                </article>
+            </div>
+        </section>
+
+        <!-- Mathematical Methods Section -->
+        <section class="category-section" id="math">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Mathematical Methods I</h2>
+                    <p class="category-description">
+                        Advanced mathematical techniques for data analysis, optimization, and scientific computing 
+                        applied to engineering and geoscience problems.
                     </p>
                 </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Portfolio</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html" class="hover:text-accent transition-colors">Home</a></li>
-                        <li><a href="../index.html#about" class="hover:text-accent transition-colors">About</a></li>
-                        <li><a href="index.html" class="hover:text-accent transition-colors">Articles</a></li>
-                        <li><a href="../index.html#projects" class="hover:text-accent transition-colors">Projects</a></li>
-                    </ul>
-                </div>
-
-                <!-- Resources -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Resources</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="../index.html#cv" class="hover:text-accent transition-colors">Download CV</a></li>
-                        <li><a href="https://github.com/RobertSichombaBob" class="hover:text-accent transition-colors">GitHub</a></li>
-                        <li><a href="index.html" class="hover:text-accent transition-colors">Technical Articles</a></li>
-                    </ul>
-                </div>
-
-                <!-- Connect -->
-                <div>
-                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-gray-300">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="https://linkedin.com/in/robert-sichomba" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-linkedin-in text-light"></i>
-                        </a>
-                        <a href="https://github.com/RobertSichombaBob" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fab fa-github text-light"></i>
-                        </a>
-                        <a href="mailto:robert.sichomba@email.com" class="w-10 h-10 bg-dark-button rounded-xl flex items-center justify-center hover:bg-accent transition-colors border border-gray-800">
-                            <i class="fas fa-envelope text-light"></i>
-                        </a>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- Math Article 1 -->
+                <article class="article-card" data-category="math" data-type="journal">
+                    <div class="article-card-badges">
+                        <span class="badge badge-journal">Journal Article</span>
                     </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Spectral Methods for Solving Partial Differential Equations in Geophysics</h3>
+                        <p class="article-card-excerpt">
+                            Implementation of spectral methods for efficient solution of partial differential equations 
+                            governing geophysical phenomena. Comparison with finite difference and finite element methods 
+                            for wave propagation problems.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Sep 2024</span>
+                            <span><i class="far fa-clock"></i> 22 min</span>
+                            <span><i class="fas fa-quote-right"></i> 15 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Numerical Methods</span>
+                            <span class="article-tag">PDE</span>
+                            <span class="article-tag">Spectral Analysis</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Math Article 2 -->
+                <article class="article-card" data-category="math" data-type="conference">
+                    <div class="article-card-badges">
+                        <span class="badge badge-conference">Conference Paper</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Optimization Algorithms for Large-Scale Inverse Problems in Geophysics</h3>
+                        <p class="article-card-excerpt">
+                            Development of efficient optimization algorithms for solving large-scale inverse problems 
+                            in geophysical imaging. Application to electromagnetic and gravity data inversion with 
+                            regularization constraints.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Aug 2024</span>
+                            <span><i class="far fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-quote-right"></i> 10 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Optimization</span>
+                            <span class="article-tag">Inverse Problems</span>
+                            <span class="article-tag">Regularization</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Environmental Science Section -->
+        <section class="category-section" id="evs">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Environmental Science (EVS)</h2>
+                    <p class="category-description">
+                        Research on environmental monitoring, pollution assessment, and sustainable resource 
+                        management using geoscientific approaches.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- EVS Article 1 -->
+                <article class="article-card" data-category="evs" data-type="journal">
+                    <div class="article-card-badges">
+                        <span class="badge badge-journal">Journal Article</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Hydrogeochemical Characterization of Groundwater in Mining-Affected Regions</h3>
+                        <p class="article-card-excerpt">
+                            Comprehensive assessment of groundwater quality in mining regions using multivariate 
+                            statistical techniques. Identification of contamination sources and natural background 
+                            levels for environmental monitoring.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Jul 2024</span>
+                            <span><i class="far fa-clock"></i> 25 min</span>
+                            <span><i class="fas fa-quote-right"></i> 18 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Hydrogeology</span>
+                            <span class="article-tag">Water Quality</span>
+                            <span class="article-tag">Environmental Monitoring</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- EVS Article 2 -->
+                <article class="article-card" data-category="evs" data-type="technical">
+                    <div class="article-card-badges">
+                        <span class="badge badge-technical">Technical Report</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Soil Erosion Modeling Using Remote Sensing and GIS in Agricultural Watersheds</h3>
+                        <p class="article-card-excerpt">
+                            Integration of remote sensing data with GIS for soil erosion risk assessment. 
+                            Application of RUSLE model modified for tropical conditions and validation with 
+                            field measurements.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Jun 2024</span>
+                            <span><i class="far fa-clock"></i> 16 min</span>
+                            <span><i class="fas fa-quote-right"></i> 7 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Remote Sensing</span>
+                            <span class="article-tag">GIS</span>
+                            <span class="article-tag">Soil Science</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Multivariate Analysis Section -->
+        <section class="category-section" id="multivariate">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Multivariate Analysis</h2>
+                    <p class="category-description">
+                        Advanced multivariate statistical techniques for pattern recognition, dimensionality 
+                        reduction, and data-driven modeling in geosciences.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- Multivariate Article 1 -->
+                <article class="article-card" data-category="multivariate" data-type="journal">
+                    <div class="article-card-badges">
+                        <span class="badge badge-journal">Journal Article</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Machine Learning Approaches for Geochemical Anomaly Detection</h3>
+                        <p class="article-card-excerpt">
+                            Comparative study of machine learning algorithms for detecting geochemical anomalies 
+                            in mineral exploration. Application of random forests, SVM, and neural networks to 
+                            stream sediment geochemistry data.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> May 2024</span>
+                            <span><i class="far fa-clock"></i> 30 min</span>
+                            <span><i class="fas fa-quote-right"></i> 22 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Machine Learning</span>
+                            <span class="article-tag">Anomaly Detection</span>
+                            <span class="article-tag">Geochemistry</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Multivariate Article 2 -->
+                <article class="article-card" data-category="multivariate" data-type="conference">
+                    <div class="article-card-badges">
+                        <span class="badge badge-conference">Conference Paper</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Multivariate Time Series Analysis of Geophysical Monitoring Data</h3>
+                        <p class="article-card-excerpt">
+                            Application of multivariate time series methods to analyze correlated geophysical 
+                            monitoring datasets. Detection of subtle changes in system behavior preceding 
+                            significant geological events.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Apr 2024</span>
+                            <span><i class="far fa-clock"></i> 18 min</span>
+                            <span><i class="fas fa-quote-right"></i> 9 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Time Series</span>
+                            <span class="article-tag">Monitoring</span>
+                            <span class="article-tag">Correlation Analysis</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Spatial Data Aggregation Section -->
+        <section class="category-section" id="spatial">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div>
+                    <h2 class="category-title">Spatial Data Aggregation</h2>
+                    <p class="category-description">
+                        Techniques for spatial data integration, aggregation, and visualization for 
+                        decision support in resource management and urban planning.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="articles-grid">
+                <!-- Spatial Article 1 -->
+                <article class="article-card" data-category="spatial" data-type="journal">
+                    <div class="article-card-badges">
+                        <span class="badge badge-journal">Journal Article</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Spatial Interpolation Methods for Resource Estimation in Undersampled Regions</h3>
+                        <p class="article-card-excerpt">
+                            Evaluation of spatial interpolation techniques for resource estimation in 
+                            geologically complex and undersampled regions. Comparison of kriging, IDW, 
+                            and machine learning-based approaches.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Mar 2024</span>
+                            <span><i class="far fa-clock"></i> 24 min</span>
+                            <span><i class="fas fa-quote-right"></i> 14 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">Geostatistics</span>
+                            <span class="article-tag">Kriging</span>
+                            <span class="article-tag">Resource Estimation</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Spatial Article 2 -->
+                <article class="article-card" data-category="spatial" data-type="technical">
+                    <div class="article-card-badges">
+                        <span class="badge badge-technical">Technical Report</span>
+                    </div>
+                    <div class="article-card-image">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="article-card-content">
+                        <h3 class="article-card-title">Multi-Scale Spatial Data Integration for Urban Planning Applications</h3>
+                        <p class="article-card-excerpt">
+                            Framework for integrating multi-scale spatial datasets for comprehensive urban 
+                            planning. Application to Lusaka city demonstrating integration of demographic, 
+                            infrastructure, and environmental data layers.
+                        </p>
+                        <div class="article-card-meta">
+                            <span><i class="far fa-calendar"></i> Feb 2024</span>
+                            <span><i class="far fa-clock"></i> 20 min</span>
+                            <span><i class="fas fa-quote-right"></i> 6 citations</span>
+                        </div>
+                        <div class="article-tags">
+                            <span class="article-tag">GIS Integration</span>
+                            <span class="article-tag">Urban Planning</span>
+                            <span class="article-tag">Spatial Analysis</span>
+                        </div>
+                        <div class="article-card-actions">
+                            <a href="#" class="read-more-btn">
+                                Read <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-primary">
+                                <i class="far fa-file-pdf text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Robert Sichomba</h3>
+                <p>Data Scientist • Geophysicist • Materials Engineer</p>
+                <p>Bridging disciplines through innovation.</p>
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/robert-sichomba" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/RobertSichombaBob" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:sichombarobertbob@email.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
-                <p>© 2024 Robert Sichomba. All rights reserved. | Designed with precision for the academic community</p>
+            <div class="footer-section">
+                <h3>Portfolio</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="index.html">Articles</a></li>
+                    <li><a href="../index.html#projects">Projects</a></li>
+                    <li><a href="../index.html#cv">Download CV</a></li>
+                </ul>
             </div>
+
+            <div class="footer-section">
+                <h3>Research Areas</h3>
+                <ul>
+                    <li><a href="#physics">Physics & Geophysics</a></li>
+                    <li><a href="#math">Mathematical Methods</a></li>
+                    <li><a href="#evs">Environmental Science</a></li>
+                    <li><a href="#multivariate">Multivariate Analysis</a></li>
+                    <li><a href="#spatial">Spatial Data Aggregation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p><i class="fas fa-envelope"></i> sichombarobertbob@email.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Lusaka, Zambia</p>
+                <p><i class="fas fa-briefcase"></i> Available for Research Collaboration</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Robert Sichomba. All rights reserved. | Designed with precision for the academic community</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                This work is licensed under a Creative Commons Attribution 4.0 International License
+            </p>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu functionality
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
+    <!-- Back to Top -->
+    <button id="backToTop" style="display: none; position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 1000;">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
+    <!-- JavaScript Files -->
+    <script src="../assets/js/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMobile = document.getElementById('navMobile');
+        
+        menuToggle.addEventListener('click', () => {
+            navMobile.classList.toggle('active');
+        });
+        
         // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobile-menu');
-            const button = document.getElementById('mobile-menu-button');
-            if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
-                menu.classList.add('hidden');
+        document.addEventListener('click', (event) => {
+            if (!navMobile.contains(event.target) && !menuToggle.contains(event.target)) {
+                navMobile.classList.remove('active');
             }
+        });
+        
+        // Close mobile menu when clicking on a link
+        navMobile.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMobile.classList.remove('active');
+            });
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'flex';
+                backToTop.style.alignItems = 'center';
+                backToTop.style.justifyContent = 'center';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const categoryTags = document.querySelectorAll('.category-tag');
+        const articleCards = document.querySelectorAll('.article-card');
+        const categorySections = document.querySelectorAll('.category-section');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.dataset.filter;
+                
+                // Show/hide articles based on filter
+                articleCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.type === filter) {
+                        card.style.display = 'block';
+                        // Animate in
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Also update sections visibility
+                updateCategoryVisibility();
+            });
+        });
+        
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Update active tag
+                categoryTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                
+                const category = tag.dataset.category;
+                
+                // Scroll to section if not "all"
+                if (category !== 'all') {
+                    const section = document.getElementById(category);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+                
+                // Filter articles by category
+                articleCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        // Animate in
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Also update sections visibility
+                updateCategoryVisibility();
+            });
+        });
+        
+        function updateCategoryVisibility() {
+            categorySections.forEach(section => {
+                const sectionId = section.id;
+                const articlesInSection = section.querySelectorAll('.article-card');
+                let visibleCount = 0;
+                
+                articlesInSection.forEach(card => {
+                    if (card.style.display !== 'none') {
+                        visibleCount++;
+                    }
+                });
+                
+                // Show/hide section based on visible articles
+                if (visibleCount > 0) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+        
+        // Enhanced scroll effects for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.backdropFilter = 'blur(10px)';
+                nav.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+        
+        // Initialize animations with delays
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add animation delay to sections
+            document.querySelectorAll('.category-section').forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.2}s`;
+            });
+            
+            // Add animation delay to article cards
+            document.querySelectorAll('.article-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add hover effect to cards
+            document.querySelectorAll('.article-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.4)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.2)';
+                });
+            });
+            
+            // Add reading progress indicator
+            const readingProgress = document.createElement('div');
+            readingProgress.style.position = 'fixed';
+            readingProgress.style.top = '0';
+            readingProgress.style.left = '0';
+            readingProgress.style.height = '3px';
+            readingProgress.style.background = 'linear-gradient(90deg, var(--primary), var(--primary-dark))';
+            readingProgress.style.zIndex = '9998';
+            readingProgress.style.width = '0%';
+            readingProgress.style.transition = 'width 0.3s ease';
+            document.body.appendChild(readingProgress);
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                readingProgress.style.width = scrolled + '%';
+            });
         });
     </script>
 </body>
