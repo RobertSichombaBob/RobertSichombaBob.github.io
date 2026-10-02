@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ===== SEO ===== -->
+<title>Robert Sichomba — Exploration Geologist, Data Scientist & Geotechnical Specialist</title>
+<meta name="description" content="Robert Sichomba — Exploration Geologist, Data Scientist, Geophysicist and Geotechnical & Materials Specialist. Available for consulting in mineral exploration, drill targeting, geophysics, geochemical data science, GIS, QA/QC systems and materials testing." />
+<meta name="keywords" content="Exploration Geologist, Data Scientist, Geophysicist, Geotechnical Engineer, Geostatistics, Python, PostGIS, QGIS, Drill Targeting, Mineral Exploration, Zambia, Consultant" />
+<meta name="author" content="Robert Sichomba" />
+<link rel="canonical" href="https://myportfolio-uwst.onrender.com" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Robert Sichomba — Exploration Geologist & Data Scientist" />
+<meta property="og:description" content="Field-tested geology. Data-driven decisions. Consulting across exploration, geophysics, geotech and geoscience analytics." />
+<meta property="og:url" content="https://myportfolio-uwst.onrender.com" />
+<meta property="og:image" content="site.jpg" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Robert Sichomba — Exploration Geologist & Data Scientist" />
+<meta name="twitter:description" content="Field-tested geology. Data-driven decisions." />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛏️</text></svg>" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS & THEMES
+   ============================================================ */
+:root{
+  --bg:            #ffffff;
+  --bg-alt:        #f6f7f9;
+  --bg-elev:       #ffffff;
+  --surface:       #ffffff;
+  --border:        #e3e6ea;
+  --text:          #16202b;
+  --text-soft:     #55616f;
+  --text-mute:     #8b95a1;
+
+  --brand:         #0d3b66;   /* deep navy   */
+  --brand-soft:    #e8eef6;
+  --accent:        #c2410c;   /* copper      */
+  --accent-soft:   #fdeee7;
+  --teal:          #0f766e;
+  --teal-soft:     #e6f4f2;
+
+  --ring:          rgba(13,59,102,.28);
+  --shadow-sm:     0 1px 2px rgba(16,24,40,.06), 0 1px 3px rgba(16,24,40,.10);
+  --shadow-md:     0 4px 12px rgba(16,24,40,.07), 0 2px 4px rgba(16,24,40,.05);
+  --shadow-lg:     0 18px 40px -12px rgba(16,24,40,.18), 0 8px 16px -8px rgba(16,24,40,.10);
+
+  --radius-sm: 8px;
+  --radius:    14px;
+  --radius-lg: 22px;
+
+  --maxw: 1180px;
+  --nav-h: 68px;
+
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-head: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+[data-theme="dark"]{
+  --bg:            #0b1219;
+  --bg-alt:        #0f1720;
+  --bg-elev:       #131d28;
+  --surface:       #131d28;
+  --border:        #22303f;
+  --text:          #e8edf3;
+  --text-soft:     #a3b1c0;
+  --text-mute:     #6f7f90;
+
+  --brand:         #6ea8dc;
+  --brand-soft:    #13273b;
+  --accent:        #f08a4b;
+  --accent-soft:   #2b1a10;
+  --teal:          #4ecdc4;
+  --teal-soft:     #0e2725;
+
+  --ring:          rgba(110,168,220,.35);
+  --shadow-sm:     0 1px 2px rgba(0,0,0,.4);
+  --shadow-md:     0 4px 14px rgba(0,0,0,.45);
+  --shadow-lg:     0 22px 50px -14px rgba(0,0,0,.7);
+}
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:calc(var(--nav-h) + 16px); -webkit-text-size-adjust:100%; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.65;
+  color:var(--text);
+  background:var(--bg);
+  overflow-x:hidden;
+  transition:background .35s ease, color .35s ease;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+h1,h2,h3,h4{ font-family:var(--font-head); line-height:1.18; margin:0; letter-spacing:-.02em; }
+p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+
+::selection{ background:var(--accent); color:#fff; }
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* ============================================================
+   3. LAYOUT UTILITIES
+   ============================================================ */
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:22px; }
+.section{ padding:96px 0; position:relative; }
+.section--alt{ background:var(--bg-alt); }
+
+.section-head{ max-width:720px; margin-bottom:56px; }
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.74rem; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent);
+  margin-bottom:14px;
+}
+.eyebrow::before{ content:''; width:26px; height:2px; background:var(--accent); border-radius:2px; }
+.section-title{ font-size:clamp(1.75rem,3.6vw,2.6rem); font-weight:700; margin-bottom:16px; }
+.section-sub{ color:var(--text-soft); font-size:1.03rem; }
+
+.grad-text{
+  background:linear-gradient(100deg,var(--brand),var(--teal) 55%,var(--accent));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+/* ============================================================
+   4. BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:9px;
+  padding:13px 24px; border-radius:999px;
+  font-size:.93rem; font-weight:600; letter-spacing:.01em;
+  transition:transform .18s ease, box-shadow .22s ease, background .22s ease, color .22s ease, border-color .22s ease;
+  white-space:nowrap;
+}
+.btn svg{ width:17px; height:17px; flex-shrink:0; }
+.btn:hover{ transform:translateY(-2px); }
+.btn:active{ transform:translateY(0); }
+
+.btn--primary{ background:var(--brand); color:#fff; box-shadow:var(--shadow-md); }
+.btn--primary:hover{ box-shadow:var(--shadow-lg); }
+[data-theme="dark"] .btn--primary{ color:#0b1219; }
+
+.btn--accent{ background:var(--accent); color:#fff; box-shadow:var(--shadow-md); }
+.btn--accent:hover{ box-shadow:var(--shadow-lg); }
+
+.btn--ghost{
+  border:1.5px solid var(--border); color:var(--text);
+  background:var(--surface);
+}
+.btn--ghost:hover{ border-color:var(--brand); color:var(--brand); }
+
+/* ============================================================
+   5. NAVBAR
+   ============================================================ */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, box-shadow .3s ease, height .3s ease;
+}
+.nav.scrolled{ border-bottom-color:var(--border); box-shadow:var(--shadow-sm); }
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; }
+
+.logo{ display:flex; align-items:center; gap:11px; font-family:var(--font-head); font-weight:700; font-size:1.02rem; }
+.logo__mark{
+  width:36px; height:36px; border-radius:10px; flex-shrink:0;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--brand),var(--teal));
+  color:#fff; font-size:.95rem; font-weight:700;
+  box-shadow:var(--shadow-sm);
+}
+.logo__text small{ display:block; font-family:var(--font-body); font-size:.68rem; font-weight:500; color:var(--text-mute); letter-spacing:.06em; text-transform:uppercase; }
+
+.nav__links{ display:flex; align-items:center; gap:4px; }
+.nav__links a{
+  position:relative; padding:8px 13px; border-radius:9px;
+  font-size:.88rem; font-weight:500; color:var(--text-soft);
+  transition:color .2s ease, background .2s ease;
+}
+.nav__links a:hover{ color:var(--text); background:var(--bg-alt); }
+.nav__links a.active{ color:var(--accent); font-weight:600; }
+
+.nav__actions{ display:flex; align-items:center; gap:9px; }
+
+.icon-btn{
+  width:38px; height:38px; border-radius:10px;
+  display:grid; place-items:center;
+  border:1px solid var(--border); background:var(--surface);
+  color:var(--text-soft);
+  transition:.2s ease;
+}
+.icon-btn:hover{ color:var(--accent); border-color:var(--accent); }
+.icon-btn svg{ width:18px; height:18px; }
+[data-theme="light"] .icon-sun{ display:none; }
+[data-theme="dark"]  .icon-moon{ display:none; }
+
+.burger{ display:none; }
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed; inset:var(--nav-h) 0 auto 0; z-index:99;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  padding:14px 22px 26px;
+  display:none; flex-direction:column; gap:2px;
+  box-shadow:var(--shadow-lg);
+  max-height:calc(100vh - var(--nav-h));
+  overflow-y:auto;
+}
+.mobile-menu.open{ display:flex; animation:slideDown .28s ease; }
+@keyframes slideDown{ from{opacity:0; transform:translateY(-12px);} to{opacity:1; transform:none;} }
+.mobile-menu a{
+  padding:13px 12px; border-radius:10px; font-weight:500;
+  color:var(--text-soft); border-bottom:1px solid var(--border);
+}
+.mobile-menu a:last-of-type{ border-bottom:none; }
+.mobile-menu a:hover{ background:var(--bg-alt); color:var(--accent); }
+.mobile-menu .btn{ margin-top:14px; width:100%; }
+
+/* ============================================================
+   6. HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  padding:calc(var(--nav-h) + 84px) 0 92px;
+  overflow:hidden;
+}
+.hero__bg{ position:absolute; inset:0; z-index:0; pointer-events:none; }
+.hero__contours{
+  position:absolute; right:-14%; top:-18%;
+  width:min(1100px,120vw); opacity:.5;
+  color:var(--brand);
+}
+[data-theme="dark"] .hero__contours{ opacity:.28; color:var(--teal); }
+.hero__contours path{
+  fill:none; stroke:currentColor; stroke-width:1.4;
+  stroke-dasharray:1400; stroke-dashoffset:1400;
+  animation:draw 2.6s cubic-bezier(.4,0,.2,1) forwards;
+}
+.hero__contours path:nth-child(2){ animation-delay:.18s; }
+.hero__contours path:nth-child(3){ animation-delay:.36s; }
+.hero__contours path:nth-child(4){ animation-delay:.54s; }
+.hero__contours path:nth-child(5){ animation-delay:.72s; }
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+
+.hero__glow{
+  position:absolute; border-radius:50%; filter:blur(90px); opacity:.5;
+}
+.hero__glow--1{ width:460px; height:460px; background:var(--brand); top:-140px; left:-120px; opacity:.16; }
+.hero__glow--2{ width:400px; height:400px; background:var(--accent); bottom:-160px; right:-80px; opacity:.13; }
+
+.hero__inner{ position:relative; z-index:1; max-width:880px; }
+
+.badge{
+  display:inline-flex; align-items:center; gap:9px;
+  padding:7px 15px 7px 10px; border-radius:999px;
+  background:var(--teal-soft); color:var(--teal);
+  font-size:.79rem; font-weight:600; letter-spacing:.02em;
+  border:1px solid color-mix(in srgb,var(--teal) 25%, transparent);
+  margin-bottom:26px;
+}
+.badge .dot{
+  width:8px; height:8px; border-radius:50%; background:var(--teal);
+  box-shadow:0 0 0 0 color-mix(in srgb,var(--teal) 70%, transparent);
+  animation:pulse 2.2s infinite;
+}
+@keyframes pulse{
+  0%{ box-shadow:0 0 0 0 color-mix(in srgb,var(--teal) 60%, transparent); }
+  70%{ box-shadow:0 0 0 9px transparent; }
+  100%{ box-shadow:0 0 0 0 transparent; }
+}
+
+.hero h1{
+  font-size:clamp(2.1rem,6.2vw,4rem);
+  font-weight:700; letter-spacing:-.035em; margin-bottom:10px;
+}
+.hero__roles{
+  font-family:var(--font-head);
+  font-size:clamp(1.05rem,2.7vw,1.6rem);
+  font-weight:600; color:var(--text-soft);
+  min-height:1.7em; margin-bottom:22px;
+}
+.hero__roles .rotator{
+  color:var(--accent);
+  border-bottom:2px solid color-mix(in srgb,var(--accent) 40%, transparent);
+  padding-bottom:1px;
+}
+.hero__roles .cursor{
+  display:inline-block; width:2px; height:1em; background:var(--accent);
+  margin-left:3px; vertical-align:-.12em; animation:blink 1.05s steps(2) infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+
+.hero__lead{
+  font-size:clamp(1rem,1.5vw,1.11rem);
+  color:var(--text-soft); max-width:640px; margin-bottom:34px;
+}
+.hero__lead strong{ color:var(--text); font-weight:600; }
+
+.hero__cta{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:56px; }
+
+.hero__stats{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; background:var(--border);
+  border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; max-width:800px;
+}
+.stat{ background:var(--bg); padding:22px 18px; transition:background .25s ease; }
+.stat:hover{ background:var(--bg-alt); }
+.stat__num{
+  font-family:var(--font-head); font-size:clamp(1.4rem,3vw,1.95rem);
+  font-weight:700; color:var(--brand); line-height:1; margin-bottom:7px;
+}
+[data-theme="dark"] .stat__num{ color:var(--teal); }
+.stat__label{ font-size:.76rem; color:var(--text-mute); letter-spacing:.04em; text-transform:uppercase; font-weight:600; }
+
+/* ============================================================
+   7. ABOUT
+   ============================================================ */
+.about{ display:grid; grid-template-columns:1.35fr 1fr; gap:60px; align-items:start; }
+.about__body p{ color:var(--text-soft); margin-bottom:18px; font-size:1.02rem; }
+.about__body strong{ color:var(--text); font-weight:600; }
+
+.facts{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:28px;
+  box-shadow:var(--shadow-sm); position:sticky; top:calc(var(--nav-h) + 24px);
+}
+.facts h4{ font-size:.78rem; text-transform:uppercase; letter-spacing:.13em; color:var(--text-mute); margin-bottom:20px; font-family:var(--font-body); font-weight:700; }
+.facts li{ display:flex; gap:13px; padding:11px 0; border-bottom:1px solid var(--border); font-size:.9rem; }
+.facts li:last-child{ border-bottom:none; }
+.facts svg{ width:17px; height:17px; color:var(--accent); flex-shrink:0; margin-top:3px; }
+.facts b{ display:block; font-weight:600; color:var(--text); font-size:.87rem; }
+.facts span{ color:var(--text-mute); font-size:.82rem; }
+
+/* ============================================================
+   8. SERVICES
+   ============================================================ */
+.grid{ display:grid; gap:22px; }
+.grid--3{ grid-template-columns:repeat(3,1fr); }
+.grid--2{ grid-template-columns:repeat(2,1fr); }
+
+.card{
+  position:relative;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:30px 28px;
+  transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease, border-color .28s ease;
+  overflow:hidden;
+}
+.card::before{
+  content:''; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg,var(--brand),var(--teal),var(--accent));
+  transform:scaleX(0); transform-origin:left;
+  transition:transform .38s cubic-bezier(.2,.7,.3,1);
+}
+.card:hover{ transform:translateY(-5px); box-shadow:var(--shadow-lg); border-color:transparent; }
+.card:hover::before{ transform:scaleX(1); }
+
+.card__icon{
+  width:50px; height:50px; border-radius:14px;
+  display:grid; place-items:center; margin-bottom:20px;
+  background:var(--brand-soft); color:var(--brand);
+  transition:transform .3s ease;
+}
+.card:hover .card__icon{ transform:scale(1.08) rotate(-4deg); }
+.card__icon svg{ width:23px; height:23px; }
+.card:nth-child(2) .card__icon{ background:var(--accent-soft); color:var(--accent); }
+.card:nth-child(3) .card__icon{ background:var(--teal-soft); color:var(--teal); }
+.card:nth-child(5) .card__icon{ background:var(--accent-soft); color:var(--accent); }
+.card:nth-child(6) .card__icon{ background:var(--teal-soft); color:var(--teal); }
+
+.card h3{ font-size:1.12rem; margin-bottom:11px; font-weight:600; }
+.card p{ color:var(--text-soft); font-size:.92rem; margin-bottom:18px; }
+.card__list{ display:flex; flex-direction:column; gap:8px; }
+.card__list li{
+  display:flex; gap:9px; font-size:.85rem; color:var(--text-soft);
+  align-items:flex-start;
+}
+.card__list li::before{
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--accent); flex-shrink:0; margin-top:8px;
+}
+
+/* ============================================================
+   9. PROCESS
+   ============================================================ */
+.process{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+.step{ position:relative; padding:0 26px; }
+.step:first-child{ padding-left:0; }
+.step:last-child{ padding-right:0; }
+.step__num{
+  font-family:var(--font-head); font-size:2.6rem; font-weight:700;
+  color:var(--border); line-height:1; margin-bottom:14px;
+  transition:color .3s ease;
+}
+.step:hover .step__num{ color:var(--accent); }
+.step h4{ font-size:1rem; margin-bottom:9px; font-weight:600; }
+.step p{ font-size:.88rem; color:var(--text-soft); }
+.step::after{
+  content:''; position:absolute; top:20px; right:0;
+  width:calc(100% - 62px); height:1px;
+  background:var(--border); left:62px;
+}
+.step:last-child::after{ display:none; }
+
+/* ============================================================
+   10. SKILLS (tabs)
+   ============================================================ */
+.tabs{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:34px; }
+.tab{
+  padding:9px 18px; border-radius:999px;
+  border:1.5px solid var(--border); background:var(--surface);
+  font-size:.85rem; font-weight:600; color:var(--text-soft);
+  transition:.22s ease;
+}
+.tab:hover{ border-color:var(--brand); color:var(--brand); }
+.tab.active{ background:var(--brand); border-color:var(--brand); color:#fff; }
+[data-theme="dark"] .tab.active{ color:#0b1219; }
+
+.panel{ display:none; animation:fade .35s ease; }
+.panel.active{ display:block; }
+@keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+
+.chips{ display:flex; flex-wrap:wrap; gap:10px; }
+.chip{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 16px; border-radius:10px;
+  background:var(--surface); border:1px solid var(--border);
+  font-size:.86rem; font-weight:500; color:var(--text-soft);
+  transition:.22s ease;
+}
+.chip:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+.chip::before{
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--teal); flex-shrink:0;
+}
+.panel[data-panel="datascience"] .chip::before{ background:var(--accent); }
+.panel[data-panel="geotech"] .chip::before{ background:var(--brand); }
+.panel[data-panel="physics"] .chip::before{ background:var(--teal); }
+
+/* ============================================================
+   11. TIMELINE
+   ============================================================ */
+.timeline{ position:relative; padding-left:34px; }
+.timeline::before{
+  content:''; position:absolute; left:9px; top:8px; bottom:8px; width:2px;
+  background:linear-gradient(180deg,var(--brand),var(--teal),transparent);
+  border-radius:2px;
+}
+.tl-item{ position:relative; padding-bottom:42px; }
+.tl-item:last-child{ padding-bottom:0; }
+.tl-item::before{
+  content:''; position:absolute; left:-34px; top:6px;
+  width:20px; height:20px; border-radius:50%;
+  background:var(--bg); border:2.5px solid var(--brand);
+  box-shadow:0 0 0 4px var(--bg);
+  transition:.3s ease;
+}
+.tl-item:hover::before{ border-color:var(--accent); transform:scale(1.15); }
+
+.tl-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-bottom:4px; }
+.tl-head h3{ font-size:1.08rem; font-weight:600; }
+.tl-co{ color:var(--accent); font-weight:600; font-size:.92rem; }
+.tl-date{
+  margin-left:auto; font-size:.78rem; font-weight:600; letter-spacing:.05em;
+  color:var(--text-mute); background:var(--bg-alt);
+  padding:4px 12px; border-radius:999px; border:1px solid var(--border);
+  white-space:nowrap;
+}
+.tl-body{ margin-top:14px; display:flex; flex-direction:column; gap:9px; }
+.tl-body li{
+  display:flex; gap:11px; font-size:.92rem; color:var(--text-soft);
+  align-items:flex-start;
+}
+.tl-body li::before{
+  content:''; width:5px; height:5px; border-radius:50%;
+  background:var(--accent); flex-shrink:0; margin-top:9px;
+}
+.tl-body strong{ color:var(--text); font-weight:600; }
+
+/* ============================================================
+   12. PROJECTS
+   ============================================================ */
+.filters{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:38px; }
+.filter{
+  padding:8px 17px; border-radius:999px;
+  border:1.5px solid var(--border); background:var(--surface);
+  font-size:.83rem; font-weight:600; color:var(--text-soft);
+  transition:.22s ease;
+}
+.filter:hover{ border-color:var(--accent); color:var(--accent); }
+.filter.active{ background:var(--accent); border-color:var(--accent); color:#fff; }
+
+.projects{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+.project{
+  display:flex; flex-direction:column;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-lg); overflow:hidden;
+  transition:transform .28s cubic-bezier(.2,.7,.3,1), box-shadow .28s ease, opacity .3s ease;
+}
+.project:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+.project.hide{ display:none; }
+
+.project__top{
+  padding:24px 24px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+.project__cat{
+  font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:5px 11px; border-radius:6px;
+  background:var(--brand-soft); color:var(--brand);
+}
+.project[data-cat="datascience"] .project__cat{ background:var(--accent-soft); color:var(--accent); }
+.project[data-cat="geotech"] .project__cat{ background:var(--teal-soft); color:var(--teal); }
+
+.project__metric{
+  font-family:var(--font-head); font-weight:700; font-size:1.25rem;
+  color:var(--accent); line-height:1;
+}
+.project__metric small{ display:block; font-family:var(--font-body); font-size:.66rem; font-weight:600; color:var(--text-mute); letter-spacing:.06em; text-transform:uppercase; margin-top:3px; }
+
+.project__body{ padding:18px 24px 24px; flex:1; display:flex; flex-direction:column; }
+.project h3{ font-size:1.05rem; margin-bottom:10px; font-weight:600; }
+.project p{ font-size:.88rem; color:var(--text-soft); margin-bottom:18px; flex:1; }
+.project__tech{ display:flex; flex-wrap:wrap; gap:6px; }
+.project__tech span{
+  font-size:.72rem; font-weight:600; padding:4px 10px; border-radius:6px;
+  background:var(--bg-alt); color:var(--text-mute); border:1px solid var(--border);
+}
+
+/* ============================================================
+   13. CERTIFICATIONS
+   ============================================================ */
+.certs{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.cert{
+  display:flex; align-items:flex-start; gap:13px;
+  padding:18px 20px; border-radius:var(--radius);
+  background:var(--surface); border:1px solid var(--border);
+  transition:.22s ease;
+}
+.cert:hover{ border-color:var(--accent); transform:translateX(4px); }
+.cert svg{ width:19px; height:19px; color:var(--accent); flex-shrink:0; margin-top:2px; }
+.cert b{ display:block; font-size:.89rem; font-weight:600; margin-bottom:2px; }
+.cert span{ font-size:.78rem; color:var(--text-mute); }
+
+/* ============================================================
+   14. CONTACT
+   ============================================================ */
+.contact{ display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:start; }
+
+.contact__list{ display:flex; flex-direction:column; gap:8px; margin-top:30px; }
+.contact__item{
+  display:flex; align-items:center; gap:14px;
+  padding:15px 18px; border-radius:var(--radius);
+  border:1px solid var(--border); background:var(--surface);
+  transition:.22s ease;
+}
+.contact__item:hover{ border-color:var(--accent); transform:translateX(4px); }
+.contact__item svg{ width:18px; height:18px; color:var(--accent); flex-shrink:0; }
+.contact__item b{ display:block; font-size:.78rem; color:var(--text-mute); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+.contact__item span{ font-size:.9rem; font-weight:500; word-break:break-word; }
+
+.form{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-lg); padding:32px;
+  box-shadow:var(--shadow-sm);
+}
+.field{ margin-bottom:18px; }
+.field label{
+  display:block; font-size:.79rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--text-mute); margin-bottom:8px;
+}
+.field input, .field select, .field textarea{
+  width:100%; padding:12px 15px;
+  border:1.5px solid var(--border); border-radius:var(--radius-sm);
+  background:var(--bg); color:var(--text);
+  font-family:inherit; font-size:.93rem;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus{
+  outline:none; border-color:var(--brand);
+  box-shadow:0 0 0 3px var(--ring);
+}
+.field textarea{ resize:vertical; min-height:118px; }
+.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form .btn{ width:100%; margin-top:6px; }
+
+.form-note{ font-size:.78rem; color:var(--text-mute); text-align:center; margin-top:14px; }
+
+/* ============================================================
+   15. FOOTER
+   ============================================================ */
+.footer{
+  background:var(--bg-alt); border-top:1px solid var(--border);
+  padding:52px 0 30px;
+}
+.footer__top{
+  display:flex; flex-wrap:wrap; justify-content:space-between;
+  gap:32px; padding-bottom:32px; border-bottom:1px solid var(--border);
+}
+.footer__brand{ max-width:340px; }
+.footer__brand p{ font-size:.88rem; color:var(--text-soft); margin-top:14px; }
+.footer__col h5{
+  font-size:.76rem; text-transform:uppercase; letter-spacing:.12em;
+  color:var(--text-mute); margin-bottom:16px; font-weight:700; font-family:var(--font-body);
+}
+.footer__col li{ margin-bottom:9px; }
+.footer__col a{ font-size:.89rem; color:var(--text-soft); transition:color .2s ease; }
+.footer__col a:hover{ color:var(--accent); }
+
+.socials{ display:flex; gap:10px; margin-top:18px; }
+.socials a{
+  width:38px; height:38px; border-radius:10px; display:grid; place-items:center;
+  border:1px solid var(--border); background:var(--surface); color:var(--text-soft);
+  transition:.22s ease;
+}
+.socials a:hover{ color:#fff; background:var(--accent); border-color:var(--accent); transform:translateY(-3px); }
+.socials svg{ width:17px; height:17px; }
+
+.footer__bottom{
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
+  padding-top:24px; font-size:.82rem; color:var(--text-mute);
+}
+
+/* ============================================================
+   16. BACK TO TOP
+   ============================================================ */
+.to-top{
+  position:fixed; right:24px; bottom:24px; z-index:90;
+  width:46px; height:46px; border-radius:14px;
+  background:var(--brand); color:#fff;
+  display:grid; place-items:center;
+  box-shadow:var(--shadow-lg);
+  opacity:0; visibility:hidden; transform:translateY(14px);
+  transition:.3s ease;
+}
+.to-top.show{ opacity:1; visibility:visible; transform:none; }
+.to-top:hover{ transform:translateY(-3px); }
+.to-top svg{ width:19px; height:19px; }
+[data-theme="dark"] .to-top{ color:#0b1219; }
+
+/* ============================================================
+   17. SCROLL REVEAL
+   ============================================================ */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1); }
+.reveal.in{ opacity:1; transform:none; }
+.reveal.d1{ transition-delay:.08s; }
+.reveal.d2{ transition-delay:.16s; }
+.reveal.d3{ transition-delay:.24s; }
+
+/* ============================================================
+   18. RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .about{ grid-template-columns:1fr; gap:40px; }
+  .facts{ position:static; }
+  .grid--3{ grid-template-columns:repeat(2,1fr); }
+  .projects{ grid-template-columns:repeat(2,1fr); }
+  .certs{ grid-template-columns:repeat(2,1fr); }
+  .process{ grid-template-columns:repeat(2,1fr); gap:34px 0; }
+  .step:nth-child(2)::after{ display:none; }
+  .step{ padding:0 22px 0 0; }
+}
+
+@media (max-width:860px){
+  .nav__links{ display:none; }
+  .burger{ display:grid; }
+  .section{ padding:74px 0; }
+  .hero{ padding-top:calc(var(--nav-h) + 56px); }
+  .hero__stats{ grid-template-columns:repeat(2,1fr); }
+  .contact{ grid-template-columns:1fr; gap:38px; }
+}
+
+@media (max-width:620px){
+  .wrap{ padding-inline:18px; }
+  .grid--3, .grid--2, .projects, .certs{ grid-template-columns:1fr; }
+  .process{ grid-template-columns:1fr; }
+  .step{ padding:0; }
+  .step::after{ display:none; }
+  .hero__cta{ flex-direction:column; }
+  .hero__cta .btn{ width:100%; }
+  .field-row{ grid-template-columns:1fr; }
+  .form{ padding:24px 20px; }
+  .tl-date{ margin-left:0; }
+  .footer__top{ flex-direction:column; }
+  .to-top{ right:16px; bottom:16px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; }
+}
+
+/* Print */
+@media print{
+  .nav,.mobile-menu,.to-top,.hero__bg,.footer,.form{ display:none !important; }
+  .section{ padding:18px 0; page-break-inside:avoid; }
+  body{ font-size:11pt; }
+  .card,.project,.cert{ box-shadow:none; border:1px solid #ccc; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a href="#home" class="logo" aria-label="Robert Sichomba — home">
+      <span class="logo__mark">RS</span>
+      <span class="logo__text">
+        Robert Sichomba
+        <small>Geoscience &amp; Data</small>
+      </span>
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav__actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="#contact" class="btn btn--primary" style="padding:10px 20px;font-size:.86rem;">Hire Me</a>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#process">How I Work</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="btn btn--accent">Start a Project</a>
+</nav>
+
+<main>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="home">
+  <div class="hero__bg" aria-hidden="true">
+    <svg class="hero__contours" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+      <path d="M120 340 C90 250, 180 150, 300 140 C430 128, 520 190, 560 280 C600 372, 540 470, 430 500 C310 532, 165 470, 120 340 Z"/>
+      <path d="M170 340 C150 275, 220 200, 310 192 C410 183, 480 232, 512 300 C545 370, 498 442, 415 466 C318 494, 210 445, 170 340 Z"/>
+      <path d="M220 338 C206 292, 258 240, 322 234 C396 227, 444 262, 468 312 C492 364, 456 414, 396 432 C324 453, 250 418, 220 338 Z"/>
+      <path d="M268 336 C259 306, 292 272, 334 268 C382 264, 412 287, 428 318 C444 351, 420 384, 380 396 C333 410, 288 388, 268 336 Z"/>
+      <path d="M310 332 C305 315, 324 296, 350 293 C378 290, 396 304, 405 322 C414 341, 401 361, 377 368 C348 377, 322 363, 310 332 Z"/>
+    </svg>
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+  </div>
+
+  <div class="wrap hero__inner">
+    <span class="badge"><span class="dot"></span> Available for consulting &amp; contract work</span>
+
+    <h1>Robert Sichomba</h1>
+
+    <p class="hero__roles">
+      I work as a
+      <span class="rotator" id="rotator">Exploration Geologist</span><span class="cursor"></span>
+    </p>
+
+    <p class="hero__lead">
+      <strong>Field-tested geology. Data-driven decisions.</strong>
+      I help mining, exploration and construction clients turn complex geological,
+      geophysical and engineering data into confident targets, clean databases and
+      compliant QA/QC — combining 3+ years of field experience with Python,
+      geostatistics and GIS.
+    </p>
+
+    <div class="hero__cta">
+      <a href="#contact" class="btn btn--accent">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Start a Project
+      </a>
+      <a href="#projects" class="btn btn--ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20M2 12h20M2 17h20"/></svg>
+        View Case Studies
+      </a>
+      <a href="Robert_Sichomba_CV.pdf" class="btn btn--ghost" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+      </a>
+    </div>
+
+    <div class="hero__stats reveal">
+      <div class="stat">
+        <div class="stat__num" data-count="3" data-suffix="+">0</div>
+        <div class="stat__label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="24" data-suffix="+">0</div>
+        <div class="stat__label">Borrow Pits Evaluated</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="500" data-suffix="+">0</div>
+        <div class="stat__label">Samples in DB</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num" data-count="40" data-suffix="%">0</div>
+        <div class="stat__label">Reporting Time Saved</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="about__body reveal">
+        <span class="eyebrow">About Me</span>
+        <h2 class="section-title">A geoscientist who speaks <span class="grad-text">data</span>.</h2>
+
+        <p>
+          I'm an <strong>Exploration Geologist and Data Scientist</strong> based in North Western Zambia,
+          with over <strong>3 years of combined experience</strong> across mineral exploration, geophysics,
+          geotechnical engineering and road construction materials.
+        </p>
+        <p>
+          My work sits at the intersection of the field and the database. I've managed the full
+          exploration pipeline — soil and stream sediment sampling, diamond drilling supervision,
+          core logging, resource estimation and ore control — while building the
+          <strong>Python, SQL and PostGIS systems</strong> that make that data usable and auditable.
+        </p>
+        <p>
+          On the geotechnical side, I led a <strong>10+ technician laboratory team</strong> on the
+          Lusaka–Ndola Road Project, delivering <strong>98% specification compliance</strong> and
+          automating QA/QC reporting to cut reporting time by <strong>40%</strong>.
+        </p>
+        <p>
+          I'm currently completing an <strong>MSc in Data Science and Exploration Geology</strong>
+          (a Kobold Metals sponsored programme) — deepening my work in geostatistics, machine learning
+          and mineral prospectivity mapping.
+        </p>
+        <p>
+          I take on consulting and contract work in exploration targeting, geophysical interpretation,
+          geochemical data analysis, GIS, database design and materials QA/QC.
+        </p>
+      </div>
+
+      <aside class="facts reveal d2">
+        <h4>Quick Facts</h4>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>North Western, Zambia</b><span>Open to remote &amp; relocation</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div><b>MSc Data Science &amp; Exploration Geology</b><span>UNZA &amp; CBU — Kobold Metals sponsored (2026)</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>
+            <div><b>BSc Geophysics (With Merit)</b><span>Copperbelt University</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>
+            <div><b>6 Professional Certifications</b><span>ISO 17025, Marshall Mix, SANS 3001, more</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+            <div><b>English &amp; Bemba</b><span>Professional working proficiency</span></div>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section class="section section--alt" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title">What I can do for your project</h2>
+      <p class="section-sub">
+        Six service areas spanning the full geoscience workflow — from greenfield targeting
+        to compliant laboratory QA/QC. Engaged per project, retainer or day rate.
+      </p>
+    </div>
+
+    <div class="grid grid--3">
+      <article class="card reveal">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="M12 12 3 7M12 12l9-5M12 12v10"/></svg>
+        </div>
+        <h3>Mineral Exploration &amp; Drill Targeting</h3>
+        <p>End-to-end exploration programme design and execution, from target generation to drill-ready prospects.</p>
+        <ul class="card__list">
+          <li>Soil, stream sediment &amp; rock chip sampling programmes</li>
+          <li>Diamond drilling supervision &amp; core logging</li>
+          <li>Structural interpretation &amp; 3D geological modelling</li>
+          <li>Resource estimation &amp; ore control support</li>
+        </ul>
+      </article>
+
+      <article class="card reveal d1">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-8 4 16 3-8h6"/></svg>
+        </div>
+        <h3>Geophysics: Acquisition &amp; Interpretation</h3>
+        <p>Field acquisition and 2D/3D interpretation of geophysical datasets for lithological and structural mapping.</p>
+        <ul class="card__list">
+          <li>Ground magnetics &amp; Induced Polarization (IP)</li>
+          <li>Magnetic susceptibility &amp; gamma spectrometry</li>
+          <li>Portable XRF (pXRF) characterisation</li>
+          <li>Downhole logging &amp; anomaly delineation</li>
+        </ul>
+      </article>
+
+      <article class="card reveal d2">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        </div>
+        <h3>Geotechnical &amp; Materials Engineering</h3>
+        <p>Site investigation, materials characterisation and laboratory QA/QC for roads, civil works and mining infrastructure.</p>
+        <ul class="card__list">
+          <li>Borehole logging, SPT &amp; in-situ testing</li>
+          <li>Borrow pit exploration &amp; reserve assessment</li>
+          <li>Soils, aggregates, asphalt &amp; concrete testing</li>
+          <li>Compaction control &amp; specification compliance</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <h3>Geochemical Data Science &amp; Statistics</h3>
+        <p>Turn raw assay and geochemical datasets into ranked anomalies and defensible drill targets.</p>
+        <ul class="card__list">
+          <li>Compositional Data Analysis (CODA) &amp; PCA</li>
+          <li>Multivariate statistics, clustering &amp; regression</li>
+          <li>Machine learning for prospectivity mapping</li>
+          <li>Variography, kriging &amp; spatial interpolation</li>
+        </ul>
+      </article>
+
+      <article class="card reveal d1">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+        </div>
+        <h3>GIS &amp; 3D Spatial Modelling</h3>
+        <p>Complete QGIS/ArcGIS project setup, map production and spatial analysis for technical reporting.</p>
+        <ul class="card__list">
+          <li>End-to-end QGIS project configuration</li>
+          <li>Georeferencing, digitising &amp; map packages</li>
+          <li>Interpolated geochemical &amp; geophysical grids</li>
+          <li>Cross-sections &amp; 3D visualisation</li>
+        </ul>
+      </article>
+
+      <article class="card reveal d2">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
+        </div>
+        <h3>Exploration Databases &amp; QA/QC Systems</h3>
+        <p>Build the data infrastructure that keeps exploration and laboratory programmes audit-ready.</p>
+        <ul class="card__list">
+          <li>PostgreSQL/PostGIS database design</li>
+          <li>Automated validation, CRMs, blanks &amp; duplicates</li>
+          <li>Python QA/QC reporting pipelines</li>
+          <li>Interactive dashboards &amp; live monitoring</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+     ============================================================ -->
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">How I Work</span>
+      <h2 class="section-title">A simple, transparent process</h2>
+      <p class="section-sub">Every engagement follows the same four steps, so you always know where your project stands.</p>
+    </div>
+
+    <div class="process">
+      <div class="step reveal">
+        <div class="step__num">01</div>
+        <h4>Discovery</h4>
+        <p>A short call to understand your objective, data, timeline and constraints. I'll tell you honestly whether I'm the right fit.</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="step__num">02</div>
+        <h4>Scope &amp; Plan</h4>
+        <p>You receive a written scope: deliverables, method, timeline and fixed price. No surprises, no scope creep.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step__num">03</div>
+        <h4>Execute</h4>
+        <p>Fieldwork, data processing, modelling or laboratory work — with progress updates and early visibility on findings.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="step__num">04</div>
+        <h4>Deliver &amp; Support</h4>
+        <p>Clean deliverables — maps, models, databases, reports — plus a walkthrough and support after handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section class="section section--alt" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Capabilities</span>
+      <h2 class="section-title">Skills &amp; technical stack</h2>
+      <p class="section-sub">Browse by discipline. Everything listed here has been used on a live project — not just studied.</p>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="geo" role="tab">Geology &amp; Exploration</button>
+      <button class="tab" data-tab="geophys" role="tab">Geophysics</button>
+      <button class="tab" data-tab="geotech" role="tab">Geotechnical &amp; Materials</button>
+      <button class="tab" data-tab="datascience" role="tab">Data Science &amp; Statistics</button>
+      <button class="tab" data-tab="gis" role="tab">GIS &amp; Spatial</button>
+      <button class="tab" data-tab="physics" role="tab">Physics &amp; Teaching</button>
+    </div>
+
+    <div class="panel active" data-panel="geo">
+      <div class="chips">
+        <span class="chip">Diamond Drilling Supervision</span>
+        <span class="chip">Core Logging — Lithological</span>
+        <span class="chip">Core Logging — Structural</span>
+        <span class="chip">Core Logging — Mineralisation</span>
+        <span class="chip">Soil Sampling</span>
+        <span class="chip">Stream Sediment Surveys</span>
+        <span class="chip">Rock Chip Sampling</span>
+        <span class="chip">Geological Mapping</span>
+        <span class="chip">Structural Geology</span>
+        <span class="chip">Surveying &amp; Meter Marking</span>
+        <span class="chip">Resource Estimation</span>
+        <span class="chip">Ore Control</span>
+        <span class="chip">Grade Control</span>
+        <span class="chip">Drill Target Generation</span>
+        <span class="chip">QA/QC Protocols (CRM, blanks, duplicates)</span>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="geophys">
+      <div class="chips">
+        <span class="chip">Ground Magnetics</span>
+        <span class="chip">Induced Polarization (IP)</span>
+        <span class="chip">Magnetic Susceptibility (Mag Sus)</span>
+        <span class="chip">Gamma Spectrometry</span>
+        <span class="chip">Portable XRF (pXRF)</span>
+        <span class="chip">Downhole Logging</span>
+        <span class="chip">Geophysical Data Processing</span>
+        <span class="chip">2D Interpretation</span>
+        <span class="chip">3D Interpretation</span>
+        <span class="chip">Anomaly Delineation</span>
+        <span class="chip">Structural Refinement from Geophysics</span>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="geotech">
+      <div class="chips">
+        <span class="chip">Site Investigation</span>
+        <span class="chip">Borehole Logging</span>
+        <span class="chip">Standard Penetration Test (SPT)</span>
+        <span class="chip">In-situ Testing</span>
+        <span class="chip">Borrow Pit Exploration</span>
+        <span class="chip">Soil &amp; Rock Mechanics</span>
+        <span class="chip">Compaction Control</span>
+        <span class="chip">Soils &amp; Aggregates Testing</span>
+        <span class="chip">Asphalt Testing</span>
+        <span class="chip">Concrete Testing</span>
+        <span class="chip">Marshall Mix Design</span>
+        <span class="chip">Nuclear Gauge Operation</span>
+        <span class="chip">ASTM Standards</span>
+        <span class="chip">BS Standards</span>
+        <span class="chip">AASHTO Standards</span>
+        <span class="chip">RDA Specifications</span>
+        <span class="chip">SANS 3001</span>
+        <span class="chip">ISO 17025</span>
+        <span class="chip">Non-Conformance Reporting</span>
+        <span class="chip">Statistical Process Control</span>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="datascience">
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">pandas</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">scikit-learn</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">Plotly</span>
+        <span class="chip">Streamlit</span>
+        <span class="chip">SQL</span>
+        <span class="chip">PostgreSQL / PostGIS</span>
+        <span class="chip">Compositional Data Analysis (CODA)</span>
+        <span class="chip">Principal Component Analysis (PCA)</span>
+        <span class="chip">PLS Regression</span>
+        <span class="chip">Clustering</span>
+        <span class="chip">Random Forest</span>
+        <span class="chip">Support Vector Machines</span>
+        <span class="chip">Anomaly Detection</span>
+        <span class="chip">Variography</span>
+        <span class="chip">Kriging</span>
+        <span class="chip">Geostatistics</span>
+        <span class="chip">SGeMS</span>
+        <span class="chip">Machine Learning for Prospectivity Mapping</span>
+        <span class="chip">ETL Pipelines</span>
+        <span class="chip">Dashboard Development</span>
+        <span class="chip">R (basic)</span>
+        <span class="chip">Git</span>
+        <span class="chip">LaTeX</span>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="gis">
+      <div class="chips">
+        <span class="chip">QGIS — End-to-End Project Setup</span>
+        <span class="chip">ArcGIS</span>
+        <span class="chip">Map Production</span>
+        <span class="chip">Georeferencing</span>
+        <span class="chip">Digitising</span>
+        <span class="chip">Spatial Interpolation (RBF, IDW)</span>
+        <span class="chip">Cross-Sections</span>
+        <span class="chip">3D Visualisation</span>
+        <span class="chip">Map Package Generation</span>
+        <span class="chip">Spatial Database Management</span>
+        <span class="chip">Coordinate Systems &amp; Projections</span>
+      </div>
+    </div>
+
+    <div class="panel" data-panel="physics">
+      <div class="chips">
+        <span class="chip">Laboratory Physics</span>
+        <span class="chip">Experimental Design</span>
+        <span class="chip">Data Analysis</span>
+        <span class="chip">Statistics Teaching</span>
+        <span class="chip">Python for Data Analysis Instruction</span>
+        <span class="chip">Student Mentoring (100+)</span>
+        <span class="chip">Technical Report Writing</span>
+        <span class="chip">Scientific Communication</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2 class="section-title">Where I've worked</h2>
+      <p class="section-sub">Over three years across exploration, geotechnical engineering, road construction and data analytics.</p>
+    </div>
+
+    <div class="timeline">
+
+      <article class="tl-item reveal">
+        <div class="tl-head">
+          <h3>Project Geologist</h3>
+          <span class="tl-co">Geo-Junction Exploration</span>
+          <span class="tl-date">2024 — Present</span>
+        </div>
+        <ul class="tl-body">
+          <li>Manage the <strong>full exploration pipeline</strong>: soil sampling, stream sediment surveys, <strong>diamond drilling supervision</strong>, meter marking, <strong>core logging</strong> (lithological, structural, mineralisation) and QA/QC of sample preparation.</li>
+          <li>Conduct <strong>magnetic susceptibility, pXRF and geophysical surveys</strong> (Magnetics, IP) for rapid lithological and geochemical characterisation.</li>
+          <li>Assist in <strong>resource estimation</strong> and <strong>ore control</strong> by integrating geological, geophysical and assay data into 3D models.</li>
+          <li>Design and manage exploration databases in <strong>PostGIS</strong> with robust validation and QA/QC protocols (CRMs, blanks, duplicates).</li>
+          <li>Apply <strong>Compositional Data Analysis and multivariate statistics</strong> (PCA, clustering, regression) to identify geochemical anomalies.</li>
+          <li>Set up <strong>QGIS projects end-to-end</strong>; produce spatial maps, interpolated grids (RBF), cross-sections and 3D visualisations for drill targeting.</li>
+          <li>Compile weekly reports and present integrated interpretations to senior management.</li>
+        </ul>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-head">
+          <h3>Assistant Geotechnical &amp; Materials Project Manager</h3>
+          <span class="tl-co">AVIC International</span>
+          <span class="tl-date">2023 — 2024</span>
+        </div>
+        <ul class="tl-body">
+          <li>Led a geotechnical and materials laboratory team of <strong>10+ technicians</strong> across multiple road work fronts on the <strong>Lusaka–Ndola Road Project</strong>.</li>
+          <li>Achieved <strong>98% compliance</strong> with RDA, ASTM and BS specifications.</li>
+          <li>Coordinated drilling, sampling and field investigation schedules; supervised borehole logging, SPT and in-situ testing.</li>
+          <li>Implemented <strong>ISO 17025</strong> principles and automated QA/QC reporting in Python — <strong>40% time savings</strong>.</li>
+          <li>Led borrow pit exploration across <strong>24+ pits</strong>; recommended 8 optimal sources saving <strong>15% in haulage costs</strong>.</li>
+          <li>Liaised with client engineers, project directors and subcontractors; managed non-conformance reporting.</li>
+        </ul>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-head">
+          <h3>Undergraduate Lecturer Assistant — Physics &amp; Data Science</h3>
+          <span class="tl-co">Copperbelt University</span>
+          <span class="tl-date">2023</span>
+        </div>
+        <ul class="tl-body">
+          <li>Taught Python for data analysis, laboratory physics and statistics.</li>
+          <li>Mentored <strong>100+ students</strong> in practical data analysis and experimental methods.</li>
+        </ul>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-head">
+          <h3>Data Science Intern</h3>
+          <span class="tl-co">Zambia Statistics Agency</span>
+          <span class="tl-date">2022</span>
+        </div>
+        <ul class="tl-body">
+          <li>Analysed large census datasets using Python and SQL.</li>
+          <li>Developed ETL pipelines and reporting dashboards.</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="section section--alt" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Case Studies</span>
+      <h2 class="section-title">Selected project work</h2>
+      <p class="section-sub">Real problems, real data, measurable outcomes. Filter by discipline.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="Project filters">
+      <button class="filter active" data-filter="all">All Work</button>
+      <button class="filter" data-filter="geology">Geology</button>
+      <button class="filter" data-filter="geophysics">Geophysics</button>
+      <button class="filter" data-filter="geotech">Geotechnical</button>
+      <button class="filter" data-filter="datascience">Data Science</button>
+      <button class="filter" data-filter="gis">GIS</button>
+    </div>
+
+    <div class="projects">
+
+      <article class="project reveal" data-cat="datascience">
+        <div class="project__top">
+          <span class="project__cat">Data Science</span>
+          <div class="project__metric">5<small>Drill Targets</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Soil Geochemical Target Generation</h3>
+          <p>Analysed a 2,000-sample soil geochemical dataset using Compositional Data Analysis, PCA and RBF interpolation to rank anomalies and prioritise five high-confidence drill targets.</p>
+          <div class="project__tech"><span>Python</span><span>CODA</span><span>PCA</span><span>RBF</span><span>QGIS</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d1" data-cat="geophysics">
+        <div class="project__top">
+          <span class="project__cat">Geophysics</span>
+          <div class="project__metric">3D<small>Interpretation</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Magnetics &amp; IP Structural Interpretation</h3>
+          <p>Integrated ground magnetics and Induced Polarization data with geological mapping to refine structural interpretations and optimise drill hole placement.</p>
+          <div class="project__tech"><span>Magnetics</span><span>IP</span><span>Structural Geology</span><span>3D Modelling</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d2" data-cat="geotech">
+        <div class="project__top">
+          <span class="project__cat">Geotechnical</span>
+          <div class="project__metric">15%<small>Cost Saved</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Borrow Pit Exploration &amp; Materials Characterisation</h3>
+          <p>Led exploration and characterisation of 24+ borrow pits on the Lusaka–Ndola Road Project. Recommended 8 optimal sources, reducing haulage costs by 15%.</p>
+          <div class="project__tech"><span>Site Investigation</span><span>Materials Testing</span><span>Reserve Assessment</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal" data-cat="datascience">
+        <div class="project__top">
+          <span class="project__cat">Data Science</span>
+          <div class="project__metric">40%<small>Time Saved</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Automated QA/QC Reporting Pipeline</h3>
+          <p>Replaced manual laboratory QA/QC reporting with a Python pipeline implementing statistical process control, cutting reporting time by 40% while maintaining 98% specification compliance.</p>
+          <div class="project__tech"><span>Python</span><span>pandas</span><span>SPC</span><span>ISO 17025</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d1" data-cat="datascience">
+        <div class="project__top">
+          <span class="project__cat">Data Science</span>
+          <div class="project__metric">500+<small>Samples</small></div>
+        </div>
+        <div class="project__body">
+          <h3>PostgreSQL/PostGIS Exploration Database</h3>
+          <p>Designed and implemented a spatial exploration database tracking 500+ samples, with automated validation rules, QA/QC flagging and one-click reporting.</p>
+          <div class="project__tech"><span>PostgreSQL</span><span>PostGIS</span><span>SQL</span><span>Data Validation</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d2" data-cat="gis">
+        <div class="project__top">
+          <span class="project__cat">GIS</span>
+          <div class="project__metric">Live<small>Dashboard</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Interactive Drill Targeting Dashboard</h3>
+          <p>Built an interactive spatial dashboard for real-time drill targeting and exploration review, allowing geologists and management to interrogate anomalies on the fly.</p>
+          <div class="project__tech"><span>Plotly</span><span>Streamlit</span><span>QGIS</span><span>Python</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal" data-cat="geotech">
+        <div class="project__top">
+          <span class="project__cat">Geotechnical</span>
+          <div class="project__metric">98%<small>Compliance</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Lusaka–Ndola Road Project — Materials Laboratory</h3>
+          <p>Managed a 10+ technician laboratory team across multiple work fronts, delivering soils, aggregates, asphalt and concrete testing to RDA/ASTM/BS specifications.</p>
+          <div class="project__tech"><span>ASTM</span><span>BS</span><span>RDA</span><span>SANS 3001</span><span>Marshall Mix</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d1" data-cat="geology">
+        <div class="project__top">
+          <span class="project__cat">Geology</span>
+          <div class="project__metric">Full<small>Pipeline</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Exploration Programme Management</h3>
+          <p>Ran the complete exploration pipeline — soil and stream sediment surveys, diamond drilling supervision, meter marking, core logging and resource estimation support.</p>
+          <div class="project__tech"><span>Diamond Drilling</span><span>Core Logging</span><span>Resource Estimation</span><span>Ore Control</span></div>
+        </div>
+      </article>
+
+      <article class="project reveal d2" data-cat="geology">
+        <div class="project__top">
+          <span class="project__cat">Geology</span>
+          <div class="project__metric">3D<small>Models</small></div>
+        </div>
+        <div class="project__body">
+          <h3>Geological &amp; Structural 3D Modelling</h3>
+          <p>Integrated geological, geophysical and assay data into 3D models supporting ore control, grade boundary delineation and dilution minimisation.</p>
+          <div class="project__tech"><span>3D Modelling</span><span>Structural Geology</span><span>Geostatistics</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CERTIFICATIONS
+     ============================================================ -->
+<section class="section" id="certifications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Credentials</span>
+      <h2 class="section-title">Certifications &amp; training</h2>
+      <p class="section-sub">Formal training backing the field and laboratory work.</p>
+    </div>
+
+    <div class="certs">
+      <div class="cert reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg>
+        <div><b>ISO 17025:2017</b><span>Laboratory Quality Management — 2025</span></div>
+      </div>
+      <div class="cert reveal d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+        <div><b>Marshall Mix Design</b><span>ASTM D6926 / D6927 — 2025</span></div>
+      </div>
+      <div class="cert reveal d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/></svg>
+        <div><b>SANS 3001</b><span>Soils &amp; Aggregates Testing — 2025</span></div>
+      </div>
+      <div class="cert reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22a7 7 0 0 0 7-7c0-3-2-5-7-11-5 6-7 8-7 11a7 7 0 0 0 7 7z"/></svg>
+        <div><b>Nuclear Gauge Safety</b><span>Troxler — 2025</span></div>
+      </div>
+      <div class="cert reveal d1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg>
+        <div><b>Concrete Testing</b><span>JTG 3420-2020 — 2025</span></div>
+      </div>
+      <div class="cert reveal d2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 8c3 2 11 2 14 0M5 16c3-2 11-2 14 0"/></svg>
+        <div><b>Advanced Hydrogeology</b><span>Fulbright Program — 2025</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="section section--alt" id="contact">
+  <div class="wrap">
+    <div class="contact">
+
+      <div class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Let's talk about your project</h2>
+        <p class="section-sub">
+          Whether it's a drill targeting study, a geochemical dataset that needs proper
+          statistical treatment, a QA/QC system, or geotechnical materials work —
+          tell me what you're dealing with and I'll tell you how I can help.
+        </p>
+
+        <div class="contact__list">
+          <a class="contact__item" href="mailto:sichombarobertbob@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <div><b>Email</b><span>sichombarobertbob@gmail.com</span></div>
+          </a>
+          <a class="contact__item" href="tel:+260970312455">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div><b>Phone / WhatsApp</b><span>+260 970 312 455</span></div>
+          </a>
+          <a class="contact__item" href="https://www.linkedin.com/in/robert-sichomba" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21 8.75 22 11.1 22 14.3V21h-4v-5.9c0-1.4-.03-3.2-2-3.2s-2.3 1.5-2.3 3.1V21h-4z"/></svg>
+            <div><b>LinkedIn</b><span>linkedin.com/in/robert-sichomba</span></div>
+          </a>
+          <a class="contact__item" href="https://github.com/RobertSichombaBob" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+            <div><b>GitHub</b><span>github.com/RobertSichombaBob</span></div>
+          </a>
+          <div class="contact__item" style="cursor:default;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Location</b><span>North Western, Zambia — available remote &amp; on-site</span></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="form reveal d2" id="contactForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Mwale" required />
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="company">Company / Organisation</label>
+            <input type="text" id="company" name="company" placeholder="Optional" />
+          </div>
+          <div class="field">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <option>Mineral Exploration &amp; Drill Targeting</option>
+              <option>Geophysics Acquisition &amp; Interpretation</option>
+              <option>Geotechnical &amp; Materials Engineering</option>
+              <option>Geochemical Data Science &amp; Statistics</option>
+              <option>GIS &amp; 3D Spatial Modelling</option>
+              <option>Exploration Databases &amp; QA/QC Systems</option>
+              <option>Other / Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Project Details</label>
+          <textarea id="message" name="message" placeholder="Tell me about your project — location, data available, timeline, and what you're trying to achieve." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--accent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Send Message
+        </button>
+
+        <p class="form-note" id="formNote">Typical response within 24 hours.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="#home" class="logo">
+          <span class="logo__mark">RS</span>
+          <span class="logo__text">Robert Sichomba<small>Geoscience &amp; Data</small></span>
+        </a>
+        <p>
+          Exploration geologist and data scientist helping mining, exploration and
+          construction clients make confident, evidence-based decisions.
+        </p>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/robert-sichomba" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21 8.75 22 11.1 22 14.3V21h-4v-5.9c0-1.4-.03-3.2-2-3.2s-2.3 1.5-2.3 3.1V21h-4z"/></svg>
+          </a>
+          <a href="https://github.com/RobertSichombaBob" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 8.8 21.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7 1 .7 2v2.9c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <a href="mailto:sichombarobertbob@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Exploration &amp; Drill Targeting</a></li>
+          <li><a href="#services">Geophysics</a></li>
+          <li><a href="#services">Geotechnical &amp; Materials</a></li>
+          <li><a href="#services">Geochemical Data Science</a></li>
+          <li><a href="#services">GIS &amp; Spatial Modelling</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>Navigate</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h5>Get in Touch</h5>
+        <ul>
+          <li><a href="mailto:sichombarobertbob@gmail.com">sichombarobertbob@gmail.com</a></li>
+          <li><a href="tel:+260970312455">+260 970 312 455</a></li>
+          <li><a href="#contact">Start a project →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span id="year"></span> Robert Sichomba. All rights reserved.</span>
+      <span>Available for immediate start · Willing to relocate</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============================================================
+     STRUCTURED DATA (SEO)
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Robert Sichomba",
+  "jobTitle": "Exploration Geologist & Data Scientist",
+  "email": "mailto:sichombarobertbob@gmail.com",
+  "telephone": "+260970312455",
+  "url": "https://myportfolio-uwst.onrender.com",
+  "address": { "@type": "PostalAddress", "addressRegion": "North Western", "addressCountry": "Zambia" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "The University of Zambia" },
+    { "@type": "CollegeOrUniversity", "name": "The Copperbelt University" }
+  ],
+  "knowsAbout": [
+    "Exploration Geology","Geophysics","Geotechnical Engineering","Materials Testing",
+    "Data Science","Geostatistics","Machine Learning","Python","PostGIS","QGIS",
+    "Resource Estimation","Drill Targeting","QA/QC"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/robert-sichomba",
+    "https://github.com/RobertSichombaBob"
+  ]
+}
+</script>
+
+<script>
+/* ============================================================
+   CONFIG — set this to your Formspree endpoint to enable
+   real form submissions. Leave empty to use mailto fallback.
+   Sign up free at https://formspree.io
+   ============================================================ */
+const FORMSPREE_ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxxxx"
+
+(function(){
+  'use strict';
+
+  /* ---------- Year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Theme ---------- */
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+
+  const stored = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  root.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+
+  themeToggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  /* ---------- Navbar scroll state ---------- */
+  const nav = document.getElementById('nav');
+  const toTop = document.getElementById('toTop');
+
+  const onScroll = () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 12);
+    toTop.classList.toggle('show', y > 620);
+  };
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  /* ---------- Mobile menu ---------- */
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  const closeMenu = () => {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  };
+
+  burger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', String(open));
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  /* ---------- Scroll spy ---------- */
+  const navLinks = [...document.querySelectorAll('.nav__links a')];
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = '#' + entry.target.id;
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(s => spy.observe(s));
+
+  /* ---------- Scroll reveal ---------- */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(el => revealObs.observe(el));
+
+  /* ---------- Animated counters ---------- */
+  const counters = document.querySelectorAll('[data-count]');
+  const counterObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1500;
+      const start = performance.now();
+
+      const tick = now => {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => counterObs.observe(c));
+
+  /* ---------- Hero role rotator ---------- */
+  const roles = [
+    'Exploration Geologist',
+    'Data Scientist',
+    'Geophysicist',
+    'Geotechnical Specialist',
+    'Geostatistician',
+    'GIS & Spatial Analyst',
+    'Materials & QA/QC Engineer'
+  ];
+  const rotator = document.getElementById('rotator');
+  let rIdx = 0, cIdx = 0, deleting = false;
+
+  const type = () => {
+    const word = roles[rIdx];
+    rotator.textContent = deleting
+      ? word.substring(0, cIdx--)
+      : word.substring(0, cIdx++);
+
+    let delay = deleting ? 38 : 72;
+
+    if (!deleting && cIdx > word.length) {
+      deleting = true;
+      delay = 1700;
+    } else if (deleting && cIdx < 0) {
+      deleting = false;
+      rIdx = (rIdx + 1) % roles.length;
+      cIdx = 0;
+      delay = 320;
+    }
+    setTimeout(type, delay);
+  };
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setTimeout(type, 1400);
+  } else {
+    rotator.textContent = roles[0];
+  }
+
+  /* ---------- Skills tabs ---------- */
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      const panel = document.querySelector(`.panel[data-panel="${tab.dataset.tab}"]`);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  /* ---------- Project filters ---------- */
+  const filters = document.querySelectorAll('.filter');
+  const projects = document.querySelectorAll('.project');
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.forEach(f => f.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+
+      projects.forEach(p => {
+        const match = f === 'all' || p.dataset.cat === f;
+        p.classList.toggle('hide', !match);
+      });
+    });
+  });
+
+  /* ---------- Contact form ---------- */
+  const form = document.getElementById('contactForm');
+  const note = document.getElementById('formNote');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (!data.name || !data.email || !data.message) {
+      note.textContent = 'Please fill in your name, email and project details.';
+      note.style.color = 'var(--accent)';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      note.textContent = 'Please enter a valid email address.';
+      note.style.color = 'var(--accent)';
+      return;
+    }
+
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    try {
+      if (FORMSPREE_ENDPOINT) {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('Request failed');
+        form.reset();
+        note.textContent = '✓ Message sent. I\'ll get back to you within 24 hours.';
+        note.style.color = 'var(--teal)';
+      } else {
+        const subject = encodeURIComponent(
+          `Project enquiry — ${data.service || 'General'} — ${data.name}`
+        );
+        const body = encodeURIComponent(
+          `Name: ${data.name}\n` +
+          `Email: ${data.email}\n` +
+          `Company: ${data.company || '—'}\n` +
+          `Service: ${data.service || '—'}\n\n` +
+          `${data.message}`
+        );
+        window.location.href = `mailto:sichombarobertbob@gmail.com?subject=${subject}&body=${body}`;
+        note.textContent = 'Opening your email client…';
+        note.style.color = 'var(--text-mute)';
+      }
+    } catch (err) {
+      note.textContent = 'Something went wrong. Please email sichombarobertbob@gmail.com directly.';
+      note.style.color = 'var(--accent)';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = original;
+    }
+  });
+
+})();
+</script>
+
+</body>
+</html>
